@@ -1,0 +1,232 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ============================================================
+   THEME TOKENS
+   ============================================================ */
+
+:root {
+  /* Main application colors */
+  --background: #f8fafc;
+  --foreground: #15678e;
+
+  /* Text */
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+
+  /* Surfaces */
+  --surface: #ffffff;
+  --surface-hover: #f1f5f9;
+
+  /* Borders */
+  --border: #cbd5e1;
+  --border-strong: #94a3b8;
+
+  /* Brand / accent */
+  --accent: #15678e;
+  --accent-hover: #0f5273;
+
+  /* Feedback */
+  --success: #059669;
+  --success-hover: #047857;
+
+  --error: #dc2626;
+  --error-hover: #b91c1c;
+
+  --warning: #d97706;
+
+  /* Compatibility */
+  --text-color: var(--text-primary);
+}
+
+/* ============================================================
+   LIGHT THEME
+   ============================================================ */
+
+[data-theme="light"] {
+  --background: #f8fafc;
+  --foreground: #15678e;
+
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+
+  --surface: #ffffff;
+  --surface-hover: #f1f5f9;
+
+  --border: #cbd5e1;
+  --border-strong: #94a3b8;
+
+  --accent: #15678e;
+  --accent-hover: #0f5273;
+
+  --success: #059669;
+  --success-hover: #047857;
+
+  --error: #dc2626;
+  --error-hover: #b91c1c;
+
+  --warning: #d97706;
+
+  --text-color: var(--text-primary);
+}
+
+/* ============================================================
+   DARK THEME
+   ============================================================ */
+
+[data-theme="dark"] {
+  --background: #0f172a;
+  --foreground: #e2f1fb;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --surface: #182c49;
+  --surface-hover: #243b5a;
+
+  --border: #334155;
+  --border-strong: #475569;
+
+  --accent: #38bdf8;
+  --accent-hover: #7dd3fc;
+
+  --success: #10b981;
+  --success-hover: #34d399;
+
+  --error: #ef4444;
+  --error-hover: #f87171;
+
+  --warning: #f59e0b;
+
+  --text-color: var(--text-primary);
+}
+
+/* ============================================================
+   TAILWIND THEME
+   ============================================================ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ============================================================
+   BODY
+   ============================================================ */
+
+html,
+body {
+  background: var(--background);
+  color: var(--text-primary);
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+/* ============================================================
+   SELECTED ELEMENT
+   IMPORTANT:
+   Fixed dimensions prevent navbar movement.
+   ============================================================ */
+
+.selected-element {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40px;
+  min-width: 70px;
+
+  padding: 0.5rem 0.75rem;
+
+  background-color: var(--surface-hover);
+  color: var(--accent);
+
+  border: 1px solid var(--accent);
+  border-radius: 0.5rem;
+
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================================
+   COMMON COMPONENTS
+   ============================================================ */
+
+.background-border {
+  background-color: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1.2rem 1.5rem;
+}
+
+.selected-element {
+  background-color: var(--surface-hover);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+}
+
+strong {
+  font-size: 1.4rem;
+}
+
+li > p {
+  font-size: 0.9rem;
+}
+
+.ordered-list > li::marker {
+  font-size: 24px;
+}
+
+h2 {
+  color: var(--accent);
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================================
+   CARET
+   ============================================================ */
+
+@keyframes caretBlink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-caret {
+  animation: caretBlink 1s steps(1) infinite;
+}

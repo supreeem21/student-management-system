@@ -1,0 +1,16 @@
+{
+  "name": "Darbar Tech — Nepali & English Typing Practice",
+  "short_name": "Darbar Tech",
+  "description": "Free typing practice and speed tests for English and Nepali (Preeti & Unicode).",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#182c49",
+  "theme_color": "#182c49",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -1,0 +1,2958 @@
+[
+  {
+    "id": 1,
+    "title": "Hello World Program",
+    "slug": "hello-world",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "2 min",
+    "concepts": [
+      "printf",
+      "main function",
+      "syntax"
+    ],
+    "problem": "Write a C program that \"Hello, World!\" to the console. This is the traditional first program used to verify a compiler setup works correctly.",
+    "requirements": [
+      "Include stdio.h",
+      "Use printf to display the message",
+      "Return 0 from main"
+    ],
+    "inputExample": "None",
+    "outputExample": "Hello, World!",
+    "explanation": "The program includes the standard I/O header, defines the main function as the entry point, and calls printf to output text to the console.",
+    "code": "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}\n",
+    "output": "Hello, World!",
+    "tags": [
+      "basics",
+      "printf",
+      "beginner"
+    ],
+    "hint": "Remember every C program needs a main() function as its entry point."
+  },
+  {
+    "id": 2,
+    "title": "Add Two Numbers",
+    "slug": "add-two-numbers",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "variables",
+      "scanf",
+      "arithmetic operators"
+    ],
+    "problem": "Write a program that reads two integers from the user and prints their sum.",
+    "requirements": [
+      "Declare two integer variables",
+      "Read values using scanf",
+      "Compute and print the sum"
+    ],
+    "inputExample": "5\n7",
+    "outputExample": "Sum = 12",
+    "explanation": "Two integers are read using scanf, added together with the + operator, and the result is printed with printf.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int a, b;\n    printf(\"Enter two integers: \");\n    scanf(\"%d %d\", &a, &b);\n    printf(\"Sum = %d\\n\", a + b);\n    return 0;\n}\n",
+    "output": "Enter two integers: Sum = 12",
+    "tags": [
+      "variables",
+      "input-output",
+      "arithmetic"
+    ],
+    "hint": "Use the & operator before variable names in scanf to pass their address."
+  },
+  {
+    "id": 3,
+    "title": "Swap Two Numbers Using a Temporary Variable",
+    "slug": "swap-using-temp",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "variables",
+      "temporary variable"
+    ],
+    "problem": "Write a program to swap the values of two variables using a third temporary variable.",
+    "requirements": [
+      "Read two integers",
+      "Use a temp variable to swap them",
+      "Print values before and after swapping"
+    ],
+    "inputExample": "10\n20",
+    "outputExample": "Before: a=10, b=20\nAfter: a=20, b=10",
+    "explanation": "A temporary variable temporarily holds one value while the swap is performed, preventing data loss during reassignment.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int a, b, temp;\n    printf(\"Enter a and b: \");\n    scanf(\"%d %d\", &a, &b);\n    printf(\"Before: a=%d, b=%d\\n\", a, b);\n    temp = a;\n    a = b;\n    b = temp;\n    printf(\"After: a=%d, b=%d\\n\", a, b);\n    return 0;\n}\n",
+    "output": "Before: a=10, b=20\nAfter: a=20, b=10",
+    "tags": [
+      "variables",
+      "swap",
+      "beginner"
+    ],
+    "hint": "The temp variable acts as safe storage so no value is overwritten before it is used."
+  },
+  {
+    "id": 4,
+    "title": "Swap Two Numbers Without a Temporary Variable",
+    "slug": "swap-without-temp",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "arithmetic operators",
+      "variables"
+    ],
+    "problem": "Write a program that swaps two numbers using arithmetic operations instead of a third variable.",
+    "requirements": [
+      "Read two integers",
+      "Swap using addition and subtraction (or XOR)",
+      "Print result"
+    ],
+    "inputExample": "3\n8",
+    "outputExample": "After swap: a=8, b=3",
+    "explanation": "By adding both numbers into a and then subtracting appropriately, both values are exchanged without extra storage.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int a, b;\n    printf(\"Enter a and b: \");\n    scanf(\"%d %d\", &a, &b);\n    a = a + b;\n    b = a - b;\n    a = a - b;\n    printf(\"After swap: a=%d, b=%d\\n\", a, b);\n    return 0;\n}\n",
+    "output": "After swap: a=8, b=3",
+    "tags": [
+      "arithmetic",
+      "swap",
+      "beginner"
+    ],
+    "hint": "Watch for integer overflow with very large numbers when using the addition method."
+  },
+  {
+    "id": 5,
+    "title": "Simple Interest Calculator",
+    "slug": "simple-interest-calculator",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "float variables",
+      "formulas",
+      "printf formatting"
+    ],
+    "problem": "Write a program to calculate simple interest given principal, rate, and time using the formula SI = (P*R*T)/100.",
+    "requirements": [
+      "Read principal, rate, and time as floats",
+      "Apply the simple interest formula",
+      "Print the result rounded to 2 decimals"
+    ],
+    "inputExample": "1000\n5\n2",
+    "outputExample": "Simple Interest = 100.00",
+    "explanation": "The formula multiplies principal, rate, and time then divides by 100 to compute the interest earned.",
+    "code": "#include <stdio.h>\n\nint main() {\n    float p, r, t, si;\n    printf(\"Enter principal, rate, time: \");\n    scanf(\"%f %f %f\", &p, &r, &t);\n    si = (p * r * t) / 100;\n    printf(\"Simple Interest = %.2f\\n\", si);\n    return 0;\n}\n",
+    "output": "Simple Interest = 100.00",
+    "tags": [
+      "formulas",
+      "float",
+      "beginner"
+    ],
+    "hint": "Use %.2f in printf to format floating point output to two decimal places."
+  },
+  {
+    "id": 6,
+    "title": "Area and Circumference of a Circle",
+    "slug": "area-circumference-circle",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "constants",
+      "float arithmetic"
+    ],
+    "problem": "Write a program that calculates the area and circumference of a circle given its radius.",
+    "requirements": [
+      "Read radius as a float",
+      "Compute area using pi*r*r",
+      "Compute circumference using 2*pi*r"
+    ],
+    "inputExample": "7",
+    "outputExample": "Area = 153.86\nCircumference = 43.96",
+    "explanation": "Using the mathematical constant pi (approximated as 3.14159), the program applies standard circle formulas.",
+    "code": "#include <stdio.h>\n\nint main() {\n    float radius, area, circumference;\n    const float PI = 3.14159;\n    printf(\"Enter radius: \");\n    scanf(\"%f\", &radius);\n    area = PI * radius * radius;\n    circumference = 2 * PI * radius;\n    printf(\"Area = %.2f\\n\", area);\n    printf(\"Circumference = %.2f\\n\", circumference);\n    return 0;\n}\n",
+    "output": "Area = 153.86\nCircumference = 43.96",
+    "tags": [
+      "geometry",
+      "constants",
+      "beginner"
+    ],
+    "hint": "Declaring PI as const keeps the value fixed and communicates intent clearly."
+  },
+  {
+    "id": 7,
+    "title": "Check Even or Odd",
+    "slug": "check-even-odd",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "2 min",
+    "concepts": [
+      "modulus operator",
+      "if-else"
+    ],
+    "problem": "Write a program that reads an integer and determines whether it is even or odd.",
+    "requirements": [
+      "Read an integer",
+      "Use modulus operator to check divisibility by 2",
+      "Print appropriate message"
+    ],
+    "inputExample": "15",
+    "outputExample": "15 is Odd",
+    "explanation": "The modulus operator % returns the remainder of division; a remainder of 0 when divided by 2 means the number is even.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    printf(\"Enter a number: \");\n    scanf(\"%d\", &n);\n    if (n % 2 == 0)\n        printf(\"%d is Even\\n\", n);\n    else\n        printf(\"%d is Odd\\n\", n);\n    return 0;\n}\n",
+    "output": "15 is Odd",
+    "tags": [
+      "conditionals",
+      "modulus",
+      "beginner"
+    ],
+    "hint": "Any number n is even if (n % 2 == 0), regardless of sign."
+  },
+  {
+    "id": 8,
+    "title": "Check Positive, Negative, or Zero",
+    "slug": "check-positive-negative-zero",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "2 min",
+    "concepts": [
+      "if-else if-else",
+      "relational operators"
+    ],
+    "problem": "Write a program that determines whether a number entered by the user is positive, negative, or zero.",
+    "requirements": [
+      "Read an integer",
+      "Use if-else if-else to classify it",
+      "Print the classification"
+    ],
+    "inputExample": "-5",
+    "outputExample": "The number is Negative",
+    "explanation": "The program checks the number against zero using relational operators and prints the matching category.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    printf(\"Enter a number: \");\n    scanf(\"%d\", &n);\n    if (n > 0)\n        printf(\"The number is Positive\\n\");\n    else if (n < 0)\n        printf(\"The number is Negative\\n\");\n    else\n        printf(\"The number is Zero\\n\");\n    return 0;\n}\n",
+    "output": "The number is Negative",
+    "tags": [
+      "conditionals",
+      "beginner"
+    ],
+    "hint": "Order matters in else-if chains; check the most specific condition first if ranges overlap."
+  },
+  {
+    "id": 9,
+    "title": "Largest of Two Numbers",
+    "slug": "largest-of-two-numbers",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "2 min",
+    "concepts": [
+      "conditionals",
+      "comparison operators"
+    ],
+    "problem": "Write a program that reads two numbers and prints the larger one.",
+    "requirements": [
+      "Read two integers",
+      "Compare them using an if-else statement",
+      "Print the larger value"
+    ],
+    "inputExample": "12\n27",
+    "outputExample": "Largest = 27",
+    "explanation": "A simple comparison determines which of the two variables holds the greater value.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int a, b;\n    printf(\"Enter two numbers: \");\n    scanf(\"%d %d\", &a, &b);\n    if (a > b)\n        printf(\"Largest = %d\\n\", a);\n    else\n        printf(\"Largest = %d\\n\", b);\n    return 0;\n}\n",
+    "output": "Largest = 27",
+    "tags": [
+      "conditionals",
+      "comparison",
+      "beginner"
+    ],
+    "hint": "The ternary operator (a > b) ? a : b can shorten this comparison."
+  },
+  {
+    "id": 10,
+    "title": "Largest of Three Numbers",
+    "slug": "largest-of-three-numbers",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "nested if",
+      "logical operators"
+    ],
+    "problem": "Write a program that reads three numbers and determines the largest among them.",
+    "requirements": [
+      "Read three integers",
+      "Use nested if or logical operators to compare all three",
+      "Print the largest value"
+    ],
+    "inputExample": "4\n9\n6",
+    "outputExample": "Largest = 9",
+    "explanation": "Nested conditionals compare each pair of numbers until the single largest value is identified.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int a, b, c;\n    printf(\"Enter three numbers: \");\n    scanf(\"%d %d %d\", &a, &b, &c);\n    if (a >= b && a >= c)\n        printf(\"Largest = %d\\n\", a);\n    else if (b >= a && b >= c)\n        printf(\"Largest = %d\\n\", b);\n    else\n        printf(\"Largest = %d\\n\", c);\n    return 0;\n}\n",
+    "output": "Largest = 9",
+    "tags": [
+      "conditionals",
+      "logical-operators",
+      "beginner"
+    ],
+    "hint": "Using >= instead of > correctly handles cases where two numbers are equal and largest."
+  },
+  {
+    "id": 11,
+    "title": "Simple Calculator Using Switch",
+    "slug": "simple-calculator-switch",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "switch statement",
+      "operators"
+    ],
+    "problem": "Write a calculator program that reads two numbers and an operator (+, -, *, /), then performs the corresponding operation using a switch statement.",
+    "requirements": [
+      "Read two numbers and an operator character",
+      "Use switch-case to perform the operation",
+      "Handle division by zero and invalid operator cases"
+    ],
+    "inputExample": "10\n5\n*",
+    "outputExample": "Result = 50.00",
+    "explanation": "The switch statement branches based on the operator character, performing the matching arithmetic operation and handling edge cases like division by zero.",
+    "code": "#include <stdio.h>\n\nint main() {\n    float a, b, result;\n    char op;\n    printf(\"Enter num1 op num2: \");\n    scanf(\"%f %c %f\", &a, &op, &b);\n    switch (op) {\n        case '+': result = a + b; break;\n        case '-': result = a - b; break;\n        case '*': result = a * b; break;\n        case '/':\n            if (b == 0) {\n                printf(\"Error: Division by zero\\n\");\n                return 1;\n            }\n            result = a / b;\n            break;\n        default:\n            printf(\"Invalid operator\\n\");\n            return 1;\n    }\n    printf(\"Result = %.2f\\n\", result);\n    return 0;\n}\n",
+    "output": "Result = 50.00",
+    "tags": [
+      "switch",
+      "calculator",
+      "beginner"
+    ],
+    "hint": "Always check for division by zero before performing the division operation."
+  },
+  {
+    "id": 12,
+    "title": "Print Multiplication Table",
+    "slug": "print-multiplication-table",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "for loop",
+      "iteration"
+    ],
+    "problem": "Write a program that prints the multiplication table of a number entered by the user, from 1 to 10.",
+    "requirements": [
+      "Read a number",
+      "Use a for loop from 1 to 10",
+      "Print each multiplication line"
+    ],
+    "inputExample": "5",
+    "outputExample": "5 x 1 = 5\n5 x 2 = 10\n...\n5 x 10 = 50",
+    "explanation": "A for loop iterates from 1 to 10, multiplying the input number by the loop counter each time and printing the result.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    printf(\"Enter a number: \");\n    scanf(\"%d\", &n);\n    for (int i = 1; i <= 10; i++) {\n        printf(\"%d x %d = %d\\n\", n, i, n * i);\n    }\n    return 0;\n}\n",
+    "output": "5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n...\n5 x 10 = 50",
+    "tags": [
+      "loops",
+      "for-loop",
+      "beginner"
+    ],
+    "hint": "The loop counter i represents the multiplier and ranges from 1 through 10 inclusive."
+  },
+  {
+    "id": 13,
+    "title": "Sum of Natural Numbers Using a Loop",
+    "slug": "sum-of-natural-numbers-loop",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "for loop",
+      "accumulator variable"
+    ],
+    "problem": "Write a program that calculates the sum of the first N natural numbers using a loop.",
+    "requirements": [
+      "Read a positive integer N",
+      "Use a loop to accumulate the sum from 1 to N",
+      "Print the total sum"
+    ],
+    "inputExample": "5",
+    "outputExample": "Sum = 15",
+    "explanation": "An accumulator variable starts at zero and is incremented by the loop counter on each iteration, producing the running total.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n, sum = 0;\n    printf(\"Enter N: \");\n    scanf(\"%d\", &n);\n    for (int i = 1; i <= n; i++) {\n        sum += i;\n    }\n    printf(\"Sum = %d\\n\", sum);\n    return 0;\n}\n",
+    "output": "Sum = 15",
+    "tags": [
+      "loops",
+      "accumulator",
+      "beginner"
+    ],
+    "hint": "The formula n*(n+1)/2 can verify your loop-based result."
+  },
+  {
+    "id": 14,
+    "title": "Factorial Using a Loop",
+    "slug": "factorial-using-loop",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "for loop",
+      "multiplication accumulator"
+    ],
+    "problem": "Write a program that calculates the factorial of a number using an iterative loop.",
+    "requirements": [
+      "Read a non-negative integer",
+      "Use a loop to multiply numbers from 1 to n",
+      "Print the factorial result"
+    ],
+    "inputExample": "6",
+    "outputExample": "Factorial of 6 = 720",
+    "explanation": "Starting with a product of 1, the loop multiplies it by each integer from 1 through n to compute n!.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    long long fact = 1;\n    printf(\"Enter a number: \");\n    scanf(\"%d\", &n);\n    for (int i = 1; i <= n; i++) {\n        fact *= i;\n    }\n    printf(\"Factorial of %d = %lld\\n\", n, fact);\n    return 0;\n}\n",
+    "output": "Factorial of 6 = 720",
+    "tags": [
+      "loops",
+      "factorial",
+      "beginner"
+    ],
+    "hint": "Use long long for the factorial variable since values grow very quickly."
+  },
+  {
+    "id": 15,
+    "title": "Check Prime Number",
+    "slug": "check-prime-number",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "for loop",
+      "modulus",
+      "flags"
+    ],
+    "problem": "Write a program that checks whether a given number is a prime number.",
+    "requirements": [
+      "Read an integer",
+      "Check divisibility from 2 up to sqrt(n)",
+      "Print whether it is prime or not"
+    ],
+    "inputExample": "17",
+    "outputExample": "17 is Prime",
+    "explanation": "A number is prime if it has no divisors other than 1 and itself; the loop tests possible divisors up to its square root for efficiency.",
+    "code": "#include <stdio.h>\n#include <math.h>\n\nint main() {\n    int n, isPrime = 1;\n    printf(\"Enter a number: \");\n    scanf(\"%d\", &n);\n    if (n < 2) isPrime = 0;\n    for (int i = 2; i <= sqrt(n); i++) {\n        if (n % i == 0) {\n            isPrime = 0;\n            break;\n        }\n    }\n    if (isPrime)\n        printf(\"%d is Prime\\n\", n);\n    else\n        printf(\"%d is Not Prime\\n\", n);\n    return 0;\n}\n",
+    "output": "17 is Prime",
+    "tags": [
+      "loops",
+      "prime-number",
+      "math"
+    ],
+    "hint": "You only need to check divisors up to the square root of n, which greatly reduces the number of iterations."
+  },
+  {
+    "id": 16,
+    "title": "Check Armstrong Number",
+    "slug": "check-armstrong-number",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "while loop",
+      "digit extraction",
+      "power"
+    ],
+    "problem": "Write a program to check whether a given three-digit number is an Armstrong number (sum of cubes of its digits equals the number).",
+    "requirements": [
+      "Read an integer",
+      "Extract each digit and cube it",
+      "Sum the cubes and compare to the original number"
+    ],
+    "inputExample": "153",
+    "outputExample": "153 is an Armstrong number",
+    "explanation": "Each digit is extracted using modulus and division, cubed, and summed; if the sum equals the original number it is an Armstrong number.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n, original, remainder, result = 0;\n    printf(\"Enter a number: \");\n    scanf(\"%d\", &n);\n    original = n;\n    while (n != 0) {\n        remainder = n % 10;\n        result += remainder * remainder * remainder;\n        n /= 10;\n    }\n    if (result == original)\n        printf(\"%d is an Armstrong number\\n\", original);\n    else\n        printf(\"%d is not an Armstrong number\\n\", original);\n    return 0;\n}\n",
+    "output": "153 is an Armstrong number",
+    "tags": [
+      "while-loop",
+      "digits",
+      "armstrong"
+    ],
+    "hint": "This example works for 3-digit Armstrong numbers; for other digit counts you'd raise each digit to the power of the digit count."
+  },
+  {
+    "id": 17,
+    "title": "Reverse a Number",
+    "slug": "reverse-a-number",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "while loop",
+      "digit extraction"
+    ],
+    "problem": "Write a program that reverses the digits of an integer entered by the user.",
+    "requirements": [
+      "Read an integer",
+      "Use a while loop to extract and rebuild digits in reverse",
+      "Print the reversed number"
+    ],
+    "inputExample": "1234",
+    "outputExample": "Reversed number = 4321",
+    "explanation": "Each iteration extracts the last digit with modulus 10 and appends it to the reversed number, then removes the digit from the original with integer division.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n, reversed = 0, remainder;\n    printf(\"Enter a number: \");\n    scanf(\"%d\", &n);\n    while (n != 0) {\n        remainder = n % 10;\n        reversed = reversed * 10 + remainder;\n        n /= 10;\n    }\n    printf(\"Reversed number = %d\\n\", reversed);\n    return 0;\n}\n",
+    "output": "Reversed number = 4321",
+    "tags": [
+      "while-loop",
+      "digits",
+      "beginner"
+    ],
+    "hint": "This same digit-reversal technique is the basis for palindrome-number checks."
+  },
+  {
+    "id": 18,
+    "title": "Check Palindrome Number",
+    "slug": "check-palindrome-number",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "while loop",
+      "digit extraction",
+      "comparison"
+    ],
+    "problem": "Write a program that checks whether a number reads the same forwards and backwards (a palindrome).",
+    "requirements": [
+      "Read an integer",
+      "Reverse the number",
+      "Compare the reversed number to the original"
+    ],
+    "inputExample": "121",
+    "outputExample": "121 is a Palindrome",
+    "explanation": "The number is reversed using digit extraction, then compared to the original value to determine if it is a palindrome.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n, original, reversed = 0, remainder;\n    printf(\"Enter a number: \");\n    scanf(\"%d\", &n);\n    original = n;\n    while (n != 0) {\n        remainder = n % 10;\n        reversed = reversed * 10 + remainder;\n        n /= 10;\n    }\n    if (original == reversed)\n        printf(\"%d is a Palindrome\\n\", original);\n    else\n        printf(\"%d is not a Palindrome\\n\", original);\n    return 0;\n}\n",
+    "output": "121 is a Palindrome",
+    "tags": [
+      "while-loop",
+      "palindrome",
+      "beginner"
+    ],
+    "hint": "Negative numbers need special handling since the minus sign complicates the reversal comparison."
+  },
+  {
+    "id": 19,
+    "title": "Sum of Digits of a Number",
+    "slug": "sum-of-digits",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "2 min",
+    "concepts": [
+      "while loop",
+      "digit extraction"
+    ],
+    "problem": "Write a program that calculates the sum of all digits of an integer.",
+    "requirements": [
+      "Read an integer",
+      "Extract each digit using modulus and division",
+      "Accumulate and print the digit sum"
+    ],
+    "inputExample": "9328",
+    "outputExample": "Sum of digits = 22",
+    "explanation": "The loop repeatedly extracts the last digit with % 10, adds it to a running total, then removes that digit using integer division by 10.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n, sum = 0, digit;\n    printf(\"Enter a number: \");\n    scanf(\"%d\", &n);\n    while (n != 0) {\n        digit = n % 10;\n        sum += digit;\n        n /= 10;\n    }\n    printf(\"Sum of digits = %d\\n\", sum);\n    return 0;\n}\n",
+    "output": "Sum of digits = 22",
+    "tags": [
+      "while-loop",
+      "digits",
+      "beginner"
+    ],
+    "hint": "This digit-sum pattern is reusable for digital-root and divisibility-by-9 checks."
+  },
+  {
+    "id": 20,
+    "title": "Count Digits in a Number",
+    "slug": "count-digits-in-number",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "2 min",
+    "concepts": [
+      "while loop",
+      "counters"
+    ],
+    "problem": "Write a program that counts how many digits are present in a given integer.",
+    "requirements": [
+      "Read an integer",
+      "Use a loop to strip digits one at a time",
+      "Print the total digit count"
+    ],
+    "inputExample": "83920",
+    "outputExample": "Number of digits = 5",
+    "explanation": "Each loop iteration removes the last digit via integer division by 10 and increments a counter, until the number becomes zero.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n, count = 0;\n    printf(\"Enter a number: \");\n    scanf(\"%d\", &n);\n    if (n == 0) count = 1;\n    while (n != 0) {\n        n /= 10;\n        count++;\n    }\n    printf(\"Number of digits = %d\\n\", count);\n    return 0;\n}\n",
+    "output": "Number of digits = 5",
+    "tags": [
+      "while-loop",
+      "digits",
+      "beginner"
+    ],
+    "hint": "Remember to special-case 0, since the loop would otherwise count zero digits for it."
+  },
+  {
+    "id": 21,
+    "title": "Print Fibonacci Series",
+    "slug": "print-fibonacci-series",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "for loop",
+      "sequence generation"
+    ],
+    "problem": "Write a program that prints the first N terms of the Fibonacci series using a loop.",
+    "requirements": [
+      "Read the number of terms N",
+      "Generate terms using the sum of the previous two",
+      "Print all terms"
+    ],
+    "inputExample": "8",
+    "outputExample": "0 1 1 2 3 5 8 13",
+    "explanation": "Starting with 0 and 1, each subsequent Fibonacci term is the sum of the previous two terms, generated iteratively in a loop.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n, a = 0, b = 1, next;\n    printf(\"Enter number of terms: \");\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d \", a);\n        next = a + b;\n        a = b;\n        b = next;\n    }\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "output": "0 1 1 2 3 5 8 13",
+    "tags": [
+      "loops",
+      "fibonacci",
+      "beginner"
+    ],
+    "hint": "Track only the last two terms in variables rather than storing the whole sequence to keep the solution memory-efficient."
+  },
+  {
+    "id": 22,
+    "title": "Print Even Numbers in a Range",
+    "slug": "print-even-numbers-range",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "2 min",
+    "concepts": [
+      "for loop",
+      "modulus"
+    ],
+    "problem": "Write a program that prints all even numbers between two numbers entered by the user.",
+    "requirements": [
+      "Read start and end values",
+      "Loop through the range checking for evenness",
+      "Print each even number found"
+    ],
+    "inputExample": "1\n10",
+    "outputExample": "2 4 6 8 10",
+    "explanation": "The loop iterates through every number in the range and uses the modulus operator to filter out only even numbers.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int start, end;\n    printf(\"Enter start and end: \");\n    scanf(\"%d %d\", &start, &end);\n    for (int i = start; i <= end; i++) {\n        if (i % 2 == 0)\n            printf(\"%d \", i);\n    }\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "output": "2 4 6 8 10",
+    "tags": [
+      "loops",
+      "even-numbers",
+      "beginner"
+    ],
+    "hint": "You can also start the loop directly at the first even number and increment by 2 for efficiency."
+  },
+  {
+    "id": 23,
+    "title": "Print Odd Numbers in a Range",
+    "slug": "print-odd-numbers-range",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "2 min",
+    "concepts": [
+      "for loop",
+      "modulus"
+    ],
+    "problem": "Write a program that prints all odd numbers between two numbers entered by the user.",
+    "requirements": [
+      "Read start and end values",
+      "Loop through the range checking for oddness",
+      "Print each odd number found"
+    ],
+    "inputExample": "1\n10",
+    "outputExample": "1 3 5 7 9",
+    "explanation": "The loop checks each number in the range and prints it only if the remainder when divided by 2 is not zero.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int start, end;\n    printf(\"Enter start and end: \");\n    scanf(\"%d %d\", &start, &end);\n    for (int i = start; i <= end; i++) {\n        if (i % 2 != 0)\n            printf(\"%d \", i);\n    }\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "output": "1 3 5 7 9",
+    "tags": [
+      "loops",
+      "odd-numbers",
+      "beginner"
+    ],
+    "hint": "This program mirrors the even-number version but flips the modulus condition."
+  },
+  {
+    "id": 24,
+    "title": "Celsius to Fahrenheit Converter",
+    "slug": "celsius-to-fahrenheit",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "2 min",
+    "concepts": [
+      "formulas",
+      "float variables"
+    ],
+    "problem": "Write a program that converts a temperature from Celsius to Fahrenheit using the formula F = (C * 9/5) + 32.",
+    "requirements": [
+      "Read temperature in Celsius",
+      "Apply the conversion formula",
+      "Print the Fahrenheit result"
+    ],
+    "inputExample": "37",
+    "outputExample": "37.00 C = 98.60 F",
+    "explanation": "The formula scales the Celsius value by 9/5 and adds 32 to shift it into the Fahrenheit scale.",
+    "code": "#include <stdio.h>\n\nint main() {\n    float celsius, fahrenheit;\n    printf(\"Enter temperature in Celsius: \");\n    scanf(\"%f\", &celsius);\n    fahrenheit = (celsius * 9.0 / 5.0) + 32;\n    printf(\"%.2f C = %.2f F\\n\", celsius, fahrenheit);\n    return 0;\n}\n",
+    "output": "37.00 C = 98.60 F",
+    "tags": [
+      "conversion",
+      "formulas",
+      "beginner"
+    ],
+    "hint": "Use 9.0/5.0 rather than 9/5 to avoid integer division truncating the ratio to 1."
+  },
+  {
+    "id": 25,
+    "title": "Simple Grade Calculator",
+    "slug": "simple-grade-calculator",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "else-if ladder",
+      "conditionals"
+    ],
+    "problem": "Write a program that assigns a letter grade based on a student's numeric score using an else-if ladder.",
+    "requirements": [
+      "Read a score between 0 and 100",
+      "Use else-if statements to determine the grade",
+      "Print the resulting letter grade"
+    ],
+    "inputExample": "82",
+    "outputExample": "Grade: B",
+    "explanation": "The else-if ladder checks the score against descending thresholds, assigning the first matching grade band.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int score;\n    printf(\"Enter score: \");\n    scanf(\"%d\", &score);\n    if (score >= 90)\n        printf(\"Grade: A\\n\");\n    else if (score >= 80)\n        printf(\"Grade: B\\n\");\n    else if (score >= 70)\n        printf(\"Grade: C\\n\");\n    else if (score >= 60)\n        printf(\"Grade: D\\n\");\n    else\n        printf(\"Grade: F\\n\");\n    return 0;\n}\n",
+    "output": "Grade: B",
+    "tags": [
+      "conditionals",
+      "grading",
+      "beginner"
+    ],
+    "hint": "Check the highest grade band first since else-if stops at the first true condition."
+  },
+  {
+    "id": 26,
+    "title": "Leap Year Checker",
+    "slug": "leap-year-checker",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "logical operators",
+      "modulus",
+      "conditionals"
+    ],
+    "problem": "Write a program to determine whether a given year is a leap year using the standard leap-year rules.",
+    "requirements": [
+      "Read a year",
+      "Apply divisibility rules for 4, 100, and 400",
+      "Print whether it is a leap year"
+    ],
+    "inputExample": "2024",
+    "outputExample": "2024 is a Leap Year",
+    "explanation": "A year is a leap year if divisible by 4, except century years must also be divisible by 400 to qualify.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int year;\n    printf(\"Enter a year: \");\n    scanf(\"%d\", &year);\n    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))\n        printf(\"%d is a Leap Year\\n\", year);\n    else\n        printf(\"%d is not a Leap Year\\n\", year);\n    return 0;\n}\n",
+    "output": "2024 is a Leap Year",
+    "tags": [
+      "conditionals",
+      "modulus",
+      "date-logic"
+    ],
+    "hint": "Century years like 1900 are divisible by 4 but not leap years because they aren't divisible by 400."
+  },
+  {
+    "id": 27,
+    "title": "ASCII Value of a Character",
+    "slug": "ascii-value-of-character",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "2 min",
+    "concepts": [
+      "char data type",
+      "implicit conversion"
+    ],
+    "problem": "Write a program that reads a character and displays its corresponding ASCII value.",
+    "requirements": [
+      "Read a single character",
+      "Print its integer ASCII value using %d format specifier"
+    ],
+    "inputExample": "A",
+    "outputExample": "ASCII value of A = 65",
+    "explanation": "Characters in C are stored internally as integers; using %d to print a char variable reveals its underlying ASCII code.",
+    "code": "#include <stdio.h>\n\nint main() {\n    char ch;\n    printf(\"Enter a character: \");\n    scanf(\"%c\", &ch);\n    printf(\"ASCII value of %c = %d\\n\", ch, ch);\n    return 0;\n}\n",
+    "output": "ASCII value of A = 65",
+    "tags": [
+      "char",
+      "ascii",
+      "beginner"
+    ],
+    "hint": "Printing a char with %d implicitly converts it to its numeric ASCII representation."
+  },
+  {
+    "id": 28,
+    "title": "Vowel or Consonant Checker",
+    "slug": "vowel-consonant-checker",
+    "category": "Basics",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "char",
+      "logical OR",
+      "conditionals"
+    ],
+    "problem": "Write a program that determines whether an entered alphabet letter is a vowel or a consonant.",
+    "requirements": [
+      "Read a single character",
+      "Check against both uppercase and lowercase vowels",
+      "Print whether it's a vowel or consonant"
+    ],
+    "inputExample": "e",
+    "outputExample": "e is a Vowel",
+    "explanation": "The program compares the character against all vowel letters (upper and lower case) using logical OR conditions.",
+    "code": "#include <stdio.h>\n\nint main() {\n    char ch;\n    printf(\"Enter a letter: \");\n    scanf(\"%c\", &ch);\n    if (ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||\n        ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U')\n        printf(\"%c is a Vowel\\n\", ch);\n    else\n        printf(\"%c is a Consonant\\n\", ch);\n    return 0;\n}\n",
+    "output": "e is a Vowel",
+    "tags": [
+      "char",
+      "conditionals",
+      "beginner"
+    ],
+    "hint": "Converting the character to lowercase first can simplify the comparison to just five checks."
+  },
+  {
+    "id": 29,
+    "title": "Sum of Array Elements",
+    "slug": "sum-of-array-elements",
+    "category": "Arrays",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "arrays",
+      "for loop",
+      "accumulator"
+    ],
+    "problem": "Write a program that reads N numbers into an array and calculates their sum.",
+    "requirements": [
+      "Read array size N",
+      "Read N elements into an array",
+      "Loop through and sum all elements"
+    ],
+    "inputExample": "5\n1 2 3 4 5",
+    "outputExample": "Sum = 15",
+    "explanation": "Elements are stored in an array via a loop, then a second loop (or the same one) accumulates their total.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n, sum = 0;\n    printf(\"Enter size of array: \");\n    scanf(\"%d\", &n);\n    int arr[n];\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n        sum += arr[i];\n    }\n    printf(\"Sum = %d\\n\", sum);\n    return 0;\n}\n",
+    "output": "Sum = 15",
+    "tags": [
+      "arrays",
+      "loops",
+      "beginner"
+    ],
+    "hint": "C99 variable-length arrays let you size the array using a runtime value like n."
+  },
+  {
+    "id": 30,
+    "title": "Find Maximum Element in an Array",
+    "slug": "find-maximum-in-array",
+    "category": "Arrays",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "arrays",
+      "for loop",
+      "comparison"
+    ],
+    "problem": "Write a program that finds the largest element in an array of N integers.",
+    "requirements": [
+      "Read N elements into an array",
+      "Track the maximum value seen while looping",
+      "Print the maximum element"
+    ],
+    "inputExample": "5\n3 9 2 7 4",
+    "outputExample": "Maximum = 9",
+    "explanation": "The maximum is initialized to the first element, then updated whenever a larger element is found while scanning the array.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    printf(\"Enter size of array: \");\n    scanf(\"%d\", &n);\n    int arr[n];\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &arr[i]);\n    int max = arr[0];\n    for (int i = 1; i < n; i++) {\n        if (arr[i] > max)\n            max = arr[i];\n    }\n    printf(\"Maximum = %d\\n\", max);\n    return 0;\n}\n",
+    "output": "Maximum = 9",
+    "tags": [
+      "arrays",
+      "loops",
+      "beginner"
+    ],
+    "hint": "Always initialize max to the first array element, not to zero, so negative-only arrays work correctly."
+  },
+  {
+    "id": 31,
+    "title": "Find Minimum Element in an Array",
+    "slug": "find-minimum-in-array",
+    "category": "Arrays",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "arrays",
+      "for loop",
+      "comparison"
+    ],
+    "problem": "Write a program that finds the smallest element in an array of N integers.",
+    "requirements": [
+      "Read N elements into an array",
+      "Track the minimum value seen while looping",
+      "Print the minimum element"
+    ],
+    "inputExample": "5\n8 3 9 1 6",
+    "outputExample": "Minimum = 1",
+    "explanation": "The minimum starts as the first element and is updated whenever a smaller element appears during the scan.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    printf(\"Enter size of array: \");\n    scanf(\"%d\", &n);\n    int arr[n];\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &arr[i]);\n    int min = arr[0];\n    for (int i = 1; i < n; i++) {\n        if (arr[i] < min)\n            min = arr[i];\n    }\n    printf(\"Minimum = %d\\n\", min);\n    return 0;\n}\n",
+    "output": "Minimum = 1",
+    "tags": [
+      "arrays",
+      "loops",
+      "beginner"
+    ],
+    "hint": "This mirrors the maximum-finding pattern but flips the comparison direction."
+  },
+  {
+    "id": 32,
+    "title": "Count Positive and Negative Numbers in an Array",
+    "slug": "count-positive-negative-array",
+    "category": "Arrays",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "arrays",
+      "counters",
+      "conditionals"
+    ],
+    "problem": "Write a program that counts how many positive and how many negative numbers exist in an array.",
+    "requirements": [
+      "Read N elements into an array",
+      "Use counters for positive and negative values",
+      "Print both counts"
+    ],
+    "inputExample": "6\n3 -2 5 -8 0 7",
+    "outputExample": "Positive: 3, Negative: 2",
+    "explanation": "The loop checks each element's sign and increments the appropriate counter, ignoring zeros.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n, pos = 0, neg = 0;\n    printf(\"Enter size of array: \");\n    scanf(\"%d\", &n);\n    int arr[n];\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n        if (arr[i] > 0) pos++;\n        else if (arr[i] < 0) neg++;\n    }\n    printf(\"Positive: %d, Negative: %d\\n\", pos, neg);\n    return 0;\n}\n",
+    "output": "Positive: 3, Negative: 2",
+    "tags": [
+      "arrays",
+      "counters",
+      "beginner"
+    ],
+    "hint": "Zero is neither positive nor negative, so it's naturally excluded by using else-if."
+  },
+  {
+    "id": 33,
+    "title": "Reverse an Array",
+    "slug": "reverse-an-array",
+    "category": "Arrays",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "arrays",
+      "two-pointer technique"
+    ],
+    "problem": "Write a program that reverses the elements of an array in place.",
+    "requirements": [
+      "Read N elements into an array",
+      "Swap elements from both ends moving toward the center",
+      "Print the reversed array"
+    ],
+    "inputExample": "5\n1 2 3 4 5",
+    "outputExample": "Reversed array: 5 4 3 2 1",
+    "explanation": "Two indices start at opposite ends of the array and swap their values while moving toward each other until they meet.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    printf(\"Enter size of array: \");\n    scanf(\"%d\", &n);\n    int arr[n];\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &arr[i]);\n    for (int i = 0, j = n - 1; i < j; i++, j--) {\n        int temp = arr[i];\n        arr[i] = arr[j];\n        arr[j] = temp;\n    }\n    printf(\"Reversed array: \");\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "output": "Reversed array: 5 4 3 2 1",
+    "tags": [
+      "arrays",
+      "two-pointer",
+      "beginner"
+    ],
+    "hint": "The loop only needs to run until i < j, since swapping past the midpoint would undo the reversal."
+  },
+  {
+    "id": 34,
+    "title": "Linear Search in an Array",
+    "slug": "linear-search",
+    "category": "Searching",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "arrays",
+      "searching",
+      "for loop"
+    ],
+    "problem": "Write a program that searches for a target value in an array using linear search and reports its index.",
+    "requirements": [
+      "Read N elements into an array",
+      "Read a target value to search for",
+      "Scan the array sequentially and report the index or 'not found'"
+    ],
+    "inputExample": "5\n4 8 2 9 6\n9",
+    "outputExample": "Element found at index 3",
+    "explanation": "Linear search checks each array element one by one from the start until the target is found or the array ends.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n, target, found = -1;\n    printf(\"Enter size of array: \");\n    scanf(\"%d\", &n);\n    int arr[n];\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &arr[i]);\n    printf(\"Enter target: \");\n    scanf(\"%d\", &target);\n    for (int i = 0; i < n; i++) {\n        if (arr[i] == target) {\n            found = i;\n            break;\n        }\n    }\n    if (found != -1)\n        printf(\"Element found at index %d\\n\", found);\n    else\n        printf(\"Element not found\\n\");\n    return 0;\n}\n",
+    "output": "Element found at index 3",
+    "tags": [
+      "arrays",
+      "searching",
+      "linear-search"
+    ],
+    "hint": "Linear search works on unsorted data but runs in O(n) time; binary search is faster but requires sorted data."
+  },
+  {
+    "id": 35,
+    "title": "Find String Length Without strlen",
+    "slug": "string-length-without-strlen",
+    "category": "Strings",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "strings",
+      "char arrays",
+      "while loop"
+    ],
+    "problem": "Write a program that calculates the length of a string manually without using the strlen library function.",
+    "requirements": [
+      "Read a string into a char array",
+      "Loop through characters until the null terminator is found",
+      "Print the count of characters"
+    ],
+    "inputExample": "Hello",
+    "outputExample": "Length = 5",
+    "explanation": "Strings in C are null-terminated; the loop counts characters until it encounters the '\\0' terminator marking the end.",
+    "code": "#include <stdio.h>\n\nint main() {\n    char str[100];\n    int length = 0;\n    printf(\"Enter a string: \");\n    scanf(\"%s\", str);\n    while (str[length] != '\\0') {\n        length++;\n    }\n    printf(\"Length = %d\\n\", length);\n    return 0;\n}\n",
+    "output": "Length = 5",
+    "tags": [
+      "strings",
+      "char-array",
+      "beginner"
+    ],
+    "hint": "Every C string ends with a hidden '\\0' character; that's what the loop is detecting."
+  },
+  {
+    "id": 36,
+    "title": "Copy a String Without strcpy",
+    "slug": "copy-string-without-strcpy",
+    "category": "Strings",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "strings",
+      "char arrays",
+      "loops"
+    ],
+    "problem": "Write a program that copies the contents of one string into another without using the strcpy library function.",
+    "requirements": [
+      "Read a source string",
+      "Copy each character to a destination array manually",
+      "Terminate the destination string with a null character"
+    ],
+    "inputExample": "Programming",
+    "outputExample": "Copied string: Programming",
+    "explanation": "Each character is copied one at a time in a loop, and a null terminator is manually appended at the end to complete the new string.",
+    "code": "#include <stdio.h>\n\nint main() {\n    char src[100], dest[100];\n    int i = 0;\n    printf(\"Enter a string: \");\n    scanf(\"%s\", src);\n    while (src[i] != '\\0') {\n        dest[i] = src[i];\n        i++;\n    }\n    dest[i] = '\\0';\n    printf(\"Copied string: %s\\n\", dest);\n    return 0;\n}\n",
+    "output": "Copied string: Programming",
+    "tags": [
+      "strings",
+      "char-array",
+      "beginner"
+    ],
+    "hint": "Forgetting to add the terminating '\\0' is a common bug that leaves the destination string malformed."
+  },
+  {
+    "id": 37,
+    "title": "Concatenate Strings Without strcat",
+    "slug": "concatenate-strings-without-strcat",
+    "category": "Strings",
+    "difficulty": "Beginner",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "strings",
+      "char arrays",
+      "loops"
+    ],
+    "problem": "Write a program that concatenates two strings without using the strcat library function.",
+    "requirements": [
+      "Read two strings",
+      "Append the second string's characters to the end of the first manually",
+      "Print the concatenated result"
+    ],
+    "inputExample": "Hello\nWorld",
+    "outputExample": "Concatenated: HelloWorld",
+    "explanation": "The program finds the end of the first string, then copies each character of the second string starting from that position.",
+    "code": "#include <stdio.h>\n\nint main() {\n    char str1[100], str2[50];\n    int i = 0, j = 0;\n    printf(\"Enter first string: \");\n    scanf(\"%s\", str1);\n    printf(\"Enter second string: \");\n    scanf(\"%s\", str2);\n    while (str1[i] != '\\0') i++;\n    while (str2[j] != '\\0') {\n        str1[i] = str2[j];\n        i++;\n        j++;\n    }\n    str1[i] = '\\0';\n    printf(\"Concatenated: %s\\n\", str1);\n    return 0;\n}\n",
+    "output": "Concatenated: HelloWorld",
+    "tags": [
+      "strings",
+      "char-array",
+      "beginner"
+    ],
+    "hint": "Ensure the destination array str1 is large enough to hold both strings combined."
+  },
+  {
+    "id": 38,
+    "title": "Check String Palindrome",
+    "slug": "check-string-palindrome",
+    "category": "Strings",
+    "difficulty": "Beginner",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "strings",
+      "two-pointer technique"
+    ],
+    "problem": "Write a program that checks whether a given string reads the same forwards and backwards.",
+    "requirements": [
+      "Read a string",
+      "Compare characters from both ends moving inward",
+      "Print whether the string is a palindrome"
+    ],
+    "inputExample": "madam",
+    "outputExample": "madam is a Palindrome",
+    "explanation": "Two pointers start at opposite ends of the string and compare characters, moving inward; a mismatch means it's not a palindrome.",
+    "code": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char str[100];\n    int isPalindrome = 1;\n    printf(\"Enter a string: \");\n    scanf(\"%s\", str);\n    int len = strlen(str);\n    for (int i = 0, j = len - 1; i < j; i++, j--) {\n        if (str[i] != str[j]) {\n            isPalindrome = 0;\n            break;\n        }\n    }\n    if (isPalindrome)\n        printf(\"%s is a Palindrome\\n\", str);\n    else\n        printf(\"%s is not a Palindrome\\n\", str);\n    return 0;\n}\n",
+    "output": "madam is a Palindrome",
+    "tags": [
+      "strings",
+      "palindrome",
+      "two-pointer"
+    ],
+    "hint": "This same two-pointer technique works for checking array palindromes too."
+  },
+  {
+    "id": 39,
+    "title": "Count Vowels in a String",
+    "slug": "count-vowels-in-string",
+    "category": "Strings",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "strings",
+      "loops",
+      "conditionals"
+    ],
+    "problem": "Write a program that counts the number of vowels present in a given string.",
+    "requirements": [
+      "Read a string",
+      "Loop through each character checking if it's a vowel",
+      "Print the total vowel count"
+    ],
+    "inputExample": "Programming",
+    "outputExample": "Number of vowels = 3",
+    "explanation": "Each character is checked against both uppercase and lowercase vowels, incrementing a counter for every match found.",
+    "code": "#include <stdio.h>\n\nint main() {\n    char str[100];\n    int count = 0;\n    printf(\"Enter a string: \");\n    scanf(\"%s\", str);\n    for (int i = 0; str[i] != '\\0'; i++) {\n        char c = str[i];\n        if (c=='a'||c=='e'||c=='i'||c=='o'||c=='u'||\n            c=='A'||c=='E'||c=='I'||c=='O'||c=='U')\n            count++;\n    }\n    printf(\"Number of vowels = %d\\n\", count);\n    return 0;\n}\n",
+    "output": "Number of vowels = 3",
+    "tags": [
+      "strings",
+      "vowels",
+      "beginner"
+    ],
+    "hint": "The tolower() function from ctype.h can simplify vowel checks to just five comparisons."
+  },
+  {
+    "id": 40,
+    "title": "Print Right Triangle Star Pattern",
+    "slug": "print-star-pattern-triangle",
+    "category": "Patterns",
+    "difficulty": "Beginner",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "nested loops",
+      "pattern printing"
+    ],
+    "problem": "Write a program that prints a right-angled triangle pattern made of stars, with a height entered by the user.",
+    "requirements": [
+      "Read the number of rows",
+      "Use nested loops to print stars in increasing quantity per row",
+      "Print a newline after each row"
+    ],
+    "inputExample": "5",
+    "outputExample": "*\n**\n***\n****\n*****",
+    "explanation": "The outer loop controls the row number and the inner loop prints that many stars, creating an increasing staircase pattern.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int rows;\n    printf(\"Enter number of rows: \");\n    scanf(\"%d\", &rows);\n    for (int i = 1; i <= rows; i++) {\n        for (int j = 1; j <= i; j++) {\n            printf(\"*\");\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}\n",
+    "output": "*\n**\n***\n****\n*****",
+    "tags": [
+      "patterns",
+      "nested-loops",
+      "beginner"
+    ],
+    "hint": "The inner loop's upper bound equals the outer loop's current value, which is what produces the growing row width."
+  },
+  {
+    "id": 41,
+    "title": "Print Pyramid Star Pattern",
+    "slug": "print-pyramid-pattern",
+    "category": "Patterns",
+    "difficulty": "Intermediate",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "nested loops",
+      "spacing logic"
+    ],
+    "problem": "Write a program that prints a centered pyramid pattern of stars using spaces and asterisks.",
+    "requirements": [
+      "Read number of rows",
+      "Print leading spaces to center each row",
+      "Print increasing odd numbers of stars per row"
+    ],
+    "inputExample": "4",
+    "outputExample": "   *\n  ***\n *****\n*******",
+    "explanation": "Each row prints (rows - i) leading spaces followed by (2*i - 1) stars, which together produce a symmetric pyramid shape.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int rows;\n    printf(\"Enter number of rows: \");\n    scanf(\"%d\", &rows);\n    for (int i = 1; i <= rows; i++) {\n        for (int s = 1; s <= rows - i; s++)\n            printf(\" \");\n        for (int j = 1; j <= 2 * i - 1; j++)\n            printf(\"*\");\n        printf(\"\\n\");\n    }\n    return 0;\n}\n",
+    "output": "   *\n  ***\n *****\n*******",
+    "tags": [
+      "patterns",
+      "nested-loops",
+      "pyramid"
+    ],
+    "hint": "Work out the space and star counts on paper for a small row count before coding the loop bounds."
+  },
+  {
+    "id": 42,
+    "title": "Print Diamond Star Pattern",
+    "slug": "print-diamond-pattern",
+    "category": "Patterns",
+    "difficulty": "Intermediate",
+    "estimatedTime": "6 min",
+    "concepts": [
+      "nested loops",
+      "pattern combination"
+    ],
+    "problem": "Write a program that prints a diamond shape using stars by combining an upper pyramid and an inverted lower pyramid.",
+    "requirements": [
+      "Read half-height of the diamond",
+      "Print the upper pyramid half",
+      "Print the inverted lower pyramid half"
+    ],
+    "inputExample": "3",
+    "outputExample": "  *\n ***\n*****\n*****\n ***\n  *",
+    "explanation": "The top half prints a growing pyramid and the bottom half prints a shrinking inverted pyramid, together forming a diamond.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    printf(\"Enter half-height: \");\n    scanf(\"%d\", &n);\n    for (int i = 1; i <= n; i++) {\n        for (int s = 1; s <= n - i; s++) printf(\" \");\n        for (int j = 1; j <= 2 * i - 1; j++) printf(\"*\");\n        printf(\"\\n\");\n    }\n    for (int i = n; i >= 1; i--) {\n        for (int s = 1; s <= n - i; s++) printf(\" \");\n        for (int j = 1; j <= 2 * i - 1; j++) printf(\"*\");\n        printf(\"\\n\");\n    }\n    return 0;\n}\n",
+    "output": "  *\n ***\n*****\n*****\n ***\n  *",
+    "tags": [
+      "patterns",
+      "nested-loops",
+      "diamond"
+    ],
+    "hint": "Reuse the pyramid loop logic twice: once counting up, once counting down."
+  },
+  {
+    "id": 43,
+    "title": "Print Pascal's Triangle",
+    "slug": "print-pascals-triangle",
+    "category": "Patterns",
+    "difficulty": "Intermediate",
+    "estimatedTime": "6 min",
+    "concepts": [
+      "nested loops",
+      "binomial coefficients"
+    ],
+    "problem": "Write a program that prints Pascal's Triangle up to a given number of rows, where each number is the sum of the two above it.",
+    "requirements": [
+      "Read number of rows",
+      "Compute each entry using the binomial coefficient formula",
+      "Print the triangle with proper spacing"
+    ],
+    "inputExample": "5",
+    "outputExample": "1\n1 1\n1 2 1\n1 3 3 1\n1 4 6 4 1",
+    "explanation": "Each value in row i, column j equals C(i, j), calculated iteratively to avoid large factorial overflow.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int rows;\n    printf(\"Enter number of rows: \");\n    scanf(\"%d\", &rows);\n    for (int i = 0; i < rows; i++) {\n        int val = 1;\n        for (int j = 0; j <= i; j++) {\n            printf(\"%d \", val);\n            val = val * (i - j) / (j + 1);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}\n",
+    "output": "1\n1 1\n1 2 1\n1 3 3 1\n1 4 6 4 1",
+    "tags": [
+      "patterns",
+      "pascals-triangle",
+      "combinatorics"
+    ],
+    "hint": "The iterative formula val = val*(i-j)/(j+1) computes binomial coefficients without needing large factorials."
+  },
+  {
+    "id": 44,
+    "title": "GCD of Two Numbers Using Recursion",
+    "slug": "gcd-using-recursion",
+    "category": "Recursion",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "recursion",
+      "Euclidean algorithm"
+    ],
+    "problem": "Write a recursive function to find the greatest common divisor (GCD) of two numbers using the Euclidean algorithm.",
+    "requirements": [
+      "Read two integers",
+      "Implement a recursive gcd function",
+      "Print the computed GCD"
+    ],
+    "inputExample": "36\n60",
+    "outputExample": "GCD = 12",
+    "explanation": "The Euclidean algorithm recursively replaces (a, b) with (b, a % b) until b becomes zero, at which point a is the GCD.",
+    "code": "#include <stdio.h>\n\nint gcd(int a, int b) {\n    if (b == 0)\n        return a;\n    return gcd(b, a % b);\n}\n\nint main() {\n    int a, b;\n    printf(\"Enter two numbers: \");\n    scanf(\"%d %d\", &a, &b);\n    printf(\"GCD = %d\\n\", gcd(a, b));\n    return 0;\n}\n",
+    "output": "GCD = 12",
+    "tags": [
+      "recursion",
+      "gcd",
+      "euclidean-algorithm"
+    ],
+    "hint": "The base case b == 0 is essential to stop the recursion; without it the function would recurse infinitely."
+  },
+  {
+    "id": 45,
+    "title": "LCM of Two Numbers",
+    "slug": "lcm-of-two-numbers",
+    "category": "Basics",
+    "difficulty": "Intermediate",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "gcd relationship",
+      "functions"
+    ],
+    "problem": "Write a program to find the least common multiple (LCM) of two numbers using their relationship to the GCD.",
+    "requirements": [
+      "Read two integers",
+      "Compute their GCD",
+      "Calculate LCM using LCM = (a*b)/GCD"
+    ],
+    "inputExample": "4\n6",
+    "outputExample": "LCM = 12",
+    "explanation": "Since LCM(a,b) * GCD(a,b) = a*b, dividing the product of the two numbers by their GCD directly yields the LCM.",
+    "code": "#include <stdio.h>\n\nint gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(b, a % b);\n}\n\nint main() {\n    int a, b;\n    printf(\"Enter two numbers: \");\n    scanf(\"%d %d\", &a, &b);\n    int lcm = (a * b) / gcd(a, b);\n    printf(\"LCM = %d\\n\", lcm);\n    return 0;\n}\n",
+    "output": "LCM = 12",
+    "tags": [
+      "functions",
+      "lcm",
+      "gcd"
+    ],
+    "hint": "Computing GCD first avoids overflow issues that can occur when finding LCM directly through brute force."
+  },
+  {
+    "id": 46,
+    "title": "Power of a Number Using Recursion",
+    "slug": "power-using-recursion",
+    "category": "Recursion",
+    "difficulty": "Intermediate",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "recursion",
+      "exponentiation"
+    ],
+    "problem": "Write a recursive function that calculates the value of base raised to the power exponent.",
+    "requirements": [
+      "Read a base and a non-negative exponent",
+      "Implement recursion where power(b,e) = b * power(b,e-1)",
+      "Print the result"
+    ],
+    "inputExample": "2\n5",
+    "outputExample": "2^5 = 32",
+    "explanation": "The recursive case multiplies the base by the result of the power function called with the exponent decreased by one, until the exponent reaches zero.",
+    "code": "#include <stdio.h>\n\nlong power(int base, int exp) {\n    if (exp == 0)\n        return 1;\n    return base * power(base, exp - 1);\n}\n\nint main() {\n    int base, exp;\n    printf(\"Enter base and exponent: \");\n    scanf(\"%d %d\", &base, &exp);\n    printf(\"%d^%d = %ld\\n\", base, exp, power(base, exp));\n    return 0;\n}\n",
+    "output": "2^5 = 32",
+    "tags": [
+      "recursion",
+      "power",
+      "exponentiation"
+    ],
+    "hint": "For very large exponents, a fast exponentiation (divide-and-conquer) approach reduces the recursion depth to O(log n)."
+  },
+  {
+    "id": 47,
+    "title": "Factorial Using Recursion",
+    "slug": "factorial-using-recursion",
+    "category": "Recursion",
+    "difficulty": "Intermediate",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "recursion",
+      "base case"
+    ],
+    "problem": "Write a recursive function to compute the factorial of a non-negative integer.",
+    "requirements": [
+      "Read an integer n",
+      "Implement recursion where factorial(n) = n * factorial(n-1)",
+      "Handle the base case factorial(0) = 1"
+    ],
+    "inputExample": "5",
+    "outputExample": "Factorial of 5 = 120",
+    "explanation": "The function calls itself with a decremented argument until it reaches the base case of 0, then multiplies results back up the call stack.",
+    "code": "#include <stdio.h>\n\nlong factorial(int n) {\n    if (n == 0 || n == 1)\n        return 1;\n    return n * factorial(n - 1);\n}\n\nint main() {\n    int n;\n    printf(\"Enter a number: \");\n    scanf(\"%d\", &n);\n    printf(\"Factorial of %d = %ld\\n\", n, factorial(n));\n    return 0;\n}\n",
+    "output": "Factorial of 5 = 120",
+    "tags": [
+      "recursion",
+      "factorial",
+      "base-case"
+    ],
+    "hint": "Every recursive function needs a base case; without one, factorial would recurse until the stack overflows."
+  },
+  {
+    "id": 48,
+    "title": "Fibonacci Series Using Recursion",
+    "slug": "fibonacci-using-recursion",
+    "category": "Recursion",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "recursion",
+      "sequence generation"
+    ],
+    "problem": "Write a recursive function that generates and prints the first N terms of the Fibonacci sequence.",
+    "requirements": [
+      "Read the number of terms",
+      "Implement a recursive fibonacci function",
+      "Print each term using a loop that calls the recursive function"
+    ],
+    "inputExample": "7",
+    "outputExample": "0 1 1 2 3 5 8",
+    "explanation": "Each Fibonacci term is defined recursively as the sum of the two preceding terms, with base cases for the first two terms.",
+    "code": "#include <stdio.h>\n\nint fibonacci(int n) {\n    if (n == 0) return 0;\n    if (n == 1) return 1;\n    return fibonacci(n - 1) + fibonacci(n - 2);\n}\n\nint main() {\n    int n;\n    printf(\"Enter number of terms: \");\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", fibonacci(i));\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "output": "0 1 1 2 3 5 8",
+    "tags": [
+      "recursion",
+      "fibonacci",
+      "sequences"
+    ],
+    "hint": "This naive recursive version recalculates the same values repeatedly; memoization can make it much faster for large n."
+  },
+  {
+    "id": 49,
+    "title": "Binary Search in a Sorted Array",
+    "slug": "binary-search",
+    "category": "Searching",
+    "difficulty": "Intermediate",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "binary search",
+      "divide and conquer",
+      "sorted arrays"
+    ],
+    "problem": "Write a program that searches for a target value in a sorted array using the binary search algorithm.",
+    "requirements": [
+      "Read a sorted array of N elements",
+      "Read a target value",
+      "Use binary search to find its index, or report not found"
+    ],
+    "inputExample": "7\n2 4 6 8 10 12 14\n10",
+    "outputExample": "Element found at index 4",
+    "explanation": "Binary search repeatedly halves the search range by comparing the target to the middle element, discarding the half that cannot contain the target.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    printf(\"Enter size of sorted array: \");\n    scanf(\"%d\", &n);\n    int arr[n];\n    printf(\"Enter %d sorted elements: \", n);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &arr[i]);\n    int target;\n    printf(\"Enter target: \");\n    scanf(\"%d\", &target);\n    int low = 0, high = n - 1, mid, found = -1;\n    while (low <= high) {\n        mid = (low + high) / 2;\n        if (arr[mid] == target) {\n            found = mid;\n            break;\n        } else if (arr[mid] < target) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n    if (found != -1)\n        printf(\"Element found at index %d\\n\", found);\n    else\n        printf(\"Element not found\\n\");\n    return 0;\n}\n",
+    "output": "Element found at index 4",
+    "tags": [
+      "searching",
+      "binary-search",
+      "arrays"
+    ],
+    "hint": "Binary search requires the input array to be sorted; it runs in O(log n) time compared to linear search's O(n)."
+  },
+  {
+    "id": 50,
+    "title": "Bubble Sort",
+    "slug": "bubble-sort",
+    "category": "Sorting",
+    "difficulty": "Intermediate",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "sorting",
+      "nested loops",
+      "swapping"
+    ],
+    "problem": "Write a program that sorts an array of integers in ascending order using the bubble sort algorithm.",
+    "requirements": [
+      "Read N elements into an array",
+      "Repeatedly swap adjacent elements that are out of order",
+      "Print the sorted array"
+    ],
+    "inputExample": "5\n5 1 4 2 8",
+    "outputExample": "Sorted array: 1 2 4 5 8",
+    "explanation": "Bubble sort repeatedly passes through the array, swapping adjacent elements that are in the wrong order, until no swaps are needed.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    printf(\"Enter size of array: \");\n    scanf(\"%d\", &n);\n    int arr[n];\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &arr[i]);\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            if (arr[j] > arr[j + 1]) {\n                int temp = arr[j];\n                arr[j] = arr[j + 1];\n                arr[j + 1] = temp;\n            }\n        }\n    }\n    printf(\"Sorted array: \");\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "output": "Sorted array: 1 2 4 5 8",
+    "tags": [
+      "sorting",
+      "bubble-sort",
+      "arrays"
+    ],
+    "hint": "Bubble sort has O(n^2) time complexity, making it simple but inefficient for large datasets."
+  },
+  {
+    "id": 51,
+    "title": "Selection Sort",
+    "slug": "selection-sort",
+    "category": "Sorting",
+    "difficulty": "Intermediate",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "sorting",
+      "nested loops",
+      "minimum finding"
+    ],
+    "problem": "Write a program that sorts an array in ascending order using the selection sort algorithm.",
+    "requirements": [
+      "Read N elements into an array",
+      "Repeatedly find the minimum of the unsorted portion and swap it into place",
+      "Print the sorted array"
+    ],
+    "inputExample": "5\n29 10 14 37 14",
+    "outputExample": "Sorted array: 10 14 14 29 37",
+    "explanation": "Selection sort divides the array into sorted and unsorted parts, repeatedly selecting the minimum from the unsorted part and moving it to the end of the sorted part.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    printf(\"Enter size of array: \");\n    scanf(\"%d\", &n);\n    int arr[n];\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &arr[i]);\n    for (int i = 0; i < n - 1; i++) {\n        int minIdx = i;\n        for (int j = i + 1; j < n; j++) {\n            if (arr[j] < arr[minIdx])\n                minIdx = j;\n        }\n        int temp = arr[minIdx];\n        arr[minIdx] = arr[i];\n        arr[i] = temp;\n    }\n    printf(\"Sorted array: \");\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "output": "Sorted array: 10 14 14 29 37",
+    "tags": [
+      "sorting",
+      "selection-sort",
+      "arrays"
+    ],
+    "hint": "Selection sort makes fewer swaps than bubble sort, which can be beneficial when writes are costly."
+  },
+  {
+    "id": 52,
+    "title": "Insertion Sort",
+    "slug": "insertion-sort",
+    "category": "Sorting",
+    "difficulty": "Intermediate",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "sorting",
+      "shifting elements"
+    ],
+    "problem": "Write a program that sorts an array in ascending order using the insertion sort algorithm.",
+    "requirements": [
+      "Read N elements into an array",
+      "Insert each element into its correct position within the sorted portion",
+      "Print the sorted array"
+    ],
+    "inputExample": "5\n12 11 13 5 6",
+    "outputExample": "Sorted array: 5 6 11 12 13",
+    "explanation": "Insertion sort builds the sorted array one element at a time, shifting larger elements to the right to make room for the current element.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    printf(\"Enter size of array: \");\n    scanf(\"%d\", &n);\n    int arr[n];\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &arr[i]);\n    for (int i = 1; i < n; i++) {\n        int key = arr[i];\n        int j = i - 1;\n        while (j >= 0 && arr[j] > key) {\n            arr[j + 1] = arr[j];\n            j--;\n        }\n        arr[j + 1] = key;\n    }\n    printf(\"Sorted array: \");\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "output": "Sorted array: 5 6 11 12 13",
+    "tags": [
+      "sorting",
+      "insertion-sort",
+      "arrays"
+    ],
+    "hint": "Insertion sort performs well on nearly-sorted data, running close to O(n) in that best case."
+  },
+  {
+    "id": 53,
+    "title": "Check Anagram Strings",
+    "slug": "check-anagram-strings",
+    "category": "Strings",
+    "difficulty": "Intermediate",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "strings",
+      "character frequency",
+      "arrays"
+    ],
+    "problem": "Write a program that checks whether two strings are anagrams of each other (contain the same characters with the same frequency).",
+    "requirements": [
+      "Read two strings",
+      "Count the frequency of each character in both",
+      "Compare frequency counts to determine if they are anagrams"
+    ],
+    "inputExample": "listen\nsilent",
+    "outputExample": "The strings are Anagrams",
+    "explanation": "A 26-element frequency array tracks how many times each letter appears in the first string, then subtracts occurrences found in the second string; all zeros means an anagram.",
+    "code": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s1[100], s2[100];\n    int freq[26] = {0};\n    printf(\"Enter first string: \");\n    scanf(\"%s\", s1);\n    printf(\"Enter second string: \");\n    scanf(\"%s\", s2);\n    if (strlen(s1) != strlen(s2)) {\n        printf(\"The strings are not Anagrams\\n\");\n        return 0;\n    }\n    for (int i = 0; s1[i] != '\\0'; i++)\n        freq[s1[i] - 'a']++;\n    for (int i = 0; s2[i] != '\\0'; i++)\n        freq[s2[i] - 'a']--;\n    int isAnagram = 1;\n    for (int i = 0; i < 26; i++) {\n        if (freq[i] != 0) {\n            isAnagram = 0;\n            break;\n        }\n    }\n    if (isAnagram)\n        printf(\"The strings are Anagrams\\n\");\n    else\n        printf(\"The strings are not Anagrams\\n\");\n    return 0;\n}\n",
+    "output": "The strings are Anagrams",
+    "tags": [
+      "strings",
+      "anagram",
+      "frequency-count"
+    ],
+    "hint": "This solution assumes lowercase letters only; convert to lowercase first to handle mixed-case input."
+  },
+  {
+    "id": 54,
+    "title": "Count Words in a Sentence",
+    "slug": "count-words-in-sentence",
+    "category": "Strings",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "strings",
+      "whitespace parsing"
+    ],
+    "problem": "Write a program that counts the number of words in a sentence entered by the user.",
+    "requirements": [
+      "Read a full line of text including spaces",
+      "Count transitions from space to non-space characters",
+      "Print the total word count"
+    ],
+    "inputExample": "The quick brown fox",
+    "outputExample": "Number of words = 4",
+    "explanation": "The program scans the sentence and increments a counter each time it detects the start of a new word (a non-space character preceded by a space or the start of the line).",
+    "code": "#include <stdio.h>\n\nint main() {\n    char sentence[200];\n    int count = 0, inWord = 0;\n    printf(\"Enter a sentence: \");\n    fgets(sentence, sizeof(sentence), stdin);\n    for (int i = 0; sentence[i] != '\\0'; i++) {\n        if (sentence[i] != ' ' && sentence[i] != '\\n' && !inWord) {\n            inWord = 1;\n            count++;\n        } else if (sentence[i] == ' ' || sentence[i] == '\\n') {\n            inWord = 0;\n        }\n    }\n    printf(\"Number of words = %d\\n\", count);\n    return 0;\n}\n",
+    "output": "Number of words = 4",
+    "tags": [
+      "strings",
+      "word-count",
+      "fgets"
+    ],
+    "hint": "fgets is used instead of scanf because it captures spaces, which are needed to detect word boundaries."
+  },
+  {
+    "id": 55,
+    "title": "Remove Duplicate Characters from a String",
+    "slug": "remove-duplicate-characters",
+    "category": "Strings",
+    "difficulty": "Intermediate",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "strings",
+      "seen array",
+      "in-place modification"
+    ],
+    "problem": "Write a program that removes duplicate characters from a string, keeping only the first occurrence of each character.",
+    "requirements": [
+      "Read a string",
+      "Track which characters have already appeared using a boolean array",
+      "Build and print the string with duplicates removed"
+    ],
+    "inputExample": "programming",
+    "outputExample": "Result: progamin",
+    "explanation": "A seen[] array marks each character as encountered; characters are copied to the result only the first time they appear.",
+    "code": "#include <stdio.h>\n\nint main() {\n    char str[100], result[100];\n    int seen[256] = {0};\n    int j = 0;\n    printf(\"Enter a string: \");\n    scanf(\"%s\", str);\n    for (int i = 0; str[i] != '\\0'; i++) {\n        if (!seen[(unsigned char)str[i]]) {\n            seen[(unsigned char)str[i]] = 1;\n            result[j++] = str[i];\n        }\n    }\n    result[j] = '\\0';\n    printf(\"Result: %s\\n\", result);\n    return 0;\n}\n",
+    "output": "Result: progamin",
+    "tags": [
+      "strings",
+      "deduplication",
+      "arrays"
+    ],
+    "hint": "Casting the character to unsigned char before indexing avoids negative index issues for extended ASCII values."
+  },
+  {
+    "id": 56,
+    "title": "Find the Second Largest Element in an Array",
+    "slug": "second-largest-element",
+    "category": "Arrays",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "arrays",
+      "single-pass algorithm"
+    ],
+    "problem": "Write a program that finds the second largest distinct element in an array without sorting it.",
+    "requirements": [
+      "Read N elements into an array",
+      "Track the largest and second largest values in a single pass",
+      "Print the second largest value"
+    ],
+    "inputExample": "5\n12 35 1 10 34",
+    "outputExample": "Second largest = 34",
+    "explanation": "Two variables track the largest and second largest seen so far; both are updated appropriately as each element is compared during a single traversal.",
+    "code": "#include <stdio.h>\n#include <limits.h>\n\nint main() {\n    int n;\n    printf(\"Enter size of array: \");\n    scanf(\"%d\", &n);\n    int arr[n];\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &arr[i]);\n    int first = INT_MIN, second = INT_MIN;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > first) {\n            second = first;\n            first = arr[i];\n        } else if (arr[i] > second && arr[i] != first) {\n            second = arr[i];\n        }\n    }\n    printf(\"Second largest = %d\\n\", second);\n    return 0;\n}\n",
+    "output": "Second largest = 34",
+    "tags": [
+      "arrays",
+      "single-pass",
+      "algorithms"
+    ],
+    "hint": "This O(n) approach avoids the O(n log n) cost of sorting just to find the second largest value."
+  },
+  {
+    "id": 57,
+    "title": "Matrix Addition",
+    "slug": "matrix-addition",
+    "category": "Matrices",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "2D arrays",
+      "nested loops"
+    ],
+    "problem": "Write a program that adds two matrices of the same dimensions and prints the resulting matrix.",
+    "requirements": [
+      "Read dimensions and elements of two matrices",
+      "Add corresponding elements using nested loops",
+      "Print the resulting sum matrix"
+    ],
+    "inputExample": "2 2\n1 2\n3 4\n5 6\n7 8",
+    "outputExample": "6 8\n10 12",
+    "explanation": "Nested loops iterate over every row and column index, adding the corresponding elements from both matrices into a result matrix.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int r, c;\n    printf(\"Enter rows and columns: \");\n    scanf(\"%d %d\", &r, &c);\n    int a[r][c], b[r][c], sum[r][c];\n    printf(\"Enter first matrix:\\n\");\n    for (int i = 0; i < r; i++)\n        for (int j = 0; j < c; j++)\n            scanf(\"%d\", &a[i][j]);\n    printf(\"Enter second matrix:\\n\");\n    for (int i = 0; i < r; i++)\n        for (int j = 0; j < c; j++)\n            scanf(\"%d\", &b[i][j]);\n    for (int i = 0; i < r; i++)\n        for (int j = 0; j < c; j++)\n            sum[i][j] = a[i][j] + b[i][j];\n    printf(\"Resultant matrix:\\n\");\n    for (int i = 0; i < r; i++) {\n        for (int j = 0; j < c; j++)\n            printf(\"%d \", sum[i][j]);\n        printf(\"\\n\");\n    }\n    return 0;\n}\n",
+    "output": "6 8\n10 12",
+    "tags": [
+      "matrices",
+      "2d-arrays",
+      "nested-loops"
+    ],
+    "hint": "Matrix addition requires both matrices to have identical dimensions, unlike multiplication."
+  },
+  {
+    "id": 58,
+    "title": "Matrix Multiplication",
+    "slug": "matrix-multiplication",
+    "category": "Matrices",
+    "difficulty": "Intermediate",
+    "estimatedTime": "6 min",
+    "concepts": [
+      "2D arrays",
+      "triple nested loops"
+    ],
+    "problem": "Write a program that multiplies two compatible matrices and prints the resulting product matrix.",
+    "requirements": [
+      "Read dimensions ensuring columns of first equal rows of second",
+      "Use three nested loops to compute the dot products",
+      "Print the resultant matrix"
+    ],
+    "inputExample": "2 2 2\n1 2\n3 4\n5 6\n7 8",
+    "outputExample": "19 22\n43 50",
+    "explanation": "For each cell in the result, the program sums the products of corresponding row elements from the first matrix and column elements from the second matrix.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int r1, c1, r2, c2;\n    printf(\"Enter rows and cols of first matrix: \");\n    scanf(\"%d %d\", &r1, &c1);\n    printf(\"Enter rows and cols of second matrix: \");\n    scanf(\"%d %d\", &r2, &c2);\n    if (c1 != r2) {\n        printf(\"Multiplication not possible\\n\");\n        return 1;\n    }\n    int a[r1][c1], b[r2][c2], result[r1][c2];\n    printf(\"Enter first matrix:\\n\");\n    for (int i = 0; i < r1; i++)\n        for (int j = 0; j < c1; j++)\n            scanf(\"%d\", &a[i][j]);\n    printf(\"Enter second matrix:\\n\");\n    for (int i = 0; i < r2; i++)\n        for (int j = 0; j < c2; j++)\n            scanf(\"%d\", &b[i][j]);\n    for (int i = 0; i < r1; i++) {\n        for (int j = 0; j < c2; j++) {\n            result[i][j] = 0;\n            for (int k = 0; k < c1; k++)\n                result[i][j] += a[i][k] * b[k][j];\n        }\n    }\n    printf(\"Resultant matrix:\\n\");\n    for (int i = 0; i < r1; i++) {\n        for (int j = 0; j < c2; j++)\n            printf(\"%d \", result[i][j]);\n        printf(\"\\n\");\n    }\n    return 0;\n}\n",
+    "output": "19 22\n43 50",
+    "tags": [
+      "matrices",
+      "matrix-multiplication",
+      "algorithms"
+    ],
+    "hint": "Matrix multiplication is only defined when the number of columns in the first matrix equals the number of rows in the second."
+  },
+  {
+    "id": 59,
+    "title": "Transpose of a Matrix",
+    "slug": "transpose-of-matrix",
+    "category": "Matrices",
+    "difficulty": "Intermediate",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "2D arrays",
+      "index swapping"
+    ],
+    "problem": "Write a program that computes the transpose of a matrix by swapping its rows and columns.",
+    "requirements": [
+      "Read a matrix of given dimensions",
+      "Create a transposed matrix where transpose[j][i] = original[i][j]",
+      "Print the transposed matrix"
+    ],
+    "inputExample": "2 3\n1 2 3\n4 5 6",
+    "outputExample": "1 4\n2 5\n3 6",
+    "explanation": "The transpose operation flips a matrix over its diagonal, turning rows into columns; element [i][j] becomes [j][i] in the new matrix.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int r, c;\n    printf(\"Enter rows and columns: \");\n    scanf(\"%d %d\", &r, &c);\n    int a[r][c], t[c][r];\n    printf(\"Enter matrix elements:\\n\");\n    for (int i = 0; i < r; i++)\n        for (int j = 0; j < c; j++)\n            scanf(\"%d\", &a[i][j]);\n    for (int i = 0; i < r; i++)\n        for (int j = 0; j < c; j++)\n            t[j][i] = a[i][j];\n    printf(\"Transposed matrix:\\n\");\n    for (int i = 0; i < c; i++) {\n        for (int j = 0; j < r; j++)\n            printf(\"%d \", t[i][j]);\n        printf(\"\\n\");\n    }\n    return 0;\n}\n",
+    "output": "1 4\n2 5\n3 6",
+    "tags": [
+      "matrices",
+      "transpose",
+      "2d-arrays"
+    ],
+    "hint": "Notice the transposed matrix's dimensions are swapped (rows become columns) compared to the original."
+  },
+  {
+    "id": 60,
+    "title": "Sum of Diagonal Elements of a Matrix",
+    "slug": "sum-diagonal-elements-matrix",
+    "category": "Matrices",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "2D arrays",
+      "diagonal traversal"
+    ],
+    "problem": "Write a program that calculates the sum of both the primary and secondary diagonal elements of a square matrix.",
+    "requirements": [
+      "Read a square matrix of size N",
+      "Sum elements where row index equals column index (primary)",
+      "Sum elements where row + col = N-1 (secondary)"
+    ],
+    "inputExample": "3\n1 2 3\n4 5 6\n7 8 9",
+    "outputExample": "Primary diagonal sum = 15\nSecondary diagonal sum = 15",
+    "explanation": "The primary diagonal consists of elements where the row index equals the column index; the secondary diagonal consists of elements where they sum to n-1.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    printf(\"Enter size of square matrix: \");\n    scanf(\"%d\", &n);\n    int a[n][n];\n    printf(\"Enter matrix elements:\\n\");\n    for (int i = 0; i < n; i++)\n        for (int j = 0; j < n; j++)\n            scanf(\"%d\", &a[i][j]);\n    int primary = 0, secondary = 0;\n    for (int i = 0; i < n; i++) {\n        primary += a[i][i];\n        secondary += a[i][n - 1 - i];\n    }\n    printf(\"Primary diagonal sum = %d\\n\", primary);\n    printf(\"Secondary diagonal sum = %d\\n\", secondary);\n    return 0;\n}\n",
+    "output": "Primary diagonal sum = 15\nSecondary diagonal sum = 15",
+    "tags": [
+      "matrices",
+      "diagonal",
+      "2d-arrays"
+    ],
+    "hint": "For odd-sized square matrices, the very center element belongs to both diagonals."
+  },
+  {
+    "id": 61,
+    "title": "Structure to Store Student Details",
+    "slug": "structure-student-details",
+    "category": "Structures",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "structures",
+      "struct members"
+    ],
+    "problem": "Write a program that defines a structure to store a student's name, roll number, and marks, then displays the details.",
+    "requirements": [
+      "Define a struct Student with name, roll number, and marks",
+      "Read values into a struct variable",
+      "Print the stored student details"
+    ],
+    "inputExample": "John\n101\n89.5",
+    "outputExample": "Name: John\nRoll No: 101\nMarks: 89.50",
+    "explanation": "A structure groups related data of different types (string, int, float) under a single named type, making it easy to manage a student's record as one unit.",
+    "code": "#include <stdio.h>\n\nstruct Student {\n    char name[50];\n    int rollNo;\n    float marks;\n};\n\nint main() {\n    struct Student s;\n    printf(\"Enter name: \");\n    scanf(\"%s\", s.name);\n    printf(\"Enter roll number: \");\n    scanf(\"%d\", &s.rollNo);\n    printf(\"Enter marks: \");\n    scanf(\"%f\", &s.marks);\n    printf(\"Name: %s\\n\", s.name);\n    printf(\"Roll No: %d\\n\", s.rollNo);\n    printf(\"Marks: %.2f\\n\", s.marks);\n    return 0;\n}\n",
+    "output": "Name: John\nRoll No: 101\nMarks: 89.50",
+    "tags": [
+      "structures",
+      "struct",
+      "student-record"
+    ],
+    "hint": "Access structure members using the dot operator on a struct variable, e.g. s.name."
+  },
+  {
+    "id": 62,
+    "title": "Array of Structures for Employee Records",
+    "slug": "array-of-structures-employee",
+    "category": "Structures",
+    "difficulty": "Intermediate",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "structures",
+      "arrays of structs",
+      "loops"
+    ],
+    "problem": "Write a program that stores multiple employee records using an array of structures, then displays all records.",
+    "requirements": [
+      "Define a struct Employee with name, id, and salary",
+      "Read details for N employees into an array of structs",
+      "Print all employee records"
+    ],
+    "inputExample": "2\nAlice\n1\n50000\nBob\n2\n55000",
+    "outputExample": "ID: 1, Name: Alice, Salary: 50000.00\nID: 2, Name: Bob, Salary: 55000.00",
+    "explanation": "An array of structures allows storing multiple records of the same composite type, each accessed by index like emp[i].name.",
+    "code": "#include <stdio.h>\n\nstruct Employee {\n    char name[50];\n    int id;\n    float salary;\n};\n\nint main() {\n    int n;\n    printf(\"Enter number of employees: \");\n    scanf(\"%d\", &n);\n    struct Employee emp[n];\n    for (int i = 0; i < n; i++) {\n        printf(\"Enter name, id, salary: \");\n        scanf(\"%s %d %f\", emp[i].name, &emp[i].id, &emp[i].salary);\n    }\n    printf(\"\\nEmployee Records:\\n\");\n    for (int i = 0; i < n; i++) {\n        printf(\"ID: %d, Name: %s, Salary: %.2f\\n\", emp[i].id, emp[i].name, emp[i].salary);\n    }\n    return 0;\n}\n",
+    "output": "ID: 1, Name: Alice, Salary: 50000.00\nID: 2, Name: Bob, Salary: 55000.00",
+    "tags": [
+      "structures",
+      "arrays",
+      "employee-records"
+    ],
+    "hint": "An array of structs is ideal when you need to manage many records that share the same set of fields."
+  },
+  {
+    "id": 63,
+    "title": "Swap Two Numbers Using Pointers",
+    "slug": "swap-using-pointers",
+    "category": "Pointers",
+    "difficulty": "Intermediate",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "pointers",
+      "pass by reference",
+      "functions"
+    ],
+    "problem": "Write a program that swaps two numbers using pointers and a function, demonstrating pass-by-reference.",
+    "requirements": [
+      "Write a swap function that accepts two int pointers",
+      "Dereference the pointers to exchange values",
+      "Call the function passing addresses of two variables"
+    ],
+    "inputExample": "5\n10",
+    "outputExample": "Before: a=5, b=10\nAfter: a=10, b=5",
+    "explanation": "Passing pointers to the swap function lets it modify the original variables directly through dereferencing, rather than working on local copies.",
+    "code": "#include <stdio.h>\n\nvoid swap(int *x, int *y) {\n    int temp = *x;\n    *x = *y;\n    *y = temp;\n}\n\nint main() {\n    int a, b;\n    printf(\"Enter a and b: \");\n    scanf(\"%d %d\", &a, &b);\n    printf(\"Before: a=%d, b=%d\\n\", a, b);\n    swap(&a, &b);\n    printf(\"After: a=%d, b=%d\\n\", a, b);\n    return 0;\n}\n",
+    "output": "Before: a=5, b=10\nAfter: a=10, b=5",
+    "tags": [
+      "pointers",
+      "pass-by-reference",
+      "functions"
+    ],
+    "hint": "In C, pass-by-reference is achieved by passing a pointer (address) rather than the value itself."
+  },
+  {
+    "id": 64,
+    "title": "Pointer Arithmetic Example",
+    "slug": "pointer-arithmetic-example",
+    "category": "Pointers",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "pointers",
+      "arrays",
+      "address arithmetic"
+    ],
+    "problem": "Write a program that demonstrates pointer arithmetic by traversing an array using a pointer instead of index notation.",
+    "requirements": [
+      "Declare an array and a pointer to its first element",
+      "Use pointer increment to move through the array",
+      "Print each element via pointer dereferencing"
+    ],
+    "inputExample": "5\n10 20 30 40 50",
+    "outputExample": "10 20 30 40 50",
+    "explanation": "Incrementing a pointer moves it forward by the size of the type it points to, allowing traversal of the array without using index brackets.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    printf(\"Enter size of array: \");\n    scanf(\"%d\", &n);\n    int arr[n];\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &arr[i]);\n    int *ptr = arr;\n    for (int i = 0; i < n; i++) {\n        printf(\"%d \", *(ptr + i));\n    }\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "output": "10 20 30 40 50",
+    "tags": [
+      "pointers",
+      "arrays",
+      "pointer-arithmetic"
+    ],
+    "hint": "The array name itself decays to a pointer to its first element, so arr and &arr[0] are equivalent."
+  },
+  {
+    "id": 65,
+    "title": "Function Pointers Example",
+    "slug": "function-pointers-example",
+    "category": "Pointers",
+    "difficulty": "Intermediate",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "function pointers",
+      "callbacks"
+    ],
+    "problem": "Write a program that demonstrates function pointers by storing addresses of arithmetic functions and calling them dynamically.",
+    "requirements": [
+      "Define add and subtract functions",
+      "Declare a function pointer and assign it to each function",
+      "Call the functions through the pointer"
+    ],
+    "inputExample": "8\n3",
+    "outputExample": "Sum = 11\nDifference = 5",
+    "explanation": "A function pointer stores the address of a function, allowing it to be called indirectly, which is useful for callbacks and dynamic dispatch.",
+    "code": "#include <stdio.h>\n\nint add(int a, int b) { return a + b; }\nint subtract(int a, int b) { return a - b; }\n\nint main() {\n    int x, y;\n    printf(\"Enter two numbers: \");\n    scanf(\"%d %d\", &x, &y);\n    int (*operation)(int, int);\n    operation = add;\n    printf(\"Sum = %d\\n\", operation(x, y));\n    operation = subtract;\n    printf(\"Difference = %d\\n\", operation(x, y));\n    return 0;\n}\n",
+    "output": "Sum = 11\nDifference = 5",
+    "tags": [
+      "pointers",
+      "function-pointers",
+      "callbacks"
+    ],
+    "hint": "The declaration int (*operation)(int, int) reads as 'operation is a pointer to a function taking two ints and returning an int'."
+  },
+  {
+    "id": 66,
+    "title": "Recursive Sum of Array Elements",
+    "slug": "recursive-sum-array",
+    "category": "Recursion",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "recursion",
+      "arrays"
+    ],
+    "problem": "Write a recursive function that calculates the sum of all elements in an array.",
+    "requirements": [
+      "Read N elements into an array",
+      "Implement recursion that sums arr[0] plus the recursive sum of the rest",
+      "Print the total sum"
+    ],
+    "inputExample": "5\n1 2 3 4 5",
+    "outputExample": "Sum = 15",
+    "explanation": "The recursive function adds the first element to the result of calling itself on the remaining sub-array, with an empty array (index == size) as the base case.",
+    "code": "#include <stdio.h>\n\nint recursiveSum(int arr[], int n) {\n    if (n == 0)\n        return 0;\n    return arr[n - 1] + recursiveSum(arr, n - 1);\n}\n\nint main() {\n    int n;\n    printf(\"Enter size of array: \");\n    scanf(\"%d\", &n);\n    int arr[n];\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &arr[i]);\n    printf(\"Sum = %d\\n\", recursiveSum(arr, n));\n    return 0;\n}\n",
+    "output": "Sum = 15",
+    "tags": [
+      "recursion",
+      "arrays",
+      "sum"
+    ],
+    "hint": "Each recursive call reduces the problem size by one element until reaching the base case of an empty array."
+  },
+  {
+    "id": 67,
+    "title": "Check Perfect Number",
+    "slug": "check-perfect-number",
+    "category": "Basics",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "loops",
+      "divisors",
+      "number theory"
+    ],
+    "problem": "Write a program to check whether a given number is a perfect number (equal to the sum of its proper divisors).",
+    "requirements": [
+      "Read an integer",
+      "Find all proper divisors and sum them",
+      "Compare the sum to the original number"
+    ],
+    "inputExample": "28",
+    "outputExample": "28 is a Perfect Number",
+    "explanation": "A number is perfect if the sum of its divisors (excluding itself) equals the number; the loop checks every number from 1 up to n-1 for divisibility.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n, sum = 0;\n    printf(\"Enter a number: \");\n    scanf(\"%d\", &n);\n    for (int i = 1; i < n; i++) {\n        if (n % i == 0)\n            sum += i;\n    }\n    if (sum == n)\n        printf(\"%d is a Perfect Number\\n\", n);\n    else\n        printf(\"%d is not a Perfect Number\\n\", n);\n    return 0;\n}\n",
+    "output": "28 is a Perfect Number",
+    "tags": [
+      "number-theory",
+      "divisors",
+      "loops"
+    ],
+    "hint": "Checking divisors only up to sqrt(n) and adding both the divisor and its pair can make this more efficient."
+  },
+  {
+    "id": 68,
+    "title": "Check Strong Number",
+    "slug": "check-strong-number",
+    "category": "Basics",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "loops",
+      "factorial",
+      "digit extraction"
+    ],
+    "problem": "Write a program to check whether a given number is a strong number (the sum of the factorials of its digits equals the number).",
+    "requirements": [
+      "Read an integer",
+      "Compute the factorial of each digit and sum them",
+      "Compare the sum to the original number"
+    ],
+    "inputExample": "145",
+    "outputExample": "145 is a Strong Number",
+    "explanation": "Each digit's factorial is computed and summed; strong numbers like 145 satisfy 1! + 4! + 5! = 1 + 24 + 120 = 145.",
+    "code": "#include <stdio.h>\n\nint factorial(int n) {\n    int f = 1;\n    for (int i = 1; i <= n; i++)\n        f *= i;\n    return f;\n}\n\nint main() {\n    int n, original, sum = 0, digit;\n    printf(\"Enter a number: \");\n    scanf(\"%d\", &n);\n    original = n;\n    while (n != 0) {\n        digit = n % 10;\n        sum += factorial(digit);\n        n /= 10;\n    }\n    if (sum == original)\n        printf(\"%d is a Strong Number\\n\", original);\n    else\n        printf(\"%d is not a Strong Number\\n\", original);\n    return 0;\n}\n",
+    "output": "145 is a Strong Number",
+    "tags": [
+      "number-theory",
+      "factorial",
+      "digits"
+    ],
+    "hint": "145 and 40585 are well-known strong numbers you can use to test the program."
+  },
+  {
+    "id": 69,
+    "title": "Print All Prime Numbers in a Range Using Sieve of Eratosthenes",
+    "slug": "sieve-of-eratosthenes",
+    "category": "Algorithms",
+    "difficulty": "Intermediate",
+    "estimatedTime": "6 min",
+    "concepts": [
+      "sieve algorithm",
+      "boolean arrays",
+      "loops"
+    ],
+    "problem": "Write a program that prints all prime numbers up to N using the Sieve of Eratosthenes algorithm.",
+    "requirements": [
+      "Read an upper limit N",
+      "Create a boolean array marking non-primes by elimination",
+      "Print all numbers that remain marked as prime"
+    ],
+    "inputExample": "30",
+    "outputExample": "2 3 5 7 11 13 17 19 23 29",
+    "explanation": "The sieve marks multiples of each prime starting from 2 as composite; whatever numbers remain unmarked at the end are prime.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    printf(\"Enter upper limit: \");\n    scanf(\"%d\", &n);\n    int isComposite[n + 1];\n    for (int i = 0; i <= n; i++) isComposite[i] = 0;\n    for (int i = 2; i * i <= n; i++) {\n        if (!isComposite[i]) {\n            for (int j = i * i; j <= n; j += i)\n                isComposite[j] = 1;\n        }\n    }\n    for (int i = 2; i <= n; i++) {\n        if (!isComposite[i])\n            printf(\"%d \", i);\n    }\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "output": "2 3 5 7 11 13 17 19 23 29",
+    "tags": [
+      "algorithms",
+      "sieve",
+      "prime-numbers"
+    ],
+    "hint": "The sieve runs in O(n log log n) time, making it much faster than checking each number individually for primality."
+  },
+  {
+    "id": 70,
+    "title": "Convert Decimal to Binary",
+    "slug": "decimal-to-binary",
+    "category": "Basics",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "number conversion",
+      "arrays",
+      "modulus"
+    ],
+    "problem": "Write a program that converts a decimal (base 10) number to its binary (base 2) representation.",
+    "requirements": [
+      "Read a decimal integer",
+      "Repeatedly divide by 2 and store remainders",
+      "Print the remainders in reverse order as the binary result"
+    ],
+    "inputExample": "22",
+    "outputExample": "Binary: 10110",
+    "explanation": "Dividing the number by 2 repeatedly and collecting the remainders (0 or 1) produces the binary digits in reverse order, which are then printed backwards.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n, binary[32], i = 0;\n    printf(\"Enter a decimal number: \");\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"Binary: 0\\n\");\n        return 0;\n    }\n    while (n > 0) {\n        binary[i++] = n % 2;\n        n /= 2;\n    }\n    printf(\"Binary: \");\n    for (int j = i - 1; j >= 0; j--)\n        printf(\"%d\", binary[j]);\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "output": "Binary: 10110",
+    "tags": [
+      "number-conversion",
+      "binary",
+      "arrays"
+    ],
+    "hint": "Store remainders in an array first since they're generated in reverse order relative to how binary numbers are written."
+  },
+  {
+    "id": 71,
+    "title": "Convert Binary to Decimal",
+    "slug": "binary-to-decimal",
+    "category": "Basics",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "number conversion",
+      "powers of two"
+    ],
+    "problem": "Write a program that converts a binary number (entered as a sequence of digits) to its decimal equivalent.",
+    "requirements": [
+      "Read a binary number as an integer or string",
+      "Multiply each digit by the appropriate power of 2",
+      "Sum the results to get the decimal value"
+    ],
+    "inputExample": "10110",
+    "outputExample": "Decimal: 22",
+    "explanation": "Starting from the rightmost binary digit, each digit is multiplied by an increasing power of 2 and the products are summed to get the decimal value.",
+    "code": "#include <stdio.h>\n#include <math.h>\n\nint main() {\n    long long binary;\n    int decimal = 0, i = 0, remainder;\n    printf(\"Enter a binary number: \");\n    scanf(\"%lld\", &binary);\n    while (binary != 0) {\n        remainder = binary % 10;\n        decimal += remainder * pow(2, i);\n        binary /= 10;\n        i++;\n    }\n    printf(\"Decimal: %d\\n\", decimal);\n    return 0;\n}\n",
+    "output": "Decimal: 22",
+    "tags": [
+      "number-conversion",
+      "binary",
+      "decimal"
+    ],
+    "hint": "Reading the binary number as an integer works for simple cases but a string-based approach is safer for very long binary sequences."
+  },
+  {
+    "id": 72,
+    "title": "Convert Decimal to Hexadecimal",
+    "slug": "decimal-to-hexadecimal",
+    "category": "Basics",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "number conversion",
+      "hex digits",
+      "arrays"
+    ],
+    "problem": "Write a program that converts a decimal number to its hexadecimal (base 16) representation.",
+    "requirements": [
+      "Read a decimal integer",
+      "Repeatedly divide by 16, mapping remainders 10-15 to A-F",
+      "Print the hex digits in the correct order"
+    ],
+    "inputExample": "255",
+    "outputExample": "Hexadecimal: FF",
+    "explanation": "Dividing repeatedly by 16 produces remainders 0-15; remainders above 9 are mapped to letters A through F to form valid hexadecimal digits.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int n, remainder, i = 0;\n    char hex[20];\n    printf(\"Enter a decimal number: \");\n    scanf(\"%d\", &n);\n    if (n == 0) {\n        printf(\"Hexadecimal: 0\\n\");\n        return 0;\n    }\n    while (n > 0) {\n        remainder = n % 16;\n        if (remainder < 10)\n            hex[i++] = remainder + '0';\n        else\n            hex[i++] = remainder - 10 + 'A';\n        n /= 16;\n    }\n    printf(\"Hexadecimal: \");\n    for (int j = i - 1; j >= 0; j--)\n        printf(\"%c\", hex[j]);\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "output": "Hexadecimal: FF",
+    "tags": [
+      "number-conversion",
+      "hexadecimal",
+      "arrays"
+    ],
+    "hint": "You could also use printf(\"%X\", n) directly, but implementing it manually reinforces the underlying conversion logic."
+  },
+  {
+    "id": 73,
+    "title": "String Tokenization Using strtok",
+    "slug": "string-tokenization-strtok",
+    "category": "Strings",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "strtok",
+      "string parsing",
+      "delimiters"
+    ],
+    "problem": "Write a program that splits a sentence into individual words (tokens) using the strtok library function.",
+    "requirements": [
+      "Read a line of text",
+      "Use strtok with space as the delimiter to extract tokens",
+      "Print each token on a separate line"
+    ],
+    "inputExample": "C programming is fun",
+    "outputExample": "C\nprogramming\nis\nfun",
+    "explanation": "strtok scans the string for delimiter characters, replacing them with null terminators and returning a pointer to each token in sequence across repeated calls.",
+    "code": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char sentence[200];\n    printf(\"Enter a sentence: \");\n    fgets(sentence, sizeof(sentence), stdin);\n    char *token = strtok(sentence, \" \\n\");\n    while (token != NULL) {\n        printf(\"%s\\n\", token);\n        token = strtok(NULL, \" \\n\");\n    }\n    return 0;\n}\n",
+    "output": "C\nprogramming\nis\nfun",
+    "tags": [
+      "strings",
+      "strtok",
+      "parsing"
+    ],
+    "hint": "After the first call, pass NULL as the first argument to strtok to continue tokenizing the same string."
+  },
+  {
+    "id": 74,
+    "title": "Command Line Arguments Example",
+    "slug": "command-line-arguments",
+    "category": "Basics",
+    "difficulty": "Intermediate",
+    "estimatedTime": "3 min",
+    "concepts": [
+      "argc",
+      "argv",
+      "main function parameters"
+    ],
+    "problem": "Write a program that reads and displays command-line arguments passed to it when executed.",
+    "requirements": [
+      "Use argc and argv parameters in main",
+      "Print the count of arguments",
+      "Loop through and print each argument"
+    ],
+    "inputExample": "./program hello world",
+    "outputExample": "Number of arguments: 3\nArgument 0: ./program\nArgument 1: hello\nArgument 2: world",
+    "explanation": "argc holds the count of command-line arguments and argv is an array of strings containing them, with argv[0] always being the program name itself.",
+    "code": "#include <stdio.h>\n\nint main(int argc, char *argv[]) {\n    printf(\"Number of arguments: %d\\n\", argc);\n    for (int i = 0; i < argc; i++) {\n        printf(\"Argument %d: %s\\n\", i, argv[i]);\n    }\n    return 0;\n}\n",
+    "output": "Number of arguments: 3\nArgument 0: ./program\nArgument 1: hello\nArgument 2: world",
+    "tags": [
+      "command-line",
+      "argc-argv",
+      "main-function"
+    ],
+    "hint": "argv[0] is conventionally the executable's name, so actual user-supplied arguments start at argv[1]."
+  },
+  {
+    "id": 75,
+    "title": "Bitwise Operators Demonstration",
+    "slug": "bitwise-operators-demo",
+    "category": "Basics",
+    "difficulty": "Intermediate",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "bitwise AND",
+      "bitwise OR",
+      "XOR",
+      "shift operators"
+    ],
+    "problem": "Write a program that demonstrates the use of bitwise AND, OR, XOR, NOT, left shift, and right shift operators on two integers.",
+    "requirements": [
+      "Read two integers",
+      "Apply each bitwise operator",
+      "Print the results of all operations"
+    ],
+    "inputExample": "12\n10",
+    "outputExample": "AND = 8\nOR = 14\nXOR = 6\nNOT a = -13\nLeft Shift = 24\nRight Shift = 3",
+    "explanation": "Bitwise operators manipulate the individual binary bits of integers directly: AND keeps common bits, OR combines bits, XOR keeps differing bits, and shifts move bits left or right.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int a, b;\n    printf(\"Enter two integers: \");\n    scanf(\"%d %d\", &a, &b);\n    printf(\"AND = %d\\n\", a & b);\n    printf(\"OR = %d\\n\", a | b);\n    printf(\"XOR = %d\\n\", a ^ b);\n    printf(\"NOT a = %d\\n\", ~a);\n    printf(\"Left Shift = %d\\n\", a << 1);\n    printf(\"Right Shift = %d\\n\", a >> 1);\n    return 0;\n}\n",
+    "output": "AND = 8\nOR = 14\nXOR = 6\nNOT a = -13\nLeft Shift = 24\nRight Shift = 3",
+    "tags": [
+      "bitwise-operators",
+      "bit-manipulation",
+      "operators"
+    ],
+    "hint": "Left shift by 1 doubles a number and right shift by 1 halves it (for non-negative integers), similar to multiplying or dividing by 2."
+  },
+  {
+    "id": 76,
+    "title": "Dynamic Array Using malloc",
+    "slug": "dynamic-array-malloc",
+    "category": "Dynamic Memory",
+    "difficulty": "Advanced",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "dynamic memory allocation",
+      "malloc",
+      "free"
+    ],
+    "problem": "Write a program that dynamically allocates an array at runtime using malloc, fills it with user input, and frees the memory afterward.",
+    "requirements": [
+      "Read the desired array size",
+      "Allocate memory using malloc",
+      "Fill, print, and then free the array"
+    ],
+    "inputExample": "4\n1 2 3 4",
+    "outputExample": "Array elements: 1 2 3 4",
+    "explanation": "malloc allocates a block of heap memory large enough for n integers; this memory persists until explicitly released with free, unlike stack-based arrays.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    printf(\"Enter array size: \");\n    scanf(\"%d\", &n);\n    int *arr = (int *)malloc(n * sizeof(int));\n    if (arr == NULL) {\n        printf(\"Memory allocation failed\\n\");\n        return 1;\n    }\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &arr[i]);\n    printf(\"Array elements: \");\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n    free(arr);\n    return 0;\n}\n",
+    "output": "Array elements: 1 2 3 4",
+    "tags": [
+      "dynamic-memory",
+      "malloc",
+      "free"
+    ],
+    "hint": "Always check malloc's return value for NULL and call free() once you're done to avoid memory leaks."
+  },
+  {
+    "id": 77,
+    "title": "Dynamic 2D Array Using malloc",
+    "slug": "dynamic-2d-array-malloc",
+    "category": "Dynamic Memory",
+    "difficulty": "Advanced",
+    "estimatedTime": "7 min",
+    "concepts": [
+      "dynamic memory allocation",
+      "double pointers",
+      "2D arrays"
+    ],
+    "problem": "Write a program that dynamically allocates a 2D array (matrix) at runtime using malloc and demonstrates reading and printing it.",
+    "requirements": [
+      "Read rows and columns",
+      "Allocate an array of row pointers, each pointing to a dynamically allocated row",
+      "Fill, print, and then free all allocated memory"
+    ],
+    "inputExample": "2 2\n1 2\n3 4",
+    "outputExample": "1 2\n3 4",
+    "explanation": "A dynamic 2D array is built as an array of pointers, where each pointer is separately allocated to point to its own dynamically sized row of columns.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int rows, cols;\n    printf(\"Enter rows and columns: \");\n    scanf(\"%d %d\", &rows, &cols);\n    int **matrix = (int **)malloc(rows * sizeof(int *));\n    for (int i = 0; i < rows; i++)\n        matrix[i] = (int *)malloc(cols * sizeof(int));\n    printf(\"Enter matrix elements:\\n\");\n    for (int i = 0; i < rows; i++)\n        for (int j = 0; j < cols; j++)\n            scanf(\"%d\", &matrix[i][j]);\n    for (int i = 0; i < rows; i++) {\n        for (int j = 0; j < cols; j++)\n            printf(\"%d \", matrix[i][j]);\n        printf(\"\\n\");\n    }\n    for (int i = 0; i < rows; i++)\n        free(matrix[i]);\n    free(matrix);\n    return 0;\n}\n",
+    "output": "1 2\n3 4",
+    "tags": [
+      "dynamic-memory",
+      "2d-arrays",
+      "double-pointers"
+    ],
+    "hint": "Free each row individually before freeing the outer pointer array to prevent leaking the row memory."
+  },
+  {
+    "id": 78,
+    "title": "Resizable Array Using realloc",
+    "slug": "resizable-array-realloc",
+    "category": "Dynamic Memory",
+    "difficulty": "Advanced",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "realloc",
+      "dynamic resizing"
+    ],
+    "problem": "Write a program that starts with a small dynamically allocated array and grows it using realloc as more elements are added.",
+    "requirements": [
+      "Allocate an initial small array with malloc",
+      "Use realloc to expand its capacity when needed",
+      "Fill and print the resized array"
+    ],
+    "inputExample": "6",
+    "outputExample": "Array after resize: 0 1 2 3 4 5",
+    "explanation": "realloc resizes a previously allocated memory block, preserving existing contents while extending (or shrinking) the available space as needed.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    printf(\"Enter number of elements to add: \");\n    scanf(\"%d\", &n);\n    int capacity = 2;\n    int *arr = (int *)malloc(capacity * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        if (i >= capacity) {\n            capacity *= 2;\n            arr = (int *)realloc(arr, capacity * sizeof(int));\n        }\n        arr[i] = i;\n    }\n    printf(\"Array after resize: \");\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n    free(arr);\n    return 0;\n}\n",
+    "output": "Array after resize: 0 1 2 3 4 5",
+    "tags": [
+      "dynamic-memory",
+      "realloc",
+      "resizing"
+    ],
+    "hint": "Doubling the capacity each time an array fills up gives amortized O(1) insertion, a common strategy behind dynamic array implementations."
+  },
+  {
+    "id": 79,
+    "title": "Singly Linked List - Insert and Display",
+    "slug": "linked-list-insert-display",
+    "category": "Data Structures",
+    "difficulty": "Advanced",
+    "estimatedTime": "7 min",
+    "concepts": [
+      "linked list",
+      "structures",
+      "dynamic memory"
+    ],
+    "problem": "Write a program that implements a singly linked list, allowing nodes to be inserted at the end and the full list to be displayed.",
+    "requirements": [
+      "Define a node structure with data and a next pointer",
+      "Implement an insert function that appends nodes to the end",
+      "Implement a display function to print all nodes"
+    ],
+    "inputExample": "3\n10 20 30",
+    "outputExample": "Linked List: 10 -> 20 -> 30 -> NULL",
+    "explanation": "Each node dynamically allocated holds a data value and a pointer to the next node; insertion traverses to the last node and links the new node after it.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nstruct Node* insert(struct Node *head, int value) {\n    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));\n    newNode->data = value;\n    newNode->next = NULL;\n    if (head == NULL) return newNode;\n    struct Node *temp = head;\n    while (temp->next != NULL)\n        temp = temp->next;\n    temp->next = newNode;\n    return head;\n}\n\nvoid display(struct Node *head) {\n    printf(\"Linked List: \");\n    while (head != NULL) {\n        printf(\"%d -> \", head->data);\n        head = head->next;\n    }\n    printf(\"NULL\\n\");\n}\n\nint main() {\n    int n, value;\n    struct Node *head = NULL;\n    printf(\"Enter number of nodes: \");\n    scanf(\"%d\", &n);\n    printf(\"Enter %d values: \", n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &value);\n        head = insert(head, value);\n    }\n    display(head);\n    return 0;\n}\n",
+    "output": "Linked List: 10 -> 20 -> 30 -> NULL",
+    "tags": [
+      "linked-list",
+      "data-structures",
+      "pointers"
+    ],
+    "hint": "The head pointer must be updated when inserting into an empty list, which is why insert() returns the (possibly new) head."
+  },
+  {
+    "id": 80,
+    "title": "Linked List - Delete a Node",
+    "slug": "linked-list-delete-node",
+    "category": "Data Structures",
+    "difficulty": "Advanced",
+    "estimatedTime": "7 min",
+    "concepts": [
+      "linked list",
+      "node deletion",
+      "pointers"
+    ],
+    "problem": "Write a program that deletes a node with a specific value from a singly linked list.",
+    "requirements": [
+      "Build a linked list from user input",
+      "Implement a delete function that removes the first node matching a target value",
+      "Display the list before and after deletion"
+    ],
+    "inputExample": "3\n10 20 30\n20",
+    "outputExample": "Before: 10 -> 20 -> 30 -> NULL\nAfter: 10 -> 30 -> NULL",
+    "explanation": "Deletion requires tracking the previous node so its next pointer can be rerouted around the node being removed, then freeing that node's memory.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nstruct Node* insert(struct Node *head, int value) {\n    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));\n    newNode->data = value;\n    newNode->next = NULL;\n    if (head == NULL) return newNode;\n    struct Node *temp = head;\n    while (temp->next != NULL) temp = temp->next;\n    temp->next = newNode;\n    return head;\n}\n\nstruct Node* deleteNode(struct Node *head, int value) {\n    struct Node *temp = head, *prev = NULL;\n    if (temp != NULL && temp->data == value) {\n        head = temp->next;\n        free(temp);\n        return head;\n    }\n    while (temp != NULL && temp->data != value) {\n        prev = temp;\n        temp = temp->next;\n    }\n    if (temp == NULL) return head;\n    prev->next = temp->next;\n    free(temp);\n    return head;\n}\n\nvoid display(struct Node *head) {\n    while (head != NULL) {\n        printf(\"%d -> \", head->data);\n        head = head->next;\n    }\n    printf(\"NULL\\n\");\n}\n\nint main() {\n    int n, value, target;\n    struct Node *head = NULL;\n    printf(\"Enter number of nodes: \");\n    scanf(\"%d\", &n);\n    printf(\"Enter %d values: \", n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &value);\n        head = insert(head, value);\n    }\n    printf(\"Before: \");\n    display(head);\n    printf(\"Enter value to delete: \");\n    scanf(\"%d\", &target);\n    head = deleteNode(head, target);\n    printf(\"After: \");\n    display(head);\n    return 0;\n}\n",
+    "output": "Before: 10 -> 20 -> 30 -> NULL\nAfter: 10 -> 30 -> NULL",
+    "tags": [
+      "linked-list",
+      "deletion",
+      "pointers"
+    ],
+    "hint": "Special-case deleting the head node separately, since it has no previous node to update."
+  },
+  {
+    "id": 81,
+    "title": "Reverse a Linked List",
+    "slug": "reverse-linked-list",
+    "category": "Data Structures",
+    "difficulty": "Advanced",
+    "estimatedTime": "7 min",
+    "concepts": [
+      "linked list",
+      "pointer manipulation",
+      "iteration"
+    ],
+    "problem": "Write a program that reverses a singly linked list in place by reversing the direction of each node's next pointer.",
+    "requirements": [
+      "Build a linked list from user input",
+      "Iterate through the list reversing next pointers",
+      "Display the list before and after reversal"
+    ],
+    "inputExample": "4\n1 2 3 4",
+    "outputExample": "Before: 1 -> 2 -> 3 -> 4 -> NULL\nAfter: 4 -> 3 -> 2 -> 1 -> NULL",
+    "explanation": "Three pointers (previous, current, next) walk through the list, redirecting each node's next pointer to point backward instead of forward.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nstruct Node* insert(struct Node *head, int value) {\n    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));\n    newNode->data = value;\n    newNode->next = NULL;\n    if (head == NULL) return newNode;\n    struct Node *temp = head;\n    while (temp->next != NULL) temp = temp->next;\n    temp->next = newNode;\n    return head;\n}\n\nstruct Node* reverse(struct Node *head) {\n    struct Node *prev = NULL, *curr = head, *next = NULL;\n    while (curr != NULL) {\n        next = curr->next;\n        curr->next = prev;\n        prev = curr;\n        curr = next;\n    }\n    return prev;\n}\n\nvoid display(struct Node *head) {\n    while (head != NULL) {\n        printf(\"%d -> \", head->data);\n        head = head->next;\n    }\n    printf(\"NULL\\n\");\n}\n\nint main() {\n    int n, value;\n    struct Node *head = NULL;\n    printf(\"Enter number of nodes: \");\n    scanf(\"%d\", &n);\n    printf(\"Enter %d values: \", n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &value);\n        head = insert(head, value);\n    }\n    printf(\"Before: \");\n    display(head);\n    head = reverse(head);\n    printf(\"After: \");\n    display(head);\n    return 0;\n}\n",
+    "output": "Before: 1 -> 2 -> 3 -> 4 -> NULL\nAfter: 4 -> 3 -> 2 -> 1 -> NULL",
+    "tags": [
+      "linked-list",
+      "reversal",
+      "pointers"
+    ],
+    "hint": "This iterative reversal runs in O(n) time and O(1) extra space, without needing recursion or an auxiliary list."
+  },
+  {
+    "id": 82,
+    "title": "Stack Implementation Using an Array",
+    "slug": "stack-using-array",
+    "category": "Data Structures",
+    "difficulty": "Advanced",
+    "estimatedTime": "6 min",
+    "concepts": [
+      "stack",
+      "arrays",
+      "LIFO"
+    ],
+    "problem": "Write a program that implements a stack (LIFO data structure) using a fixed-size array, supporting push, pop, and peek operations.",
+    "requirements": [
+      "Define a stack with a fixed-size array and a top index",
+      "Implement push, pop, and peek functions with overflow/underflow checks",
+      "Demonstrate the operations with sample data"
+    ],
+    "inputExample": "push 10, push 20, pop, peek",
+    "outputExample": "Pushed 10\nPushed 20\nPopped 20\nTop element: 10",
+    "explanation": "The stack's top variable tracks the index of the most recently added element; push increments it before inserting, and pop returns the element then decrements it.",
+    "code": "#include <stdio.h>\n#define MAX 100\n\nint stack[MAX];\nint top = -1;\n\nvoid push(int value) {\n    if (top == MAX - 1) {\n        printf(\"Stack Overflow\\n\");\n        return;\n    }\n    stack[++top] = value;\n    printf(\"Pushed %d\\n\", value);\n}\n\nint pop() {\n    if (top == -1) {\n        printf(\"Stack Underflow\\n\");\n        return -1;\n    }\n    return stack[top--];\n}\n\nint peek() {\n    if (top == -1) {\n        printf(\"Stack is empty\\n\");\n        return -1;\n    }\n    return stack[top];\n}\n\nint main() {\n    push(10);\n    push(20);\n    printf(\"Popped %d\\n\", pop());\n    printf(\"Top element: %d\\n\", peek());\n    return 0;\n}\n",
+    "output": "Pushed 10\nPushed 20\nPopped 20\nTop element: 10",
+    "tags": [
+      "stack",
+      "data-structures",
+      "LIFO"
+    ],
+    "hint": "Always check for overflow before pushing and underflow before popping to avoid accessing invalid array indices."
+  },
+  {
+    "id": 83,
+    "title": "Stack Implementation Using a Linked List",
+    "slug": "stack-using-linked-list",
+    "category": "Data Structures",
+    "difficulty": "Advanced",
+    "estimatedTime": "7 min",
+    "concepts": [
+      "stack",
+      "linked list",
+      "LIFO"
+    ],
+    "problem": "Write a program that implements a stack using a singly linked list, allowing dynamic growth without a fixed size limit.",
+    "requirements": [
+      "Define a node structure for stack elements",
+      "Implement push and pop operations that insert/remove from the head",
+      "Demonstrate pushing and popping several values"
+    ],
+    "inputExample": "push 5, push 15, pop",
+    "outputExample": "Pushed 5\nPushed 15\nPopped 15",
+    "explanation": "Using the head of a linked list as the stack's top avoids the fixed capacity limitation of an array-based stack; push adds a new head, pop removes and frees it.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nstruct Node *top = NULL;\n\nvoid push(int value) {\n    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));\n    newNode->data = value;\n    newNode->next = top;\n    top = newNode;\n    printf(\"Pushed %d\\n\", value);\n}\n\nint pop() {\n    if (top == NULL) {\n        printf(\"Stack Underflow\\n\");\n        return -1;\n    }\n    struct Node *temp = top;\n    int value = temp->data;\n    top = top->next;\n    free(temp);\n    return value;\n}\n\nint main() {\n    push(5);\n    push(15);\n    printf(\"Popped %d\\n\", pop());\n    return 0;\n}\n",
+    "output": "Pushed 5\nPushed 15\nPopped 15",
+    "tags": [
+      "stack",
+      "linked-list",
+      "LIFO"
+    ],
+    "hint": "A linked-list-based stack has no fixed maximum size, limited only by available heap memory."
+  },
+  {
+    "id": 84,
+    "title": "Queue Implementation Using an Array",
+    "slug": "queue-using-array",
+    "category": "Data Structures",
+    "difficulty": "Advanced",
+    "estimatedTime": "6 min",
+    "concepts": [
+      "queue",
+      "arrays",
+      "FIFO"
+    ],
+    "problem": "Write a program that implements a queue (FIFO data structure) using an array, supporting enqueue and dequeue operations.",
+    "requirements": [
+      "Define a queue with front and rear indices",
+      "Implement enqueue and dequeue with overflow/underflow checks",
+      "Demonstrate the operations with sample data"
+    ],
+    "inputExample": "enqueue 1, enqueue 2, dequeue",
+    "outputExample": "Enqueued 1\nEnqueued 2\nDequeued 1",
+    "explanation": "The rear index tracks where the next element is inserted and the front index tracks where the next element is removed, implementing first-in-first-out ordering.",
+    "code": "#include <stdio.h>\n#define MAX 100\n\nint queue[MAX];\nint front = -1, rear = -1;\n\nvoid enqueue(int value) {\n    if (rear == MAX - 1) {\n        printf(\"Queue Overflow\\n\");\n        return;\n    }\n    if (front == -1) front = 0;\n    queue[++rear] = value;\n    printf(\"Enqueued %d\\n\", value);\n}\n\nint dequeue() {\n    if (front == -1 || front > rear) {\n        printf(\"Queue Underflow\\n\");\n        return -1;\n    }\n    return queue[front++];\n}\n\nint main() {\n    enqueue(1);\n    enqueue(2);\n    printf(\"Dequeued %d\\n\", dequeue());\n    return 0;\n}\n",
+    "output": "Enqueued 1\nEnqueued 2\nDequeued 1",
+    "tags": [
+      "queue",
+      "data-structures",
+      "FIFO"
+    ],
+    "hint": "This simple array-based queue doesn't reuse freed space at the front; a circular queue solves that limitation."
+  },
+  {
+    "id": 85,
+    "title": "Queue Implementation Using a Linked List",
+    "slug": "queue-using-linked-list",
+    "category": "Data Structures",
+    "difficulty": "Advanced",
+    "estimatedTime": "7 min",
+    "concepts": [
+      "queue",
+      "linked list",
+      "FIFO"
+    ],
+    "problem": "Write a program that implements a queue using a singly linked list with separate front and rear pointers.",
+    "requirements": [
+      "Define a node structure and maintain front and rear pointers",
+      "Implement enqueue (insert at rear) and dequeue (remove from front)",
+      "Demonstrate the operations with sample data"
+    ],
+    "inputExample": "enqueue 7, enqueue 14, dequeue",
+    "outputExample": "Enqueued 7\nEnqueued 14\nDequeued 7",
+    "explanation": "The rear pointer allows O(1) insertion at the end of the list, while the front pointer allows O(1) removal from the beginning, giving efficient FIFO behavior.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nstruct Node *front = NULL, *rear = NULL;\n\nvoid enqueue(int value) {\n    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));\n    newNode->data = value;\n    newNode->next = NULL;\n    if (rear == NULL) {\n        front = rear = newNode;\n    } else {\n        rear->next = newNode;\n        rear = newNode;\n    }\n    printf(\"Enqueued %d\\n\", value);\n}\n\nint dequeue() {\n    if (front == NULL) {\n        printf(\"Queue Underflow\\n\");\n        return -1;\n    }\n    struct Node *temp = front;\n    int value = temp->data;\n    front = front->next;\n    if (front == NULL) rear = NULL;\n    free(temp);\n    return value;\n}\n\nint main() {\n    enqueue(7);\n    enqueue(14);\n    printf(\"Dequeued %d\\n\", dequeue());\n    return 0;\n}\n",
+    "output": "Enqueued 7\nEnqueued 14\nDequeued 7",
+    "tags": [
+      "queue",
+      "linked-list",
+      "FIFO"
+    ],
+    "hint": "Remember to reset rear to NULL when the last element is dequeued, or rear will point to freed memory."
+  },
+  {
+    "id": 86,
+    "title": "Circular Queue Implementation",
+    "slug": "circular-queue-implementation",
+    "category": "Data Structures",
+    "difficulty": "Advanced",
+    "estimatedTime": "7 min",
+    "concepts": [
+      "circular queue",
+      "arrays",
+      "modulus wrap-around"
+    ],
+    "problem": "Write a program that implements a circular queue using an array, where the rear wraps around to reuse space freed by dequeued elements.",
+    "requirements": [
+      "Define a fixed-size array with front, rear, and count tracking",
+      "Implement enqueue and dequeue using modulus for wrap-around",
+      "Demonstrate filling, dequeuing, and reusing space"
+    ],
+    "inputExample": "enqueue 1,2,3; dequeue; enqueue 4",
+    "outputExample": "Enqueued 1\nEnqueued 2\nEnqueued 3\nDequeued 1\nEnqueued 4",
+    "explanation": "The rear index advances using (rear + 1) % size, allowing it to wrap back to index 0 once it reaches the end, reusing slots freed by dequeue operations.",
+    "code": "#include <stdio.h>\n#define SIZE 5\n\nint cqueue[SIZE];\nint front = -1, rear = -1;\n\nvoid enqueue(int value) {\n    if ((rear + 1) % SIZE == front) {\n        printf(\"Queue is full\\n\");\n        return;\n    }\n    if (front == -1) front = 0;\n    rear = (rear + 1) % SIZE;\n    cqueue[rear] = value;\n    printf(\"Enqueued %d\\n\", value);\n}\n\nint dequeue() {\n    if (front == -1) {\n        printf(\"Queue is empty\\n\");\n        return -1;\n    }\n    int value = cqueue[front];\n    if (front == rear) {\n        front = rear = -1;\n    } else {\n        front = (front + 1) % SIZE;\n    }\n    return value;\n}\n\nint main() {\n    enqueue(1);\n    enqueue(2);\n    enqueue(3);\n    printf(\"Dequeued %d\\n\", dequeue());\n    enqueue(4);\n    return 0;\n}\n",
+    "output": "Enqueued 1\nEnqueued 2\nEnqueued 3\nDequeued 1\nEnqueued 4",
+    "tags": [
+      "circular-queue",
+      "data-structures",
+      "arrays"
+    ],
+    "hint": "The condition (rear + 1) % SIZE == front detects a full queue, distinguishing it from the empty state where front == -1."
+  },
+  {
+    "id": 87,
+    "title": "Binary Tree - Insert and Inorder Traversal",
+    "slug": "binary-tree-insert-inorder",
+    "category": "Data Structures",
+    "difficulty": "Advanced",
+    "estimatedTime": "8 min",
+    "concepts": [
+      "binary search tree",
+      "recursion",
+      "tree traversal"
+    ],
+    "problem": "Write a program that builds a binary search tree by inserting values and then prints its elements using inorder traversal.",
+    "requirements": [
+      "Define a tree node structure with left and right child pointers",
+      "Implement a recursive insert function maintaining BST order",
+      "Implement recursive inorder traversal to print sorted output"
+    ],
+    "inputExample": "5\n50 30 70 20 40",
+    "outputExample": "Inorder Traversal: 20 30 40 50 70",
+    "explanation": "Insertion recursively places smaller values in the left subtree and larger values in the right subtree; inorder traversal (left, root, right) visits nodes in sorted order.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *left, *right;\n};\n\nstruct Node* newNode(int value) {\n    struct Node *node = (struct Node *)malloc(sizeof(struct Node));\n    node->data = value;\n    node->left = node->right = NULL;\n    return node;\n}\n\nstruct Node* insert(struct Node *root, int value) {\n    if (root == NULL)\n        return newNode(value);\n    if (value < root->data)\n        root->left = insert(root->left, value);\n    else\n        root->right = insert(root->right, value);\n    return root;\n}\n\nvoid inorder(struct Node *root) {\n    if (root == NULL) return;\n    inorder(root->left);\n    printf(\"%d \", root->data);\n    inorder(root->right);\n}\n\nint main() {\n    int n, value;\n    struct Node *root = NULL;\n    printf(\"Enter number of values: \");\n    scanf(\"%d\", &n);\n    printf(\"Enter %d values: \", n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &value);\n        root = insert(root, value);\n    }\n    printf(\"Inorder Traversal: \");\n    inorder(root);\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "output": "Inorder Traversal: 20 30 40 50 70",
+    "tags": [
+      "binary-search-tree",
+      "recursion",
+      "tree-traversal"
+    ],
+    "hint": "Inorder traversal of a binary search tree always produces elements in ascending sorted order."
+  },
+  {
+    "id": 88,
+    "title": "Binary Search Tree - Search Operation",
+    "slug": "bst-search-operation",
+    "category": "Data Structures",
+    "difficulty": "Advanced",
+    "estimatedTime": "6 min",
+    "concepts": [
+      "binary search tree",
+      "recursion",
+      "searching"
+    ],
+    "problem": "Write a program that builds a binary search tree and implements a recursive search function to check if a value exists in it.",
+    "requirements": [
+      "Build a BST from user input using recursive insertion",
+      "Implement a recursive search function",
+      "Report whether a target value was found"
+    ],
+    "inputExample": "50 30 70 20 40\nsearch 40",
+    "outputExample": "40 found in the BST",
+    "explanation": "The search function compares the target to the current node, recursing left if smaller or right if larger, exploiting the BST's ordering property to skip half the tree at each step.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *left, *right;\n};\n\nstruct Node* newNode(int value) {\n    struct Node *node = (struct Node *)malloc(sizeof(struct Node));\n    node->data = value;\n    node->left = node->right = NULL;\n    return node;\n}\n\nstruct Node* insert(struct Node *root, int value) {\n    if (root == NULL) return newNode(value);\n    if (value < root->data) root->left = insert(root->left, value);\n    else root->right = insert(root->right, value);\n    return root;\n}\n\nstruct Node* search(struct Node *root, int value) {\n    if (root == NULL || root->data == value) return root;\n    if (value < root->data) return search(root->left, value);\n    return search(root->right, value);\n}\n\nint main() {\n    int n, value, target;\n    struct Node *root = NULL;\n    printf(\"Enter number of values: \");\n    scanf(\"%d\", &n);\n    printf(\"Enter %d values: \", n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &value);\n        root = insert(root, value);\n    }\n    printf(\"Enter value to search: \");\n    scanf(\"%d\", &target);\n    struct Node *result = search(root, target);\n    if (result != NULL)\n        printf(\"%d found in the BST\\n\", target);\n    else\n        printf(\"%d not found in the BST\\n\", target);\n    return 0;\n}\n",
+    "output": "40 found in the BST",
+    "tags": [
+      "binary-search-tree",
+      "searching",
+      "recursion"
+    ],
+    "hint": "BST search runs in O(log n) on average for a balanced tree, but degrades to O(n) for a skewed (unbalanced) tree."
+  },
+  {
+    "id": 89,
+    "title": "Quick Sort Implementation",
+    "slug": "quick-sort-implementation",
+    "category": "Sorting",
+    "difficulty": "Advanced",
+    "estimatedTime": "7 min",
+    "concepts": [
+      "quicksort",
+      "recursion",
+      "divide and conquer",
+      "partitioning"
+    ],
+    "problem": "Write a program that sorts an array in ascending order using the quicksort algorithm with the Lomuto partition scheme.",
+    "requirements": [
+      "Read N elements into an array",
+      "Implement a partition function using a pivot element",
+      "Recursively sort the sub-arrays on either side of the pivot"
+    ],
+    "inputExample": "6\n10 7 8 9 1 5",
+    "outputExample": "Sorted array: 1 5 7 8 9 10",
+    "explanation": "Quicksort selects a pivot, partitions the array so smaller elements come before it and larger elements after, then recursively sorts each partition.",
+    "code": "#include <stdio.h>\n\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nint partition(int arr[], int low, int high) {\n    int pivot = arr[high];\n    int i = low - 1;\n    for (int j = low; j < high; j++) {\n        if (arr[j] < pivot) {\n            i++;\n            swap(&arr[i], &arr[j]);\n        }\n    }\n    swap(&arr[i + 1], &arr[high]);\n    return i + 1;\n}\n\nvoid quickSort(int arr[], int low, int high) {\n    if (low < high) {\n        int pi = partition(arr, low, high);\n        quickSort(arr, low, pi - 1);\n        quickSort(arr, pi + 1, high);\n    }\n}\n\nint main() {\n    int n;\n    printf(\"Enter size of array: \");\n    scanf(\"%d\", &n);\n    int arr[n];\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &arr[i]);\n    quickSort(arr, 0, n - 1);\n    printf(\"Sorted array: \");\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "output": "Sorted array: 1 5 7 8 9 10",
+    "tags": [
+      "sorting",
+      "quicksort",
+      "divide-and-conquer"
+    ],
+    "hint": "Quicksort has an average time complexity of O(n log n) but can degrade to O(n^2) on already-sorted input with a poor pivot choice."
+  },
+  {
+    "id": 90,
+    "title": "Merge Sort Implementation",
+    "slug": "merge-sort-implementation",
+    "category": "Sorting",
+    "difficulty": "Advanced",
+    "estimatedTime": "8 min",
+    "concepts": [
+      "merge sort",
+      "recursion",
+      "divide and conquer"
+    ],
+    "problem": "Write a program that sorts an array in ascending order using the merge sort algorithm.",
+    "requirements": [
+      "Read N elements into an array",
+      "Recursively divide the array into halves",
+      "Merge the sorted halves back together"
+    ],
+    "inputExample": "6\n38 27 43 3 9 82",
+    "outputExample": "Sorted array: 3 9 27 38 43 82",
+    "explanation": "Merge sort recursively splits the array into halves until single elements remain, then merges sorted halves together by repeatedly picking the smaller front element.",
+    "code": "#include <stdio.h>\n\nvoid merge(int arr[], int left, int mid, int right) {\n    int n1 = mid - left + 1, n2 = right - mid;\n    int L[n1], R[n2];\n    for (int i = 0; i < n1; i++) L[i] = arr[left + i];\n    for (int j = 0; j < n2; j++) R[j] = arr[mid + 1 + j];\n    int i = 0, j = 0, k = left;\n    while (i < n1 && j < n2) {\n        if (L[i] <= R[j]) arr[k++] = L[i++];\n        else arr[k++] = R[j++];\n    }\n    while (i < n1) arr[k++] = L[i++];\n    while (j < n2) arr[k++] = R[j++];\n}\n\nvoid mergeSort(int arr[], int left, int right) {\n    if (left < right) {\n        int mid = left + (right - left) / 2;\n        mergeSort(arr, left, mid);\n        mergeSort(arr, mid + 1, right);\n        merge(arr, left, mid, right);\n    }\n}\n\nint main() {\n    int n;\n    printf(\"Enter size of array: \");\n    scanf(\"%d\", &n);\n    int arr[n];\n    printf(\"Enter %d elements: \", n);\n    for (int i = 0; i < n; i++)\n        scanf(\"%d\", &arr[i]);\n    mergeSort(arr, 0, n - 1);\n    printf(\"Sorted array: \");\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "output": "Sorted array: 3 9 27 38 43 82",
+    "tags": [
+      "sorting",
+      "merge-sort",
+      "divide-and-conquer"
+    ],
+    "hint": "Merge sort guarantees O(n log n) time in all cases, unlike quicksort's worst-case O(n^2), but requires additional memory for the temporary arrays."
+  },
+  {
+    "id": 91,
+    "title": "File Handling - Write to a File",
+    "slug": "file-write-example",
+    "category": "File Handling",
+    "difficulty": "Advanced",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "file I/O",
+      "fopen",
+      "fprintf"
+    ],
+    "problem": "Write a program that takes text input from the user and writes it to a file on disk.",
+    "requirements": [
+      "Open a file in write mode using fopen",
+      "Write user-entered text to the file using fprintf",
+      "Close the file properly"
+    ],
+    "inputExample": "This is a test file.",
+    "outputExample": "Data written to file successfully.",
+    "explanation": "fopen with mode \"w\" creates a new file (or overwrites an existing one) for writing; fprintf writes formatted text to it, and fclose flushes and releases the file handle.",
+    "code": "#include <stdio.h>\n\nint main() {\n    FILE *fp;\n    char text[200];\n    fp = fopen(\"output.txt\", \"w\");\n    if (fp == NULL) {\n        printf(\"Error opening file\\n\");\n        return 1;\n    }\n    printf(\"Enter text to write: \");\n    fgets(text, sizeof(text), stdin);\n    fprintf(fp, \"%s\", text);\n    fclose(fp);\n    printf(\"Data written to file successfully.\\n\");\n    return 0;\n}\n",
+    "output": "Data written to file successfully.",
+    "tags": [
+      "file-handling",
+      "fopen",
+      "fprintf"
+    ],
+    "hint": "Always check that fopen did not return NULL before attempting to write, since the file might fail to open due to permissions or disk issues."
+  },
+  {
+    "id": 92,
+    "title": "File Handling - Read from a File",
+    "slug": "file-read-example",
+    "category": "File Handling",
+    "difficulty": "Advanced",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "file I/O",
+      "fopen",
+      "fgets"
+    ],
+    "problem": "Write a program that reads and displays the contents of a text file line by line.",
+    "requirements": [
+      "Open an existing file in read mode",
+      "Use fgets in a loop to read each line",
+      "Print each line and close the file"
+    ],
+    "inputExample": "(contents of output.txt)",
+    "outputExample": "This is a test file.",
+    "explanation": "fopen with mode \"r\" opens an existing file for reading; fgets reads one line at a time into a buffer until it returns NULL at end-of-file.",
+    "code": "#include <stdio.h>\n\nint main() {\n    FILE *fp;\n    char line[200];\n    fp = fopen(\"output.txt\", \"r\");\n    if (fp == NULL) {\n        printf(\"Error opening file\\n\");\n        return 1;\n    }\n    while (fgets(line, sizeof(line), fp) != NULL) {\n        printf(\"%s\", line);\n    }\n    fclose(fp);\n    return 0;\n}\n",
+    "output": "This is a test file.",
+    "tags": [
+      "file-handling",
+      "fopen",
+      "fgets"
+    ],
+    "hint": "Reading mode \"r\" requires the file to already exist; attempting to open a missing file returns NULL from fopen."
+  },
+  {
+    "id": 93,
+    "title": "File Handling - Append to a File",
+    "slug": "file-append-example",
+    "category": "File Handling",
+    "difficulty": "Advanced",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "file I/O",
+      "append mode"
+    ],
+    "problem": "Write a program that appends new text to the end of an existing file without overwriting its current contents.",
+    "requirements": [
+      "Open a file in append mode using fopen with 'a'",
+      "Write new text to the end of the file",
+      "Close the file and confirm the operation"
+    ],
+    "inputExample": "Additional line of text.",
+    "outputExample": "Text appended successfully.",
+    "explanation": "Append mode \"a\" positions the file pointer at the end of the existing file, so any writes are added after the current content rather than replacing it.",
+    "code": "#include <stdio.h>\n\nint main() {\n    FILE *fp;\n    char text[200];\n    fp = fopen(\"output.txt\", \"a\");\n    if (fp == NULL) {\n        printf(\"Error opening file\\n\");\n        return 1;\n    }\n    printf(\"Enter text to append: \");\n    fgets(text, sizeof(text), stdin);\n    fprintf(fp, \"%s\", text);\n    fclose(fp);\n    printf(\"Text appended successfully.\\n\");\n    return 0;\n}\n",
+    "output": "Text appended successfully.",
+    "tags": [
+      "file-handling",
+      "append-mode",
+      "fprintf"
+    ],
+    "hint": "If the file doesn't exist yet, append mode \"a\" will create it, behaving like write mode in that case."
+  },
+  {
+    "id": 94,
+    "title": "Copy File Contents to Another File",
+    "slug": "copy-file-contents",
+    "category": "File Handling",
+    "difficulty": "Advanced",
+    "estimatedTime": "6 min",
+    "concepts": [
+      "file I/O",
+      "character-by-character copy"
+    ],
+    "problem": "Write a program that copies the entire contents of one file into a new destination file.",
+    "requirements": [
+      "Open a source file in read mode and a destination file in write mode",
+      "Copy content character by character using fgetc and fputc",
+      "Close both files and confirm success"
+    ],
+    "inputExample": "source.txt -> destination.txt",
+    "outputExample": "File copied successfully.",
+    "explanation": "The program reads one character at a time from the source file with fgetc and writes it immediately to the destination file with fputc, continuing until EOF is reached.",
+    "code": "#include <stdio.h>\n\nint main() {\n    FILE *src, *dest;\n    char ch;\n    src = fopen(\"output.txt\", \"r\");\n    if (src == NULL) {\n        printf(\"Error opening source file\\n\");\n        return 1;\n    }\n    dest = fopen(\"copy.txt\", \"w\");\n    if (dest == NULL) {\n        printf(\"Error opening destination file\\n\");\n        fclose(src);\n        return 1;\n    }\n    while ((ch = fgetc(src)) != EOF) {\n        fputc(ch, dest);\n    }\n    fclose(src);\n    fclose(dest);\n    printf(\"File copied successfully.\\n\");\n    return 0;\n}\n",
+    "output": "File copied successfully.",
+    "tags": [
+      "file-handling",
+      "fgetc",
+      "fputc"
+    ],
+    "hint": "For large files, reading in larger chunks with fread/fwrite is more efficient than one character at a time."
+  },
+  {
+    "id": 95,
+    "title": "Structure with Pointers - Dynamic Student Records",
+    "slug": "struct-pointers-dynamic-records",
+    "category": "Structures",
+    "difficulty": "Advanced",
+    "estimatedTime": "7 min",
+    "concepts": [
+      "structures",
+      "dynamic memory",
+      "pointers to structs"
+    ],
+    "problem": "Write a program that dynamically allocates an array of student structures using malloc and a pointer to the structure type.",
+    "requirements": [
+      "Define a Student structure with name and marks",
+      "Dynamically allocate an array of N students using malloc",
+      "Fill and display records using pointer-based struct access, then free memory"
+    ],
+    "inputExample": "2\nAlice 85\nBob 92",
+    "outputExample": "Alice: 85.00\nBob: 92.00",
+    "explanation": "Using struct Student *students = malloc(n * sizeof(struct Student)) creates a dynamically-sized array of structs, accessed with the arrow operator (students[i].field or (students+i)->field).",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Student {\n    char name[50];\n    float marks;\n};\n\nint main() {\n    int n;\n    printf(\"Enter number of students: \");\n    scanf(\"%d\", &n);\n    struct Student *students = (struct Student *)malloc(n * sizeof(struct Student));\n    if (students == NULL) {\n        printf(\"Memory allocation failed\\n\");\n        return 1;\n    }\n    for (int i = 0; i < n; i++) {\n        printf(\"Enter name and marks: \");\n        scanf(\"%s %f\", students[i].name, &students[i].marks);\n    }\n    printf(\"\\nStudent Records:\\n\");\n    for (int i = 0; i < n; i++) {\n        printf(\"%s: %.2f\\n\", (students + i)->name, (students + i)->marks);\n    }\n    free(students);\n    return 0;\n}\n",
+    "output": "Alice: 85.00\nBob: 92.00",
+    "tags": [
+      "structures",
+      "dynamic-memory",
+      "pointers"
+    ],
+    "hint": "Both students[i].field and (students+i)->field are equivalent ways to access array-of-struct elements through a pointer."
+  },
+  {
+    "id": 96,
+    "title": "Union Demonstration",
+    "slug": "union-demonstration",
+    "category": "Structures",
+    "difficulty": "Advanced",
+    "estimatedTime": "5 min",
+    "concepts": [
+      "unions",
+      "shared memory",
+      "sizeof"
+    ],
+    "problem": "Write a program that demonstrates how a union shares the same memory location among its members, unlike a structure.",
+    "requirements": [
+      "Define a union with an int, float, and char member",
+      "Assign and print each member, observing how memory is shared",
+      "Print the size of the union"
+    ],
+    "inputExample": "N/A",
+    "outputExample": "Union size: 4 bytes\nAfter assigning int: 10\nAfter assigning float: 15.750000",
+    "explanation": "All members of a union occupy the same memory address, so writing to one member overwrites the value of any other member; the union's size equals its largest member.",
+    "code": "#include <stdio.h>\n\nunion Data {\n    int i;\n    float f;\n    char c;\n};\n\nint main() {\n    union Data data;\n    printf(\"Union size: %lu bytes\\n\", sizeof(data));\n    data.i = 10;\n    printf(\"After assigning int: %d\\n\", data.i);\n    data.f = 15.75;\n    printf(\"After assigning float: %f\\n\", data.f);\n    return 0;\n}\n",
+    "output": "Union size: 4 bytes\nAfter assigning int: 10\nAfter assigning float: 15.750000",
+    "tags": [
+      "unions",
+      "memory",
+      "data-types"
+    ],
+    "hint": "Unlike structures where each member gets its own memory, a union's members overlap, making it memory-efficient when only one value is needed at a time."
+  },
+  {
+    "id": 97,
+    "title": "Enum Demonstration",
+    "slug": "enum-demonstration",
+    "category": "Basics",
+    "difficulty": "Advanced",
+    "estimatedTime": "4 min",
+    "concepts": [
+      "enumerations",
+      "named constants"
+    ],
+    "problem": "Write a program that demonstrates how enumerations create a set of named integer constants, using days of the week as an example.",
+    "requirements": [
+      "Define an enum for days of the week",
+      "Assign an enum value to a variable",
+      "Use a switch statement to print the day name"
+    ],
+    "inputExample": "3",
+    "outputExample": "Day 3 is Wednesday",
+    "explanation": "An enum assigns sequential integer values (starting at 0 by default) to a list of named identifiers, making code more readable than using raw magic numbers.",
+    "code": "#include <stdio.h>\n\nenum Day { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY };\n\nint main() {\n    int choice;\n    printf(\"Enter day number (0-6): \");\n    scanf(\"%d\", &choice);\n    enum Day day = choice;\n    switch (day) {\n        case SUNDAY: printf(\"Day %d is Sunday\\n\", choice); break;\n        case MONDAY: printf(\"Day %d is Monday\\n\", choice); break;\n        case TUESDAY: printf(\"Day %d is Tuesday\\n\", choice); break;\n        case WEDNESDAY: printf(\"Day %d is Wednesday\\n\", choice); break;\n        case THURSDAY: printf(\"Day %d is Thursday\\n\", choice); break;\n        case FRIDAY: printf(\"Day %d is Friday\\n\", choice); break;\n        case SATURDAY: printf(\"Day %d is Saturday\\n\", choice); break;\n        default: printf(\"Invalid day\\n\");\n    }\n    return 0;\n}\n",
+    "output": "Day 3 is Wednesday",
+    "tags": [
+      "enum",
+      "constants",
+      "switch"
+    ],
+    "hint": "By default enum values start at 0 and increment by 1, but you can explicitly assign custom starting values or specific numbers to each constant."
+  },
+  {
+    "id": 98,
+    "title": "Variable Length Arguments Using stdarg.h",
+    "slug": "variable-length-arguments",
+    "category": "Advanced Functions",
+    "difficulty": "Advanced",
+    "estimatedTime": "6 min",
+    "concepts": [
+      "variadic functions",
+      "stdarg.h",
+      "va_list"
+    ],
+    "problem": "Write a program that defines a function accepting a variable number of integer arguments and calculates their sum using the stdarg.h library.",
+    "requirements": [
+      "Use va_list, va_start, va_arg, and va_end from stdarg.h",
+      "Write a function that sums an arbitrary number of integers",
+      "Call the function with different numbers of arguments"
+    ],
+    "inputExample": "sum(3, 1,2,3) and sum(5, 1,2,3,4,5)",
+    "outputExample": "Sum of 3 numbers = 6\nSum of 5 numbers = 15",
+    "explanation": "Variadic functions use va_list to iterate over an unspecified number of arguments; va_start initializes the list, va_arg retrieves each value, and va_end cleans up.",
+    "code": "#include <stdio.h>\n#include <stdarg.h>\n\nint sum(int count, ...) {\n    va_list args;\n    va_start(args, count);\n    int total = 0;\n    for (int i = 0; i < count; i++) {\n        total += va_arg(args, int);\n    }\n    va_end(args);\n    return total;\n}\n\nint main() {\n    printf(\"Sum of 3 numbers = %d\\n\", sum(3, 1, 2, 3));\n    printf(\"Sum of 5 numbers = %d\\n\", sum(5, 1, 2, 3, 4, 5));\n    return 0;\n}\n",
+    "output": "Sum of 3 numbers = 6\nSum of 5 numbers = 15",
+    "tags": [
+      "variadic-functions",
+      "stdarg",
+      "advanced-c"
+    ],
+    "hint": "The first parameter (count here) is typically used to tell the function how many variadic arguments follow, since C has no built-in way to know this automatically."
+  },
+  {
+    "id": 99,
+    "title": "Simple Student Management System (Mini Project)",
+    "slug": "student-management-system",
+    "category": "Mini Project",
+    "difficulty": "Advanced",
+    "estimatedTime": "10 min",
+    "concepts": [
+      "structures",
+      "arrays",
+      "menu-driven program",
+      "functions"
+    ],
+    "problem": "Build a menu-driven console application that allows adding, displaying, and searching student records stored in memory using structures and arrays.",
+    "requirements": [
+      "Define a Student structure with name, roll number, and marks",
+      "Implement a menu loop with options to add, display, and search students",
+      "Use a fixed-size array of structures to store up to 50 students"
+    ],
+    "inputExample": "1 (add) -> John 101 88.5\n2 (display)\n4 (exit)",
+    "outputExample": "Student added successfully.\nName: John, Roll: 101, Marks: 88.50",
+    "explanation": "The program combines structures for record storage, arrays for the record list, and a switch-based menu loop to let the user choose operations interactively until they exit.",
+    "code": "#include <stdio.h>\n#include <string.h>\n\nstruct Student {\n    char name[50];\n    int roll;\n    float marks;\n};\n\nstruct Student students[50];\nint studentCount = 0;\n\nvoid addStudent() {\n    printf(\"Enter name, roll, marks: \");\n    scanf(\"%s %d %f\", students[studentCount].name, &students[studentCount].roll, &students[studentCount].marks);\n    studentCount++;\n    printf(\"Student added successfully.\\n\");\n}\n\nvoid displayStudents() {\n    for (int i = 0; i < studentCount; i++) {\n        printf(\"Name: %s, Roll: %d, Marks: %.2f\\n\", students[i].name, students[i].roll, students[i].marks);\n    }\n}\n\nvoid searchStudent() {\n    int roll;\n    printf(\"Enter roll number to search: \");\n    scanf(\"%d\", &roll);\n    for (int i = 0; i < studentCount; i++) {\n        if (students[i].roll == roll) {\n            printf(\"Found: %s, Marks: %.2f\\n\", students[i].name, students[i].marks);\n            return;\n        }\n    }\n    printf(\"Student not found.\\n\");\n}\n\nint main() {\n    int choice;\n    do {\n        printf(\"\\n1. Add Student\\n2. Display Students\\n3. Search Student\\n4. Exit\\nChoice: \");\n        scanf(\"%d\", &choice);\n        switch (choice) {\n            case 1: addStudent(); break;\n            case 2: displayStudents(); break;\n            case 3: searchStudent(); break;\n            case 4: printf(\"Exiting...\\n\"); break;\n            default: printf(\"Invalid choice\\n\");\n        }\n    } while (choice != 4);\n    return 0;\n}\n",
+    "output": "Student added successfully.\nName: John, Roll: 101, Marks: 88.50",
+    "tags": [
+      "mini-project",
+      "structures",
+      "menu-driven"
+    ],
+    "hint": "Breaking each menu option into its own function keeps main() readable and makes the program easier to extend with new features."
+  },
+  {
+    "id": 100,
+    "title": "Simple Bank Account Management System (Mini Project)",
+    "slug": "bank-account-management-system",
+    "category": "Mini Project",
+    "difficulty": "Advanced",
+    "estimatedTime": "10 min",
+    "concepts": [
+      "structures",
+      "functions",
+      "menu-driven program",
+      "conditionals"
+    ],
+    "problem": "Build a menu-driven console application that simulates basic bank operations: creating an account, depositing, withdrawing, and checking balance.",
+    "requirements": [
+      "Define an Account structure with holder name and balance",
+      "Implement deposit and withdraw functions with balance validation",
+      "Provide a menu loop for the user to perform operations until exiting"
+    ],
+    "inputExample": "1 (create) -> Alice 1000\n2 (deposit) -> 500\n3 (withdraw) -> 200\n4 (balance)",
+    "outputExample": "Account created for Alice with balance 1000.00\nDeposited 500.00. New balance: 1500.00\nWithdrew 200.00. New balance: 1300.00\nCurrent balance: 1300.00",
+    "explanation": "The program stores account data in a structure and provides functions for each banking operation, with withdraw specifically validating that sufficient funds exist before deducting.",
+    "code": "#include <stdio.h>\n\nstruct Account {\n    char name[50];\n    float balance;\n};\n\nstruct Account account;\n\nvoid createAccount() {\n    printf(\"Enter account holder name and initial balance: \");\n    scanf(\"%s %f\", account.name, &account.balance);\n    printf(\"Account created for %s with balance %.2f\\n\", account.name, account.balance);\n}\n\nvoid deposit() {\n    float amount;\n    printf(\"Enter amount to deposit: \");\n    scanf(\"%f\", &amount);\n    account.balance += amount;\n    printf(\"Deposited %.2f. New balance: %.2f\\n\", amount, account.balance);\n}\n\nvoid withdraw() {\n    float amount;\n    printf(\"Enter amount to withdraw: \");\n    scanf(\"%f\", &amount);\n    if (amount > account.balance) {\n        printf(\"Insufficient balance.\\n\");\n        return;\n    }\n    account.balance -= amount;\n    printf(\"Withdrew %.2f. New balance: %.2f\\n\", amount, account.balance);\n}\n\nvoid checkBalance() {\n    printf(\"Current balance: %.2f\\n\", account.balance);\n}\n\nint main() {\n    int choice;\n    do {\n        printf(\"\\n1. Create Account\\n2. Deposit\\n3. Withdraw\\n4. Check Balance\\n5. Exit\\nChoice: \");\n        scanf(\"%d\", &choice);\n        switch (choice) {\n            case 1: createAccount(); break;\n            case 2: deposit(); break;\n            case 3: withdraw(); break;\n            case 4: checkBalance(); break;\n            case 5: printf(\"Exiting...\\n\"); break;\n            default: printf(\"Invalid choice\\n\");\n        }\n    } while (choice != 5);\n    return 0;\n}\n",
+    "output": "Account created for Alice with balance 1000.00\nDeposited 500.00. New balance: 1500.00\nWithdrew 200.00. New balance: 1300.00\nCurrent balance: 1300.00",
+    "tags": [
+      "mini-project",
+      "structures",
+      "banking-system"
+    ],
+    "hint": "Validating the withdrawal amount against the current balance before subtracting prevents the account from going negative."
+  }
+]
