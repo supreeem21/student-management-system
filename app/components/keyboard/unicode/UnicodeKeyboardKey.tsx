@@ -181,7 +181,7 @@ export default function UnicodeKeyboardKey({
     // as an outline so it is visually different
     // from the correct/active state.
     stateStyle = `
-      bg-[var(--surface)]
+      bg-[var(--accent)]
       text-[var(--text-primary)]
       border-[var(--accent)]
       ring-2

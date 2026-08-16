@@ -202,8 +202,8 @@ export default function PreetiKeyboardKey({
     // This is intentionally NOT green-filled.
     // Green is reserved for actual typing feedback.
     stateStyle = `
-      bg-[var(--surface)]
-      text-[var(--text-primary)]
+      bg-[var(--accent)]
+      text-[var(--text-muted)]
       border-[var(--accent)]
       ring-2
       ring-[var(--accent)]

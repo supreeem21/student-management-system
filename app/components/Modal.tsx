@@ -98,7 +98,7 @@ const Modal = ({ handleRestart, result }: ModalProps) => {
           className="
             text-xl sm:text-2xl
             font-bold
-            text-[var(--text-primary)]
+            text-[var(--text-muted)]
           "
         >
           {result}
@@ -115,11 +115,11 @@ const Modal = ({ handleRestart, result }: ModalProps) => {
               px-5 sm:px-6
               py-2.5 sm:py-3
 
-              bg-[var(--accent)]
-              hover:bg-[var(--accent-hover)]
+              bg-background
+              hover:bg-foreground
 
-              text-white
-              font-semibold
+              text-primary
+              hover:text-background
 
               rounded-lg
 
@@ -131,10 +131,9 @@ const Modal = ({ handleRestart, result }: ModalProps) => {
 
               active:scale-95
               hover:cursor-pointer
-
-              focus-visible:outline-2
-              focus-visible:outline-[var(--accent)]
-              focus-visible:outline-offset-2
+              outline-2
+              outline-foreground
+              hover:outline-none
             "
           >
             {language === "english"

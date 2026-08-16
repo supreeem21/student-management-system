@@ -1,7 +1,7 @@
 "use client";
 
 import image from "@/public/logo.png";
-import { Sun, Moon, Menu, X } from "@/icons/LucideIcons";
+import { Sun, Moon, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useAppStore } from "@/store/useAppStore";
@@ -68,6 +68,7 @@ export default function Navbar() {
     justify-center
     rounded-lg
     text-sm
+    hover:cursor-pointer
     font-semibold
     transition-all
     duration-150
@@ -389,6 +390,7 @@ export default function Navbar() {
                 focus:ring-2
                 focus:ring-[var(--accent)]
                 focus:ring-opacity-20
+                hover:cursor-pointer
               "
             >
               <option value="english">
@@ -454,6 +456,7 @@ export default function Navbar() {
               hover:bg-[var(--surface-hover)]
               hover:text-[var(--accent)]
               active:scale-95
+              hover:cursor-pointer
             "
           >
             {theme === "light" ? (
@@ -542,6 +545,7 @@ export default function Navbar() {
               rounded-lg
               text-[var(--text-primary)]
               hover:bg-[var(--surface-hover)]
+              hover:cursor-pointer
             "
           >
             {theme === "light" ? (
@@ -573,6 +577,7 @@ export default function Navbar() {
               rounded-lg
               text-[var(--text-primary)]
               hover:bg-[var(--surface-hover)]
+              hover:cursor-pointer
             "
           >
             {showNav ? (
@@ -732,6 +737,7 @@ export default function Navbar() {
                       text-xs
                       font-semibold
                       transition-all
+                      hover:cursor-pointer
                       ${
                         difficulty === level
                           ? "border-[var(--accent)] bg-[var(--accent)] text-white"
@@ -794,6 +800,7 @@ export default function Navbar() {
                     text-[var(--text-primary)]
                     outline-none
                     focus:border-[var(--accent)]
+                    hover:cursor-pointer
                   "
                 >
                   <option value="english">

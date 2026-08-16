@@ -243,11 +243,11 @@ export default function EnglishComponent() {
         autoFocus
         key={difficulty}
         placeholder="Type here..."
-        rows={2}
+        rows={3}
         className="
           w-full
           border-2
-          border-slate-600
+          border-foreground
           rounded
           text-xl
           sm:text-2xl
@@ -262,6 +262,7 @@ export default function EnglishComponent() {
           h-fit
           text-center
           resize-none
+          text-[var(--text-muted)]
         "
       />
 

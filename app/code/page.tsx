@@ -62,24 +62,27 @@ export default function LearnCodeComponent() {
     return <div>No challenge found.</div>;
   }
 
+  const btnClassName="w-full rounded-md px-4 py-2 text-sm bg-[var(--surface)] border border-[var(--border)] hover:bg-[var(--accent)] hover:cursor-pointer sm:w-auto transition-colors sm:text-base"
+
   return (
     <article className="w-full space-y-6 px-2 sm:px-4 md:px-6 lg:px-8">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h2 className="max-w-full wrap-break-word text-xl font-bold sm:text-2xl md:text-3xl">
+
+        <h2 className="max-w-full wrap-break-word text-xl font-bold sm:text-2xl md:text-3xl text-primary">
           {challenge.title}
         </h2>
 
         <div className="space-x-3 space-y-3">
           <button
             onClick={nextChallenge}
-            className="w-full rounded-md bg-blue-600 px-4 py-2 text-sm text-white hover:cursor-pointer sm:w-auto sm:text-base"
+            className={btnClassName}
           >
             Next
           </button>
 
           <button
             onClick={restartChallenge}
-            className="w-full rounded-md bg-blue-600 px-4 py-2 text-sm text-white hover:cursor-pointer sm:w-auto sm:text-base"
+            className={btnClassName}
           >
             Restart
           </button>

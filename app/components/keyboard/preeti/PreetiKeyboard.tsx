@@ -81,8 +81,8 @@ const Keyboard = memo(function Keyboard({
     nextPhysicalKey.length === 1 &&
     /^[A-Z]$/.test(nextPhysicalKey);
 
-  if(isCapitalLetter) {
-    nextShift= true;
+  if (isCapitalLetter) {
+    nextShift = true;
   }
 
   const renderRow = (
@@ -122,104 +122,108 @@ const Keyboard = memo(function Keyboard({
   const rightHandFingersPosition = "left-105";
 
   return (
-    <div className="rounded-xl bg-slate-900 p-5 w-fit mx-auto space-y-3 relative overflow-y-hidden">
-      {page === "/" ? "" : <>
-        {/* full left hand */}
-        <Image
-          src={fullLeftHand}
-          alt="Left hand position guide"
-          loading="eager"
-          className={`${imagePositionClassName} ${leftHandFingersPosition} `}
-        />
-
-        {/* left Pinky finger */}
-        {(fingerToType === "leftPinky" || isCapitalLetter) && (
+    <div className="rounded-xl border border-foreground p-5 w-fit mx-auto space-y-3 relative overflow-y-hidden">
+      {page === "/" ? (
+        ""
+      ) : (
+        <>
+          {/* full left hand */}
           <Image
-            src={leftPinky}
-            alt="Left hand pinky finger guide"
+            src={fullLeftHand}
+            alt="Left hand position guide"
+            loading="eager"
             className={`${imagePositionClassName} ${leftHandFingersPosition} `}
           />
-        )}
 
-        {fingerToType === "leftRing" && (
+          {/* left Pinky finger */}
+          {(fingerToType === "leftPinky" || isCapitalLetter) && (
+            <Image
+              src={leftPinky}
+              alt="Left hand pinky finger guide"
+              className={`${imagePositionClassName} ${leftHandFingersPosition} `}
+            />
+          )}
+
+          {fingerToType === "leftRing" && (
+            <Image
+              src={leftRing}
+              alt="Left hand ring finger"
+              className={`${imagePositionClassName} ${leftHandFingersPosition} `}
+            />
+          )}
+
+          {fingerToType === "leftMiddle" && (
+            <Image
+              src={leftMiddle}
+              alt="Left hand middle finger guide"
+              className={`${imagePositionClassName} ${leftHandFingersPosition} `}
+            />
+          )}
+
+          {fingerToType === "leftIndex" && (
+            <Image
+              src={leftIndex}
+              alt="Left hand index finger guide"
+              className={`${imagePositionClassName} ${leftHandFingersPosition} `}
+            />
+          )}
+
+          {(fingerToType === "leftThumb" || isSpace) && (
+            <Image
+              src={leftThumb}
+              alt="Left hand thumb finger guide"
+              className={`${imagePositionClassName} ${leftHandFingersPosition} `}
+            />
+          )}
+
+          {/* right hand */}
           <Image
-            src={leftRing}
-            alt="Left hand ring finger"
-            className={`${imagePositionClassName} ${leftHandFingersPosition} `}
+            src={fullRightHand}
+            alt="Right hand position guide"
+            className={`${imagePositionClassName} ${rightHandFingersPosition}`}
           />
-        )}
 
-        {fingerToType === "leftMiddle" && (
-          <Image
-            src={leftMiddle}
-            alt="Left hand middle finger guide"
-            className={`${imagePositionClassName} ${leftHandFingersPosition} `}
-          />
-        )}
+          {(fingerToType === "rightPinky" || isCapitalLetter) && (
+            <Image
+              src={rightPinky}
+              alt="Right hand pinky finger guide"
+              className={`${imagePositionClassName} ${rightHandFingersPosition} `}
+            />
+          )}
 
-        {fingerToType === "leftIndex" && (
-          <Image
-            src={leftIndex}
-            alt="Left hand index finger guide"
-            className={`${imagePositionClassName} ${leftHandFingersPosition} `}
-          />
-        )}
+          {(fingerToType === "rightRing" || isPeriod) && (
+            <Image
+              src={rightRing}
+              alt="Right hand ring finger guide"
+              className={`${imagePositionClassName} ${rightHandFingersPosition} `}
+            />
+          )}
 
-        {(fingerToType === "leftThumb" || isSpace) && (
-          <Image
-            src={leftThumb}
-            alt="Left hand thumb finger guide"
-            className={`${imagePositionClassName} ${leftHandFingersPosition} `}
-          />
-        )}
+          {fingerToType === "rightMiddle" && (
+            <Image
+              src={rightMiddle}
+              alt="Right hand middle finger guide"
+              className={`${imagePositionClassName} ${rightHandFingersPosition} `}
+            />
+          )}
 
-        {/* right hand */}
-        <Image
-          src={fullRightHand}
-          alt="Right hand position guide"
-          className={`${imagePositionClassName} ${rightHandFingersPosition}`}
-        />
+          {fingerToType === "rightIndex" && (
+            <Image
+              src={rightIndex}
+              alt="Right hand index finger guide"
+              className={`${imagePositionClassName} ${rightHandFingersPosition} `}
+            />
+          )}
 
-        {(fingerToType === "rightPinky" || isCapitalLetter) && (
-          <Image
-            src={rightPinky}
-            alt="Right hand pinky finger guide"
-            className={`${imagePositionClassName} ${rightHandFingersPosition} `}
-          />
-        )}
-
-        {(fingerToType === "rightRing" || isPeriod) && (
-          <Image
-            src={rightRing}
-            alt="Right hand ring finger guide"
-            className={`${imagePositionClassName} ${rightHandFingersPosition} `}
-          />
-        )}
-
-        {fingerToType === "rightMiddle" && (
-          <Image
-            src={rightMiddle}
-            alt="Right hand middle finger guide"
-            className={`${imagePositionClassName} ${rightHandFingersPosition} `}
-          />
-        )}
-
-        {fingerToType === "rightIndex" && (
-          <Image
-            src={rightIndex}
-            alt="Right hand index finger guide"
-            className={`${imagePositionClassName} ${rightHandFingersPosition} `}
-          />
-        )}
-
-        {(fingerToType === "rightThumb" || isSpace) && (
-          <Image
-            src={rightThumb}
-            alt="Right hand thumb finger guide"
-            className={`${imagePositionClassName} ${rightHandFingersPosition} `}
-          />
-        )}
-      </>}
+          {(fingerToType === "rightThumb" || isSpace) && (
+            <Image
+              src={rightThumb}
+              alt="Right hand thumb finger guide"
+              className={`${imagePositionClassName} ${rightHandFingersPosition} `}
+            />
+          )}
+        </>
+      )}
 
       {/* Function Row */}
       <div className="flex gap-2">

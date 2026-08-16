@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { generateRandomSentence } from "@/app/lib/utils";
 import { useAppStore } from "@/store/useAppStore";
@@ -55,13 +50,9 @@ export default function LearnComponent() {
   // STORE
   // ----------------------------------------------------------
 
-  const difficulty = useAppStore(
-    (state) => state.difficulty,
-  );
+  const difficulty = useAppStore((state) => state.difficulty);
 
-  const nepaliLanguageType = useAppStore(
-    (state) => state.nepaliLanguageType,
-  );
+  const nepaliLanguageType = useAppStore((state) => state.nepaliLanguageType);
 
   // ----------------------------------------------------------
   // SENTENCE SEGMENTER
@@ -86,9 +77,7 @@ export default function LearnComponent() {
 
   const targetLetters = useMemo(
     () =>
-      [...segmenter.segment(placeholderText)].map(
-        (segment) => segment.segment,
-      ),
+      [...segmenter.segment(placeholderText)].map((segment) => segment.segment),
     [placeholderText, segmenter],
   );
 
@@ -112,7 +101,7 @@ export default function LearnComponent() {
     errorKey,
     nextPhysicalKey,
     nextShift,
-} = useNepaliTyping(placeholderText, { strict: true });
+  } = useNepaliTyping(placeholderText, { strict: true });
 
   // ----------------------------------------------------------
   // TYPED GRAPHEMES
@@ -122,11 +111,11 @@ export default function LearnComponent() {
 
   const typedLetters = useMemo(
     () =>
-      [...segmenter.segment(typedUnicode)].map(
-        (segment) => segment.segment,
-      ),
+      [...segmenter.segment(typedUnicode)].map((segment) => segment.segment),
     [typedUnicode, segmenter],
   );
+
+  const nextCharacter = targetLetters[typedLetters.length] ?? "";
 
   // ----------------------------------------------------------
   // RESET / NEW SENTENCE
@@ -140,10 +129,7 @@ export default function LearnComponent() {
   // ----------------------------------------------------------
 
   const resetState = useCallback(() => {
-    const nextSentence = generateRandomSentence(
-      nepaliSentences,
-      difficulty,
-    );
+    const nextSentence = generateRandomSentence(nepaliSentences, difficulty);
 
     setPlaceholderText(nextSentence);
     setResult("");
@@ -166,9 +152,7 @@ export default function LearnComponent() {
       return;
     }
 
-    setResult(
-      "🎉 तपाईंले कार्य पूरा गर्नुभयो।",
-    );
+    setResult("🎉 तपाईंले कार्य पूरा गर्नुभयो।");
   }, [isComplete]);
 
   // ----------------------------------------------------------
@@ -194,20 +178,65 @@ export default function LearnComponent() {
         aria-live="polite"
         aria-label="Typed text"
         className="
-          min-h-20
-          w-full
-          overflow-hidden
-          rounded-md
-          border
-          border-gray-600
-          p-3
-          text-3xl
-          leading-relaxed
-          outline-none
-        "
+    min-h-20
+    w-full
+    overflow-hidden
+    rounded-md
+    border
+    border-[var(--border-strong)]
+    p-3
+    text-3xl
+    text-[var(--text-muted)]
+    leading-relaxed
+    outline-none
+  "
       >
-        {typedUnicode || "\u00A0"}
+        {typedUnicode ? (
+          typedUnicode
+        ) : (
+          <span className="text-[var(--text-muted)] text-lg sm:text-2xl">
+            यहाँ टाइप गर्नुहोस्
+          </span>
+        )}
       </div>
+
+      {/* ======================================================
+    NEXT CHARACTER
+    ====================================================== */}
+
+      {!isComplete && nextCharacter && (
+        <div className="flex items-center gap-10 mx-auto">
+
+          <div
+            className="
+        flex
+        items-center
+        justify-center
+        rounded
+        border
+        border-[var(--border-strong)]
+        bg-[var(--background-secondary)]
+        text-lg
+        font-semibold
+        text-[var(--text-primary)]
+        py-1 px-2
+        shadow-sm
+      "
+
+          >
+            {nextCharacter}
+          </div>
+
+          {nextPhysicalKey && (
+            <span className="text-lg text-[var(--text-muted)]">
+              <span>Press: {" "}</span>
+              <kbd className="rounded border px-2 py-1 font-mono">
+                {nextShift ? `Shift + ${nextPhysicalKey}` : nextPhysicalKey}
+              </kbd>
+            </span>
+          )}
+        </div>
+      )}
 
       {/* ======================================================
           KEYBOARD
@@ -237,12 +266,7 @@ export default function LearnComponent() {
           RESULT MODAL
           ====================================================== */}
 
-      {isComplete && (
-        <Modal
-          handleRestart={resetState}
-          result={result}
-        />
-      )}
+      {isComplete && <Modal handleRestart={resetState} result={result} />}
     </article>
   );
 }
@@ -275,21 +299,16 @@ export const LearningTargetSentence = ({
       {targetLetters.map((letter, index) => {
         const typedLetter = typedLetters[index];
 
-        const isCorrect =
-          typedLetter === letter;
+        const isCorrect = typedLetter === letter;
 
         return (
           <span
             key={`${letter}-${index}`}
             className={
-              isCorrect
-                ? "text-green-600"
-                : "text-gray-400"
+              isCorrect ? "text-[var(--success)]" : "text-[var(--text-muted)]"
             }
           >
-            {letter === " "
-              ? "\u00A0"
-              : letter}
+            {letter === " " ? "\u00A0" : letter}
           </span>
         );
       })}

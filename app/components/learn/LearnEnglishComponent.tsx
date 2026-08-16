@@ -6,6 +6,7 @@ import { useAppStore } from "@/store/useAppStore";
 import Keyboard from "@/app/components/keyboard/preeti/PreetiKeyboard";
 import useKeyboard from "@/app/hooks/useKeyboard";
 import Modal from "@/app/components/Modal";
+import TargetSentence from "../TargetSentence";
 
 const englishSentences = {
   easy: [
@@ -168,7 +169,7 @@ export default function LearnComponent() {
 
     requestAnimationFrame(() => {
       textareaRef.current?.focus();
-    })
+    });
   };
 
   const activeKey = useKeyboard();
@@ -177,55 +178,33 @@ export default function LearnComponent() {
   return (
     <article className="flex flex-col gap-8 text-center px-5 py-3 relative">
       {/* Target sentence */}
-      <LearningTargetSentence targetLetters={targetLetters} typedLetters={typedLetters}/>
-      
+      <TargetSentence
+        targetLetters={targetLetters}
+        typedLetters={typedLetters}
+      />
 
       {/* Typing textarea */}
       <textarea
-      ref={textareaRef}
+        ref={textareaRef}
         key={inputKey}
         value={inputText}
         onChange={handleTyping}
         spellCheck={false}
         autoFocus={true}
         placeholder="Type here..."
-        rows={2}
-        className="w-full border-2 border-slate-600 rounded text-3xl px-5 py-3 leading-relaxed tracking-wide outline-none h-fit text-center -z-50"
+        rows={3}
+        className="w-full border border-[var(--border-strong)] rounded text-3xl text-[var(--text-muted)] px-5 py-3 leading-relaxed tracking-wide outline-none h-fit text-center"
       />
+
+
+      
 
       <section className="w-full overflow-x-auto">
         <Keyboard activeKey={activeKey} nextPhysicalKey={nextKey} />
       </section>
 
       {/* Result Modal Overlay */}
-      {isCompleted && (
-        <Modal handleRestart={handleRestart} result={result}/>
-      )}
+      {isCompleted && <Modal handleRestart={handleRestart} result={result} />}
     </article>
   );
-}
-
-interface LearningTargetSentenceProps {
-  targetLetters: string[],
-  typedLetters: string[],
-  
-}
-
-
-export const LearningTargetSentence = ({targetLetters, typedLetters}: LearningTargetSentenceProps) => {
-  return (
-    <div className="relative text-3xl leading-relaxed tracking-wide wrap-break-word -z-50">
-        {targetLetters.map((letter, index) => {
-          // Color text green if typed, otherwise leave as gray
-          const className =
-            index < typedLetters.length ? "text-green-600" : "text-gray-400";
-
-          return (
-            <span key={index} className={className}>
-              {letter === " " ? "\u00A0" : letter}
-            </span>
-          );
-        })}
-      </div>
-  )
 }

@@ -2,10 +2,7 @@
 
 import { memo } from "react";
 import UnicodeKeyboardKey from "./UnicodeKeyboardKey";
-import {
-  keyboardLayout,
-  type KeyDef,
-} from "./UnicodeKeyboardLayout";
+import { keyboardLayout, type KeyDef } from "./UnicodeKeyboardLayout";
 
 import Image from "next/image";
 
@@ -112,31 +109,25 @@ const UnicodeKeyboard = memo(function UnicodeKeyboard({
   // NORMALIZE PHYSICAL KEYS
   // ==========================================================
 
-  const upperActiveKey =
-    activeKey.toUpperCase();
+  const upperActiveKey = activeKey.toUpperCase();
 
-  const upperNextKey =
-    nextPhysicalKey.toUpperCase();
+  const upperNextKey = nextPhysicalKey.toUpperCase();
 
-  const upperErrorKey =
-    errorKey.toUpperCase();
+  const upperErrorKey = errorKey.toUpperCase();
 
   // ==========================================================
   // FINGER GUIDE
   // ==========================================================
 
-  const fingerToType =
-    fingerMap[upperNextKey];
+  const fingerToType = fingerMap[upperNextKey];
 
   // ==========================================================
   // SPECIAL KEY DETECTION
   // ==========================================================
 
-  const isSpace =
-    upperNextKey === " ";
+  const isSpace = upperNextKey === " ";
 
-  const isPeriod =
-    upperNextKey === ".";
+  const isPeriod = upperNextKey === ".";
 
   // ==========================================================
   // RENDER ROW
@@ -154,13 +145,9 @@ const UnicodeKeyboard = memo(function UnicodeKeyboard({
           // GET PHYSICAL KEY LABEL
           // --------------------------------------------------
 
-          const label =
-            typeof keyDef === "string"
-              ? keyDef
-              : keyDef.label;
+          const label = typeof keyDef === "string" ? keyDef : keyDef.label;
 
-          const upperLabel =
-            label.toUpperCase();
+          const upperLabel = label.toUpperCase();
 
           // --------------------------------------------------
           // NEXT KEY
@@ -168,27 +155,20 @@ const UnicodeKeyboard = memo(function UnicodeKeyboard({
 
           const isNext =
             upperLabel === upperNextKey ||
-            (
-              label === "Shift" &&
-              nextShift &&
-              upperNextKey !== ""
-            );
+            (label === "Shift" && nextShift && upperNextKey !== "");
 
           // --------------------------------------------------
           // ACTIVE KEY
           // --------------------------------------------------
 
           const isActive =
-            upperActiveKey !== "" &&
-            upperActiveKey === upperLabel;
+            upperActiveKey !== "" && upperActiveKey === upperLabel;
 
           // --------------------------------------------------
           // ERROR KEY
           // --------------------------------------------------
 
-          const isError =
-            upperErrorKey !== "" &&
-            upperErrorKey === upperLabel;
+          const isError = upperErrorKey !== "" && upperErrorKey === upperLabel;
 
           // --------------------------------------------------
           // KEY
@@ -198,10 +178,7 @@ const UnicodeKeyboard = memo(function UnicodeKeyboard({
             <UnicodeKeyboardKey
               key={`${label}-${index}`}
               keyDef={keyDef}
-              width={
-                widthMap[label] ??
-                defaultWidth
-              }
+              width={widthMap[label] ?? defaultWidth}
               height={defaultHeight}
               active={isActive}
               next={isNext}
@@ -221,11 +198,9 @@ const UnicodeKeyboard = memo(function UnicodeKeyboard({
   const imagePositionClassName =
     "absolute opacity-50 pointer-events-none z-50 -bottom-49";
 
-  const leftHandFingersPosition =
-    "left-25";
+  const leftHandFingersPosition = "left-25";
 
-  const rightHandFingersPosition =
-    "left-105";
+  const rightHandFingersPosition = "left-105";
 
   // ==========================================================
   // RENDER
@@ -235,7 +210,8 @@ const UnicodeKeyboard = memo(function UnicodeKeyboard({
     <div
       className="
         rounded-xl
-        bg-slate-900
+        border 
+        border-foreground
         p-5
         w-fit
         mx-auto
@@ -268,8 +244,7 @@ const UnicodeKeyboard = memo(function UnicodeKeyboard({
               LEFT PINKY
               ================================================== */}
 
-          {(fingerToType === "leftPinky" ||
-            nextShift) && (
+          {(fingerToType === "leftPinky" || nextShift) && (
             <Image
               src={leftPinky}
               alt="Left hand pinky finger guide"
@@ -329,8 +304,7 @@ const UnicodeKeyboard = memo(function UnicodeKeyboard({
               LEFT THUMB
               ================================================== */}
 
-          {(fingerToType === "leftThumb" ||
-            isSpace) && (
+          {(fingerToType === "leftThumb" || isSpace) && (
             <Image
               src={leftThumb}
               alt="Left hand thumb finger guide"
@@ -358,8 +332,7 @@ const UnicodeKeyboard = memo(function UnicodeKeyboard({
               RIGHT PINKY
               ================================================== */}
 
-          {(fingerToType === "rightPinky" ||
-            nextShift) && (
+          {(fingerToType === "rightPinky" || nextShift) && (
             <Image
               src={rightPinky}
               alt="Right hand pinky finger guide"
@@ -374,8 +347,7 @@ const UnicodeKeyboard = memo(function UnicodeKeyboard({
               RIGHT RING
               ================================================== */}
 
-          {(fingerToType === "rightRing" ||
-            isPeriod) && (
+          {(fingerToType === "rightRing" || isPeriod) && (
             <Image
               src={rightRing}
               alt="Right hand ring finger"
@@ -420,8 +392,7 @@ const UnicodeKeyboard = memo(function UnicodeKeyboard({
               RIGHT THUMB
               ================================================== */}
 
-          {(fingerToType === "rightThumb" ||
-            isSpace) && (
+          {(fingerToType === "rightThumb" || isSpace) && (
             <Image
               src={rightThumb}
               alt="Right hand thumb finger guide"
@@ -439,11 +410,7 @@ const UnicodeKeyboard = memo(function UnicodeKeyboard({
           ====================================================== */}
 
       <div className="flex gap-2">
-        {renderRow(
-          keyboardLayout.function,
-          "w-12",
-          "h-12",
-        )}
+        {renderRow(keyboardLayout.function, "w-12", "h-12")}
       </div>
 
       {/* ======================================================
@@ -451,25 +418,15 @@ const UnicodeKeyboard = memo(function UnicodeKeyboard({
           ====================================================== */}
 
       <div className="space-y-2">
-        {renderRow(
-          keyboardLayout.row1,
-        )}
+        {renderRow(keyboardLayout.row1)}
 
-        {renderRow(
-          keyboardLayout.row2,
-        )}
+        {renderRow(keyboardLayout.row2)}
 
-        {renderRow(
-          keyboardLayout.row3,
-        )}
+        {renderRow(keyboardLayout.row3)}
 
-        {renderRow(
-          keyboardLayout.row4,
-        )}
+        {renderRow(keyboardLayout.row4)}
 
-        {renderRow(
-          keyboardLayout.row5,
-        )}
+        {renderRow(keyboardLayout.row5)}
       </div>
     </div>
   );

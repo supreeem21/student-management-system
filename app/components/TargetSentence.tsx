@@ -1,49 +1,28 @@
 interface TargetSentenceProps {
   targetLetters: string[];
   typedLetters: string[];
+  typedCorrectness?: boolean[]; // NEW
 }
 
-const TargetSentence = ({
-  targetLetters,
-  typedLetters,
-}: TargetSentenceProps) => {
+const TargetSentence = ({ targetLetters, typedLetters, typedCorrectness }: TargetSentenceProps) => {
   return (
-    <div
-      className="relative text-xl sm:text-2xl md:text-3xl leading-relaxed tracking-wide wrap-break-word"
-    >
+    <div className="relative text-xl sm:text-2xl md:text-3xl leading-relaxed tracking-wide wrap-break-word">
       {targetLetters.map((letter, index) => {
-        let className = "text-gray-400";
+        let className = "text-[var(--text-muted)]";
 
         if (index < typedLetters.length) {
-          // Missed space after a correctly typed previous character
-          if (
-            letter === " " &&
-            targetLetters[index - 1] === typedLetters[index - 1] &&
-            typedLetters[index] !== " "
-          ) {
-            className = "bg-red-600 text-black rounded-sm";
-          }
-          // Correct character
-          else if (typedLetters[index] === letter) {
-            className = "text-green-600";
-          }
-          // Incorrect character
-          else {
-            className = "text-red-600";
-          }
+          const isCorrect =
+            typedCorrectness !== undefined
+              ? typedCorrectness[index] !== false
+              : typedLetters[index] === letter;
+
+          className = isCorrect ? "text-[var(--success)]" : "text-[var(--error)]";
         }
 
-        return (
-          <span
-            key={index}
-            className={className}
-          >
-            {letter === " " ? "\u00A0" : letter}
-          </span>
-        );
+        return <span key={index} className={className}>{letter === " " ? "\u00A0" : letter}</span>;
       })}
     </div>
   );
 };
 
-export default TargetSentence;
+export default TargetSentence

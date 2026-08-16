@@ -259,7 +259,7 @@ export const keyboardLayout: KeyboardLayout = {
     {
       label: "\\",
       shift: "|",
-      nepali: "्",
+      nepali: "",
       nepaliShift: "",
     },
   ],
@@ -430,7 +430,7 @@ export const keyboardLayout: KeyboardLayout = {
     {
       label: "/",
       shift: "?",
-      nepali: "",
+      nepali: "्",
       nepaliShift: "",
     },
 

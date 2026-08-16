@@ -1,4 +1,4 @@
-import { RotateCcw, X, ArrowRight } from "@/icons/LucideIcons";
+import { RotateCcw, X, ArrowRight } from "lucide-react";
 
 interface ShowResultProps {
   elapsedTime: string | null;
@@ -93,7 +93,7 @@ const ShowResult = ({
   if (!isCompleted) return null;
 
   const btnClassName =
-    "flex items-center justify-center gap-2 rounded-lg border border-slate-700 px-6 py-3 text-base font-medium transition-colors hover:bg-foreground cursor-pointer";
+    "flex items-center justify-center gap-2 rounded-lg border border-[var(--border-strong)] px-6 py-3 text-base font-medium transition-colors hover:bg-foreground hover:text-background cursor-pointer";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
@@ -113,10 +113,9 @@ const ShowResult = ({
             items-center
             justify-center
             rounded-full
-            text-slate-400
             transition-colors
             hover:bg-foreground
-            hover:text-white
+            hover:text-background
             cursor-pointer
           "
         >
@@ -129,7 +128,7 @@ const ShowResult = ({
 
         <div className="grid grid-cols-1 gap-5 mb-8 sm:grid-cols-3">
           <div className="text-center rounded-lg bg-background/30 p-4">
-            <p className="text-sm text-slate-400">{your_scores.time}</p>
+            <p className="text-sm text-[var(--text-muted)]">{your_scores.time}</p>
 
             <p className="mt-2 text-xl font-bold wrap-break-word">
               {displayScores.elapsedTime}
@@ -137,7 +136,7 @@ const ShowResult = ({
           </div>
 
           <div className="text-center rounded-lg bg-background/30 p-4">
-            <p className="text-sm text-slate-400">{your_scores.wpm}</p>
+            <p className="text-sm text-[var(--text-muted)]">{your_scores.wpm}</p>
 
             <p className="mt-2 text-xl font-bold wrap-break-word">
               {displayScores.wpm}
@@ -145,7 +144,7 @@ const ShowResult = ({
           </div>
 
           <div className="text-center rounded-lg bg-background/30 p-4">
-            <p className="text-sm text-slate-400">{your_scores.accuracy}</p>
+            <p className="text-sm text-[var(--text-muted)]">{your_scores.accuracy}</p>
 
             <p className="mt-2 text-xl font-bold wrap-break-word">
               {displayScores.accuracy}

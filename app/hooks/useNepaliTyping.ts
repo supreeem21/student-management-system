@@ -1,18 +1,20 @@
 "use client";
 
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { useAppStore } from "@/store/useAppStore";
 import { convertCodeToLabel } from "@/app/hooks/useKeyboard";
 
 import * as preetiEngine from "@/app/lib/preeti/preetiTypingEngine";
 import * as unicodeEngine from "@/app/lib/unicode/unicodeTypingEngine";
+
+import { lookupByPhysicalKey as lookupPreetiChar } from "@/app/lib/preeti/preetiKeymap";
+import { lookupByPhysicalKey as lookupUnicodeChar } from "@/app/lib/unicode/unicodeKeymap";
+
+const KEY_LOOKUPS = {
+  preeti: lookupPreetiChar,
+  unicode: lookupUnicodeChar,
+} as const;
 
 import type {
   TypingSequence,
@@ -26,6 +28,7 @@ const ENGINES = {
 
 export interface UseNepaliTypingResult {
   typedUnicode: string;
+  typedCorrectness: boolean[];
   typedCount: number;
   totalKeys: number;
   isComplete: boolean;
@@ -46,6 +49,7 @@ export function useNepaliTyping(
   const strict = options?.strict ?? false;
 
   const nepaliLanguageType = useAppStore((state) => state.nepaliLanguageType);
+
   const engine = ENGINES[nepaliLanguageType] ?? ENGINES.unicode;
 
   const targetSequence: TypingSequence = useMemo(
@@ -65,6 +69,10 @@ export function useNepaliTyping(
   const [activeKey, setActiveKey] = useState("");
   const [errorKey, setErrorKey] = useState("");
 
+  const [mistakeStrokeChars, setMistakeStrokeChars] = useState<
+    Map<number, string>
+  >(new Map());
+
   const typedCountRef = useRef(0);
   const startTimeRef = useRef<number | null>(null);
   const errorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -83,6 +91,7 @@ export function useNepaliTyping(
     setEndTime(null);
     setActiveKey("");
     setErrorKey("");
+    setMistakeStrokeChars(new Map());
 
     typedCountRef.current = 0;
     startTimeRef.current = null;
@@ -136,59 +145,85 @@ export function useNepaliTyping(
 
       if (e.code === "Backspace") {
         e.preventDefault();
+
         if (pressedKeysRef.current.has(e.code)) return;
+
         pressedKeysRef.current.add(e.code);
         setErrorKey("");
+
         return;
       }
 
-      const isTypingKey =
-        physicalKey.length === 1 || physicalKey === "Space";
+      const isTypingKey = physicalKey.length === 1 || physicalKey === "Space";
 
       if (!isTypingKey) return;
 
       e.preventDefault();
 
       if (pressedKeysRef.current.has(e.code)) return;
+
       pressedKeysRef.current.add(e.code);
 
       setActiveKey(physicalKey);
 
       if (targetStrokes.length === 0) return;
+
       if (typedCountRef.current >= targetStrokes.length) return;
 
       const expected = targetStrokes[typedCountRef.current];
+
       if (!expected) return;
 
       if (startTimeRef.current === null) {
         const now = Date.now();
+
         startTimeRef.current = now;
         setStartTime(now);
       }
 
       const physicalKeyMatches =
         physicalKey.toUpperCase() === expected.physicalKey.toUpperCase();
+
       const shiftMatches = e.shiftKey === Boolean(expected.shift);
+
       const altMatches = e.altKey === Boolean(expected.alt);
+
       const matches = physicalKeyMatches && shiftMatches && altMatches;
 
       if (matches) {
         setTypedCount((current) => {
           const next = current + 1;
+
           typedCountRef.current = next;
+
           return next;
         });
+
         setErrorKey("");
+
         return;
       }
 
       // INCORRECT
       setMistakes((current) => current + 1);
 
-      // Strict mode (Learn page): cursor stays put until the
-      // correct key is pressed. Non-strict (Test page): the
-      // cursor still advances so one mistake doesn't block typing.
+      // Non-strict mode:
+      // record the incorrect stroke and advance.
+      //
+      // Strict mode:
+      // keep the cursor on the same stroke.
       if (!strict) {
+        const wrongIndex = typedCountRef.current;
+        const mistakenChar =
+          KEY_LOOKUPS[nepaliLanguageType]?.(physicalKey, e.shiftKey) ??
+          physicalKey;
+
+        setMistakeStrokeChars((current) => {
+          const next = new Map(current);
+          next.set(wrongIndex, mistakenChar);
+          return next;
+        });
+
         setTypedCount((current) => {
           const next = current + 1;
           typedCountRef.current = next;
@@ -201,6 +236,7 @@ export function useNepaliTyping(
 
     const handleKeyUp = (e: KeyboardEvent) => {
       const physicalKey = convertCodeToLabel(e.code);
+
       pressedKeysRef.current.delete(e.code);
 
       if (e.code === "ShiftLeft" || e.code === "ShiftRight") {
@@ -224,15 +260,23 @@ export function useNepaliTyping(
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
+
       pressedKeysRef.current.clear();
     };
-  }, [targetStrokes, flashError, strict]);
+  }, [targetStrokes, flashError, strict, nepaliLanguageType]);
 
-  const typedUnicode = useMemo(() => {
-    if (typedCount <= 0) return "";
+  const { typedUnicode, typedCorrectness } = useMemo(() => {
+    if (typedCount <= 0) {
+      return {
+        typedUnicode: "",
+        typedCorrectness: [] as boolean[],
+      };
+    }
 
     let consumedStrokes = 0;
     let result = "";
+
+    const correctness: boolean[] = [];
 
     for (const grapheme of targetSequence) {
       const strokeCount = grapheme.strokes.length;
@@ -240,7 +284,15 @@ export function useNepaliTyping(
       if (strokeCount === 0) break;
 
       if (consumedStrokes + strokeCount <= typedCount) {
-        result += grapheme.unicode;
+        let mistypedChar: string | undefined;
+        for (let i = consumedStrokes; i < consumedStrokes + strokeCount; i++) {
+          if (mistakeStrokeChars.has(i)) {
+            mistypedChar = mistakeStrokeChars.get(i);
+            break;
+          }
+        }
+        result += mistypedChar ?? grapheme.unicode;
+        correctness.push(mistypedChar === undefined);
         consumedStrokes += strokeCount;
         continue;
       }
@@ -248,13 +300,17 @@ export function useNepaliTyping(
       break;
     }
 
-    return result;
-  }, [targetSequence, typedCount]);
+    return {
+      typedUnicode: result,
+      typedCorrectness: correctness,
+    };
+  }, [targetSequence, typedCount, mistakeStrokeChars]);
 
   const expected = targetStrokes[typedCount];
 
   return {
     typedUnicode,
+    typedCorrectness,
     typedCount,
     totalKeys: targetStrokes.length,
     isComplete,

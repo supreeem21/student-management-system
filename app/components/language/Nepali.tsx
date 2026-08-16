@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import ShowResult from "../ShowResult";
-import TargetSentence from "../TargetSentence";
+import TargetSentence  from "../TargetSentence";
 import { generateRandomSentence } from "../../lib/utils";
 import { useAppStore } from "../../../store/useAppStore";
 import { useNepaliTyping } from "../../hooks/useNepaliTyping";
@@ -135,6 +135,7 @@ export default function NepaliComponent() {
 
   const {
     typedUnicode,
+    typedCorrectness,
     typedCount,
     isComplete,
     mistakes,
@@ -251,6 +252,7 @@ export default function NepaliComponent() {
       <TargetSentence
         targetLetters={targetLetters}
         typedLetters={typedLetters}
+        typedCorrectness={typedCorrectness}
       />
 
       {/* Typed output */}
@@ -262,12 +264,11 @@ export default function NepaliComponent() {
         aria-label="Nepali typing area"
         aria-live="polite"
         className="
-          h-20
+          min-h-20
           w-full
           overflow-hidden
           rounded-md
           border
-          border-gray-600
           p-3
           text-center
           text-3xl
@@ -275,7 +276,11 @@ export default function NepaliComponent() {
           outline-none
         "
       >
-        {typedUnicode || "\u00A0"}
+        {typedUnicode ? (
+          typedUnicode
+        ) : (
+          <span className="text-[var(--text-muted)] text-lg sm:text-2xl">यहाँ टाइप गर्नुहोस्</span>
+        )}
       </div>
 
       {/* Keyboard */}

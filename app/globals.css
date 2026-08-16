@@ -58,8 +58,11 @@
   --border: #cbd5e1;
   --border-strong: #94a3b8;
 
-  --accent: #15678e;
-  --accent-hover: #0f5273;
+  /* --accent: #15678e;
+  --accent-hover: #0f5273; */
+
+  --accent: #38bdf8;
+  --accent-hover: #7dd3fc;
 
   --success: #059669;
   --success-hover: #047857;
@@ -204,12 +207,6 @@ li > p {
   font-size: 24px;
 }
 
-h2 {
-  color: var(--accent);
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
 
 /* ============================================================
    CARET
