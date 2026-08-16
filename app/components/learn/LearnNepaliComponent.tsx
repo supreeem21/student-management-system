@@ -180,7 +180,6 @@ export default function LearnComponent() {
         className="
     min-h-20
     w-full
-    overflow-hidden
     rounded-md
     border
     border-[var(--border-strong)]
@@ -189,13 +188,14 @@ export default function LearnComponent() {
     text-[var(--text-muted)]
     leading-relaxed
     outline-none
+    wrap-break-word
   "
       >
         {typedUnicode ? (
           typedUnicode
         ) : (
           <span className="text-[var(--text-muted)] text-lg sm:text-2xl">
-            यहाँ टाइप गर्नुहोस्
+            सुरु गर्न टाइप गर्नुहोस्
           </span>
         )}
       </div>
@@ -206,7 +206,6 @@ export default function LearnComponent() {
 
       {!isComplete && nextCharacter && (
         <div className="flex items-center gap-10 mx-auto">
-
           <div
             className="
         flex
@@ -222,15 +221,14 @@ export default function LearnComponent() {
         py-1 px-2
         shadow-sm
       "
-
           >
             {nextCharacter}
           </div>
 
           {nextPhysicalKey && (
             <span className="text-lg text-[var(--text-muted)]">
-              <span>Press: {" "}</span>
-              <kbd className="rounded border px-2 py-1 font-mono">
+              <span className="text-[var(--text-muted)]">Press: </span>
+              <kbd className=" px-2 py-1 font-mono">
                 {nextShift ? `Shift + ${nextPhysicalKey}` : nextPhysicalKey}
               </kbd>
             </span>

@@ -361,17 +361,7 @@ export default function PreetiKeyboardKey({
                 "
               >
                 {nepali}
-
-                {multiStrokeHints.has(nepali) && (
-                  <sup
-                    className="
-                      ml-0.5
-                      text-[var(--warning)]
-                    "
-                  >
-                    …
-                  </sup>
-                )}
+ 
               </span>
             )}
           </div>

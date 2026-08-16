@@ -266,7 +266,6 @@ export default function NepaliComponent() {
         className="
           min-h-20
           w-full
-          overflow-hidden
           rounded-md
           border
           p-3
@@ -274,12 +273,13 @@ export default function NepaliComponent() {
           text-3xl
           leading-relaxed
           outline-none
+          wrap-break-word
         "
       >
         {typedUnicode ? (
           typedUnicode
         ) : (
-          <span className="text-[var(--text-muted)] text-lg sm:text-2xl">यहाँ टाइप गर्नुहोस्</span>
+          <span className="text-[var(--text-muted)] text-lg sm:text-2xl">सुरु गर्न टाइप गर्नुहोस्</span>
         )}
       </div>
 

@@ -242,7 +242,7 @@ export default function EnglishComponent() {
         spellCheck={false}
         autoFocus
         key={difficulty}
-        placeholder="Type here..."
+        placeholder="Type to begin..."
         rows={3}
         className="
           w-full

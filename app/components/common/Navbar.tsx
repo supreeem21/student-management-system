@@ -1,6 +1,7 @@
 "use client";
 
-import image from "@/public/logo.png";
+import darkModeLogo from "@/public/logo.png";
+import lightModeLogo from "@/public/original_logo.png";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,15 +21,15 @@ export default function Navbar() {
   const difficulty = useAppStore((state) => state.difficulty);
   const setDifficulty = useAppStore((state) => state.setDifficulty);
 
-  const nepaliLanguageType = useAppStore(
-    (state) => state.nepaliLanguageType,
-  );
+  const nepaliLanguageType = useAppStore((state) => state.nepaliLanguageType);
 
   const setNepaliLanguageType = useAppStore(
     (state) => state.setNepaliLanguageType,
   );
 
   const [showNav, setShowNav] = useState(false);
+
+  const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
 
   const page = usePathname();
 
@@ -82,9 +83,7 @@ export default function Navbar() {
     if (value === "preeti" || value === "unicode") {
       setLanguage("nepali" as Language);
 
-      setNepaliLanguageType(
-        value as NepaliLanguageType,
-      );
+      setNepaliLanguageType(value as NepaliLanguageType);
     } else {
       setLanguage("english" as Language);
     }
@@ -138,28 +137,38 @@ export default function Navbar() {
             aria-label="Darbar Tech home"
             className="
               flex
-              h-11
-              w-[160px]
+              h-full
               items-center
               rounded-md
               focus-visible:outline-2
               focus-visible:outline-[var(--accent)]
             "
           >
-            <Image
-              src={image}
+            {
+              theme === "dark" ? <Image
+              src={darkModeLogo}
               alt="Darbar Tech logo"
-              width={160}
-              height={44}
               priority
               className="
                 block
                 h-auto
-                max-h-11
+                max-h-18
+                w-40
+                object-contain
+              "
+            /> : <Image
+              src={lightModeLogo}
+              alt="Darbar Tech logo"
+              priority
+              className="
+                block
+                h-auto
+                max-h-18
                 w-40
                 object-contain
               "
             />
+            }
           </Link>
         </div>
 
@@ -364,47 +373,155 @@ export default function Navbar() {
 
         <div className="w-[180px] shrink-0">
           {page !== "/code" ? (
-            <select
-              value={selectedLanguage}
-              aria-label="Select language"
-              onChange={(e) =>
-                handleLanguageChange(e.target.value)
-              }
-              className="
-                h-10
-                w-[180px]
-                cursor-pointer
-                rounded-lg
-                border
-                border-[var(--border)]
-                bg-[var(--background)]
-                px-3
-                text-sm
-                font-semibold
-                text-[var(--text-primary)]
-                outline-none
-                transition-all
-                duration-150
-                hover:border-[var(--accent)]
-                focus:border-[var(--accent)]
-                focus:ring-2
-                focus:ring-[var(--accent)]
-                focus:ring-opacity-20
-                hover:cursor-pointer
-              "
-            >
-              <option value="english">
-                English
-              </option>
+            <div className="relative">
+              <button
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded={showLanguageDropdown}
+                onClick={() => setShowLanguageDropdown((prev) => !prev)}
+                className="
+      flex
+      h-10
+      w-[180px]
+      items-center
+      justify-between
+      rounded-lg
+      border
+      border-[var(--border)]
+      bg-[var(--background)]
+      px-3
+      text-sm
+      font-semibold
+      text-[var(--text-primary)]
+      outline-none
+      transition-all
+      duration-150
+      hover:border-[var(--accent)]
+      focus:border-[var(--accent)]
+      hover:cursor-pointer
+    "
+              >
+                <span>
+                  {selectedLanguage === "english"
+                    ? "English"
+                    : selectedLanguage === "preeti"
+                      ? "Nepali (Preeti)"
+                      : "Nepali (Unicode)"}
+                </span>
 
-              <option value="preeti">
-                Nepali (Preeti)
-              </option>
+                <span
+                  className={`transition-transform duration-150 ${
+                    showLanguageDropdown ? "rotate-180" : ""
+                  }`}
+                >
+                  ▼
+                </span>
+              </button>
 
-              <option value="unicode">
-                Nepali (Unicode)
-              </option>
-            </select>
+              {showLanguageDropdown && (
+                <div
+                  role="listbox"
+                  className="
+        absolute
+        right-0
+        top-12
+        z-[100]
+        w-[180px]
+        overflow-hidden
+        rounded-lg
+        border
+        border-[var(--border)]
+        bg-[var(--surface)]
+        p-1
+        shadow-xl
+      "
+                >
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={selectedLanguage === "english"}
+                    onClick={() => {
+                      handleLanguageChange("english");
+                      setShowLanguageDropdown(false);
+                    }}
+                    className={`
+          w-full
+          rounded-md
+          px-3
+          py-2
+          text-left
+          text-sm
+          font-semibold
+          transition-colors
+          hover:cursor-pointer
+          ${
+            selectedLanguage === "english"
+              ? "bg-[var(--accent)] text-white"
+              : "text-[var(--text-primary)] hover:bg-[var(--surface-hover)]"
+          }
+        `}
+                  >
+                    English
+                  </button>
+
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={selectedLanguage === "preeti"}
+                    onClick={() => {
+                      handleLanguageChange("preeti");
+                      setShowLanguageDropdown(false);
+                    }}
+                    className={`
+          w-full
+          rounded-md
+          px-3
+          py-2
+          text-left
+          text-sm
+          font-semibold
+          transition-colors
+          hover:cursor-pointer
+          ${
+            selectedLanguage === "preeti"
+              ? "bg-[var(--accent)] text-white"
+              : "text-[var(--text-primary)] hover:bg-[var(--surface-hover)]"
+          }
+        `}
+                  >
+                    Nepali (Preeti)
+                  </button>
+
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={selectedLanguage === "unicode"}
+                    onClick={() => {
+                      handleLanguageChange("unicode");
+                      setShowLanguageDropdown(false);
+                    }}
+                    className={`
+          w-full
+          rounded-md
+          px-3
+          py-2
+          text-left
+          text-sm
+          font-semibold
+          transition-colors
+          hover:cursor-pointer
+          ${
+            selectedLanguage === "unicode"
+              ? "bg-[var(--accent)] text-white"
+              : "text-[var(--text-primary)] hover:bg-[var(--surface-hover)]"
+          }
+        `}
+                  >
+                    Nepali (Unicode)
+                  </button>
+                </div>
+              )}
+            </div>
           ) : (
             <div className="h-10 w-[180px]" />
           )}
@@ -433,13 +550,7 @@ export default function Navbar() {
                 ? "Switch to dark theme"
                 : "Switch to light theme"
             }
-            onClick={() =>
-              setTheme(
-                theme === "light"
-                  ? "dark"
-                  : "light",
-              )
-            }
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             className="
               flex
               h-10
@@ -460,15 +571,9 @@ export default function Navbar() {
             "
           >
             {theme === "light" ? (
-              <Sun
-                className="h-5 w-5"
-                strokeWidth={1.75}
-              />
+              <Sun className="h-5 w-5" strokeWidth={1.75} />
             ) : (
-              <Moon
-                className="h-5 w-5"
-                strokeWidth={1.75}
-              />
+              <Moon className="h-5 w-5" strokeWidth={1.75} />
             )}
           </button>
         </div>
@@ -497,12 +602,12 @@ export default function Navbar() {
           className="
             flex
             h-11
-            w-[140px]
             items-center
           "
         >
-          <Image
-            src={image}
+          {
+            theme === "dark" ? <Image
+            src={darkModeLogo}
             alt="Darbar Tech logo"
             width={140}
             height={42}
@@ -510,11 +615,24 @@ export default function Navbar() {
             className="
               block
               h-auto
-              max-h-11
-              w-[140px]
+              max-h-18
+              object-contain
+            "
+          /> : <Image
+            src={lightModeLogo}
+            alt="Darbar Tech logo"
+            width={140}
+            height={42}
+            priority
+            className="
+              block
+              h-auto
+              max-h-18
               object-contain
             "
           />
+
+          }
         </Link>
 
         {/* Mobile controls */}
@@ -529,13 +647,7 @@ export default function Navbar() {
                 ? "Switch to dark theme"
                 : "Switch to light theme"
             }
-            onClick={() =>
-              setTheme(
-                theme === "light"
-                  ? "dark"
-                  : "light",
-              )
-            }
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             className="
               flex
               h-10
@@ -559,15 +671,9 @@ export default function Navbar() {
 
           <button
             type="button"
-            aria-label={
-              showNav
-                ? "Close navigation"
-                : "Open navigation"
-            }
+            aria-label={showNav ? "Close navigation" : "Open navigation"}
             aria-expanded={showNav}
-            onClick={() =>
-              setShowNav((prev) => !prev)
-            }
+            onClick={() => setShowNav((prev) => !prev)}
             className="
               flex
               h-10
@@ -580,11 +686,7 @@ export default function Navbar() {
               hover:cursor-pointer
             "
           >
-            {showNav ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
+            {showNav ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
@@ -624,9 +726,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href="/"
-                  onClick={() =>
-                    setShowNav(false)
-                  }
+                  onClick={() => setShowNav(false)}
                   className={`
                     ${navItem}
                     text-[var(--text-secondary)]
@@ -651,9 +751,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href="/learn"
-                  onClick={() =>
-                    setShowNav(false)
-                  }
+                  onClick={() => setShowNav(false)}
                   className={`
                     ${navItem}
                     text-[var(--text-secondary)]
@@ -678,9 +776,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href="/code"
-                  onClick={() =>
-                    setShowNav(false)
-                  }
+                  onClick={() => setShowNav(false)}
                   className={`
                     ${navItem}
                     text-[var(--text-secondary)]
@@ -717,15 +813,11 @@ export default function Navbar() {
               </p>
 
               <div className="grid grid-cols-3 gap-1">
-                {(
-                  ["easy", "medium", "hard"] as const
-                ).map((level) => (
+                {(["easy", "medium", "hard"] as const).map((level) => (
                   <button
                     key={level}
                     type="button"
-                    aria-pressed={
-                      difficulty === level
-                    }
+                    aria-pressed={difficulty === level}
                     onClick={() => {
                       setDifficulty(level);
                       setShowNav(false);
@@ -745,10 +837,7 @@ export default function Navbar() {
                       }
                     `}
                   >
-                    {level
-                      .charAt(0)
-                      .toUpperCase() +
-                      level.slice(1)}
+                    {level.charAt(0).toUpperCase() + level.slice(1)}
                   </button>
                 ))}
               </div>
@@ -778,43 +867,162 @@ export default function Navbar() {
                   Language
                 </p>
 
-                <select
-                  value={selectedLanguage}
-                  aria-label="Select language"
-                  onChange={(e) => {
-                    handleLanguageChange(
-                      e.target.value,
-                    );
-                    setShowNav(false);
-                  }}
-                  className="
-                    h-10
-                    w-full
-                    rounded-lg
-                    border
-                    border-[var(--border)]
-                    bg-[var(--background)]
-                    px-3
-                    text-sm
-                    font-semibold
-                    text-[var(--text-primary)]
-                    outline-none
-                    focus:border-[var(--accent)]
-                    hover:cursor-pointer
-                  "
-                >
-                  <option value="english">
-                    English
-                  </option>
+                <div className="relative w-full">
+                  <button
+                    type="button"
+                    aria-haspopup="listbox"
+                    aria-expanded={showLanguageDropdown}
+                    onClick={() => setShowLanguageDropdown((prev) => !prev)}
+                    className="
+      flex
+      h-10
+      w-full
+      items-center
+      justify-between
+      rounded-lg
+      border
+      border-[var(--border)]
+      bg-[var(--background)]
+      px-3
+      text-sm
+      font-semibold
+      text-[var(--text-primary)]
+      outline-none
+      transition-all
+      duration-150
+      hover:border-[var(--accent)]
+      focus:border-[var(--accent)]
+      hover:cursor-pointer
+    "
+                  >
+                    <span>
+                      {selectedLanguage === "english"
+                        ? "English"
+                        : selectedLanguage === "preeti"
+                          ? "Nepali (Preeti)"
+                          : "Nepali (Unicode)"}
+                    </span>
 
-                  <option value="preeti">
-                    Nepali (Preeti)
-                  </option>
+                    <span
+                      className={`transition-transform duration-150 ${
+                        showLanguageDropdown ? "rotate-180" : ""
+                      }`}
+                    >
+                      ▼
+                    </span>
+                  </button>
 
-                  <option value="unicode">
-                    Nepali (Unicode)
-                  </option>
-                </select>
+                  {showLanguageDropdown && (
+                    <div
+                      role="listbox"
+                      className="
+        absolute
+        left-0
+        right-0
+        top-12
+        z-[100]
+        w-full
+        overflow-hidden
+        rounded-lg
+        border
+        border-[var(--border)]
+        bg-[var(--surface)]
+        p-1
+        shadow-xl
+      "
+                    >
+                      {/* English */}
+                      <button
+                        type="button"
+                        role="option"
+                        aria-selected={selectedLanguage === "english"}
+                        onClick={() => {
+                          handleLanguageChange("english");
+                          setShowLanguageDropdown(false);
+                          setShowNav(false);
+                        }}
+                        className={`
+          w-full
+          rounded-md
+          px-3
+          py-2
+          text-left
+          text-sm
+          font-semibold
+          transition-colors
+          hover:cursor-pointer
+          ${
+            selectedLanguage === "english"
+              ? "bg-[var(--accent)] text-white"
+              : "text-[var(--text-primary)] hover:bg-[var(--surface-hover)]"
+          }
+        `}
+                      >
+                        English
+                      </button>
+
+                      {/* Nepali Preeti */}
+                      <button
+                        type="button"
+                        role="option"
+                        aria-selected={selectedLanguage === "preeti"}
+                        onClick={() => {
+                          handleLanguageChange("preeti");
+                          setShowLanguageDropdown(false);
+                          setShowNav(false);
+                        }}
+                        className={`
+          w-full
+          rounded-md
+          px-3
+          py-2
+          text-left
+          text-sm
+          font-semibold
+          transition-colors
+          hover:cursor-pointer
+          ${
+            selectedLanguage === "preeti"
+              ? "bg-[var(--accent)] text-white"
+              : "text-[var(--text-primary)] hover:bg-[var(--surface-hover)]"
+          }
+        `}
+                      >
+                        Nepali (Preeti)
+                      </button>
+
+                      {/* Nepali Unicode */}
+                      <button
+                        type="button"
+                        role="option"
+                        aria-selected={selectedLanguage === "unicode"}
+                        onClick={() => {
+                          handleLanguageChange("unicode");
+                          setShowLanguageDropdown(false);
+                          setShowNav(false);
+                        }}
+                        className={`
+          w-full
+          rounded-md
+          px-3
+          py-2
+          text-left
+          text-sm
+          font-semibold
+          transition-colors
+          hover:cursor-pointer
+          ${
+            selectedLanguage === "unicode"
+              ? "bg-[var(--accent)] text-white"
+              : "text-[var(--text-primary)] hover:bg-[var(--surface-hover)]"
+          }
+        `}
+                      >
+                        Nepali (Unicode)
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
             )}
           </div>

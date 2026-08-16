@@ -62,7 +62,7 @@ export default function LearnCodeComponent() {
     return <div>No challenge found.</div>;
   }
 
-  const btnClassName="w-full rounded-md px-4 py-2 text-sm bg-[var(--surface)] border border-[var(--border)] hover:bg-[var(--accent)] hover:cursor-pointer sm:w-auto transition-colors sm:text-base"
+  const btnClassName="w-full rounded-md px-4 py-2 text-sm bg-[var(--surface)] border border-[var(--border)] hover:bg-foreground hover:text-background hover:cursor-pointer sm:w-auto transition-colors sm:text-base"
 
   return (
     <article className="w-full space-y-6 px-2 sm:px-4 md:px-6 lg:px-8">

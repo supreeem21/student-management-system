@@ -149,7 +149,27 @@ export function useNepaliTyping(
         if (pressedKeysRef.current.has(e.code)) return;
 
         pressedKeysRef.current.add(e.code);
+
+        setTypedCount((current) => {
+          if (current <= 0) return current;
+
+          const next = current - 1;
+          typedCountRef.current = next;
+
+          setMistakeStrokeChars((currentMistakes) => {
+            if (!currentMistakes.has(next)) return currentMistakes;
+
+            const nextMistakes = new Map(currentMistakes);
+            nextMistakes.delete(next);
+
+            return nextMistakes;
+          });
+
+          return next;
+        });
+
         setErrorKey("");
+        setActiveKey("Backspace");
 
         return;
       }

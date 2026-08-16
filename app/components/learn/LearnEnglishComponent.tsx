@@ -174,6 +174,7 @@ export default function LearnComponent() {
 
   const activeKey = useKeyboard();
   const nextKey = targetLetters[typedLetters.length] ?? "";
+  const nextShift = nextKey !== nextKey.toLowerCase();
 
   return (
     <article className="flex flex-col gap-8 text-center px-5 py-3 relative">
@@ -191,13 +192,32 @@ export default function LearnComponent() {
         onChange={handleTyping}
         spellCheck={false}
         autoFocus={true}
-        placeholder="Type here..."
+        placeholder="Type to begin..."
         rows={3}
         className="w-full border border-[var(--border-strong)] rounded text-3xl text-[var(--text-muted)] px-5 py-3 leading-relaxed tracking-wide outline-none h-fit text-center"
       />
 
+      {/* ======================================================
+    NEXT KEY SUGGESTION
+    ====================================================== */}
 
-      
+      {!isCompleted && nextKey && (
+        <div className="mx-auto text-lg text-[var(--text-primary)]">
+          <span className="text-[var(--text-muted)]">Press: </span>
+
+          <kbd className="px-2 py-1 font-mono">
+            {nextKey === " "
+              ? "Space"
+              : nextShift
+                ? `Shift + ${nextKey.toUpperCase()}`
+                : nextKey}
+          </kbd>
+        </div>
+      )}
+
+      {/* ======================================================
+    KEYBOARD
+    ====================================================== */}
 
       <section className="w-full overflow-x-auto">
         <Keyboard activeKey={activeKey} nextPhysicalKey={nextKey} />

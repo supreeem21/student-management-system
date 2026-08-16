@@ -5,10 +5,11 @@ interface TargetSentenceProps {
 }
 
 const TargetSentence = ({ targetLetters, typedLetters, typedCorrectness }: TargetSentenceProps) => {
+
   return (
     <div className="relative text-xl sm:text-2xl md:text-3xl leading-relaxed tracking-wide wrap-break-word">
       {targetLetters.map((letter, index) => {
-        let className = "text-[var(--text-muted)]";
+        let className = "text-[var(--text-primary)]";
 
         if (index < typedLetters.length) {
           const isCorrect =
